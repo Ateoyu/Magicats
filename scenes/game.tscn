@@ -2,11 +2,12 @@
 
 [ext_resource type="Script" uid="uid://wp4bxhujcbjw" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://scenes/player.tscn" id="1_uwrxv"]
-[ext_resource type="PackedScene" uid="uid://sa8ec4kudve1" path="res://fade_transition.tscn" id="3_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://sa8ec4kudve1" path="res://scenes/fadeTransition.tscn" id="3_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://c201kqm66rjry" path="res://scenes/pauseMenu.tscn" id="4_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://cqjr25648e16d" path="res://assets/pixelArtTopDownAssetsPack/Texture/Extra/TX Props with Shadow.png" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://bmo7bltura1e0" path="res://scenes/enemyRat.tscn" id="6_p57ef"]
 [ext_resource type="Script" uid="uid://cq6fct064x4b3" path="res://scripts/health_bar.gd" id="7_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://cujjkff1nuw4t" path="res://scenes/enemySpawner.tscn" id="8_gee14"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p57ef"]
 texture = ExtResource("5_iywne")
@@ -153,3 +154,6 @@ value = 60.0
 show_percentage = false
 script = ExtResource("7_u5sy4")
 player = NodePath("../../Player")
+
+[node name="EnemySpawner" parent="." unique_id=294658530 node_paths=PackedStringArray("player") instance=ExtResource("8_gee14")]
+player = NodePath("../Player")
