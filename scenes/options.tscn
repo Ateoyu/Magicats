@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bmxpvw37hc7s1"]
+
+[ext_resource type="Script" uid="uid://crk7d6dmph063" path="res://scripts/options.gd" id="1_c2u1v"]
+[ext_resource type="PackedScene" uid="uid://sa8ec4kudve1" path="res://fade_transition.tscn" id="2_yjkok"]
+
+[node name="Options" type="Node2D" unique_id=371544289]
+script = ExtResource("1_c2u1v")
+
+[node name="Fade_transition" parent="." unique_id=1200209534 instance=ExtResource("2_yjkok")]
+visible = false

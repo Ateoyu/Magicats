@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://cea1sc4qofuos"]
+
+[ext_resource type="Script" uid="uid://lekjychlp37n" path="res://scripts/main_menu.gd" id="1_qkhwq"]
+[ext_resource type="Texture2D" uid="uid://bd00a3o38ng01" path="res://assets/mainMenu/ButtonsDefault/startDefault.png" id="2_ldpc3"]
+[ext_resource type="Texture2D" uid="uid://c2in8xmr0sd8h" path="res://assets/mainMenu/ButtonsHighlighted/startSelected.png" id="3_y35fp"]
+[ext_resource type="Texture2D" uid="uid://c0tkwsmkiheay" path="res://assets/mainMenu/ButtonsDefault/optionsDefault.png" id="4_dj72i"]
+[ext_resource type="Texture2D" uid="uid://bnpw54reqt37v" path="res://assets/mainMenu/ButtonsHighlighted/optionsSelected.png" id="5_6b2wv"]
+[ext_resource type="Texture2D" uid="uid://bvc77x2h2r8mx" path="res://assets/mainMenu/ButtonsDefault/quitDefault.png" id="6_tov5d"]
+[ext_resource type="Texture2D" uid="uid://dti2dnqe8jb7q" path="res://assets/mainMenu/ButtonsHighlighted/quitSelected.png" id="7_epn8x"]
+[ext_resource type="Texture2D" uid="uid://bqu51y12la6ct" path="res://assets/mainMenu/Background.png" id="8_dj72i"]
+[ext_resource type="PackedScene" uid="uid://sa8ec4kudve1" path="res://fade_transition.tscn" id="8_y35fp"]
+
+[node name="MainMenu" type="Node2D" unique_id=657582238]
+script = ExtResource("1_qkhwq")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=840568216]
+position = Vector2(576, 361.25)
+scale = Vector2(0.9113924, 0.8509502)
+texture = ExtResource("8_dj72i")
+
+[node name="ButtonManager" type="Control" parent="Background" unique_id=1305778725]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -95.59201
+offset_top = -188.67989
+offset_right = 97.77701
+offset_bottom = 97.54875
+
+[node name="Start" type="TextureButton" parent="Background/ButtonManager" unique_id=1357159148]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 2.578
+anchor_bottom = 1.59
+offset_left = -29.491322
+offset_top = 22.688976
+offset_right = -352.99664
+offset_bottom = -358.41455
+scale = Vector2(1.4427658, 1.3918597)
+texture_normal = ExtResource("2_ldpc3")
+texture_hover = ExtResource("3_y35fp")
+
+[node name="Options" type="TextureButton" parent="Background/ButtonManager" unique_id=109582707]
+layout_mode = 0
+offset_left = -27.296879
+offset_top = 139.02951
+offset_right = 155.99829
+offset_bottom = 209.02951
+scale = Vector2(1.3817644, 1.3817644)
+texture_normal = ExtResource("4_dj72i")
+texture_hover = ExtResource("5_6b2wv")
+
+[node name="Quit" type="TextureButton" parent="Background/ButtonManager" unique_id=842749241]
+layout_mode = 0
+offset_left = -31.685768
+offset_top = 241.30487
+offset_right = 141.31424
+offset_bottom = 320.30487
+scale = Vector2(1.4905376, 1.4905376)
+texture_normal = ExtResource("6_tov5d")
+texture_hover = ExtResource("7_epn8x")
+
+[node name="Fade_transition" parent="." unique_id=1200209534 instance=ExtResource("8_y35fp")]
+visible = false
+offset_left = -7.0
+offset_top = -8.0
+offset_right = 1163.0
+offset_bottom = 657.0
+
+[node name="Fade_timer" type="Timer" parent="Fade_transition" unique_id=892414325]
+
+[connection signal="pressed" from="Background/ButtonManager/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Background/ButtonManager/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Background/ButtonManager/Quit" to="." method="_on_quit_pressed"]
+[connection signal="timeout" from="Fade_transition/Fade_timer" to="." method="_on_fade_timer_timeout"]
