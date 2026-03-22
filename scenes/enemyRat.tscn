@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bmo7bltura1e0"]
 
+[ext_resource type="Script" uid="uid://ufyko45pvfuy" path="res://scenes/enemyRat.gd" id="1_6rqi6"]
 [ext_resource type="Texture2D" uid="uid://bcy337j7jcx4w" path="res://assets/enemyRatSpriteSheet.png" id="1_p20aq"]
 [ext_resource type="PackedScene" uid="uid://dhq0pa6na6p7k" path="res://scenes/hitbox.tscn" id="2_g4cd1"]
 
@@ -36,6 +37,9 @@ animations = [{
 size = Vector2(35, 16.5)
 
 [node name="EnemyRat" type="Node2D" unique_id=2006700650]
+script = ExtResource("1_6rqi6")
+max_health = 10
+attack_power = 5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1215340022]
 sprite_frames = SubResource("SpriteFrames_5mbbb")
