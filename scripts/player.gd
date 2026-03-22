@@ -1,7 +1,13 @@
 extends CharacterBody2D
 
+class_name Player
+
 @export var movement_speed: float = 500
 var character_direction: Vector2
+
+signal healthChanged
+@export var maxHealth: int = 100
+@onready var currentHealth: int = maxHealth
 
 func _physics_process(delta: float) -> void:
 	character_direction.x = Input.get_axis("move_left", "move_right")
@@ -23,3 +29,11 @@ func _physics_process(delta: float) -> void:
 			%sprite.animation = "idle"
 	
 	move_and_slide()
+
+func take_damage(amount: int):
+	currentHealth -= amount
+	healthChanged.emit()
+
+func heal(amount: int):
+	currentHealth += amount
+	healthChanged.emit()

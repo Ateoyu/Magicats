@@ -1,5 +1,6 @@
 extends Area2D
 
-
 func _on_body_entered(body: Node2D) -> void:
-	print("You got hit!")
+		if body is Player:
+			body.take_damage(10)
+			print("You got hit!")

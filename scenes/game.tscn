@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c201kqm66rjry" path="res://scenes/pauseMenu.tscn" id="4_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://cqjr25648e16d" path="res://assets/pixelArtTopDownAssetsPack/Texture/Extra/TX Props with Shadow.png" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://bmo7bltura1e0" path="res://scenes/enemyRat.tscn" id="6_p57ef"]
+[ext_resource type="Script" uid="uid://cq6fct064x4b3" path="res://scripts/health_bar.gd" id="7_u5sy4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p57ef"]
 texture = ExtResource("5_iywne")
@@ -91,6 +92,18 @@ texture_region_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_p57ef")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5sy4"]
+bg_color = Color(0, 0, 0, 1)
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gee14"]
+bg_color = Color(0.40822813, 0.14043677, 0.12177805, 1)
+shadow_color = Color(0, 0, 0, 0.27450982)
+shadow_offset = Vector2(0, 1)
+
 [node name="Game" type="Node2D" unique_id=179032308]
 script = ExtResource("1_lnu2h")
 
@@ -111,9 +124,9 @@ offset_bottom = 326.0
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=311475991]
 
 [node name="PauseMenu" parent="CanvasLayer" unique_id=1004427110 instance=ExtResource("4_lbhrr")]
-offset_left = 39.0
+offset_left = 48.0
 offset_top = -8.0
-offset_right = -232.0
+offset_right = -223.0
 offset_bottom = -72.0
 
 [node name="Layer0" type="TileMapLayer" parent="." unique_id=234565971]
@@ -126,3 +139,17 @@ tile_set = SubResource("TileSet_u5sy4")
 
 [node name="EnemyRat" parent="." unique_id=2006700650 instance=ExtResource("6_p57ef")]
 position = Vector2(63, 128)
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1458710854]
+
+[node name="HealthBar" type="ProgressBar" parent="HUD" unique_id=1535086115 node_paths=PackedStringArray("player")]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 450.0
+offset_bottom = 45.0
+theme_override_styles/background = SubResource("StyleBoxFlat_u5sy4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_gee14")
+value = 60.0
+show_percentage = false
+script = ExtResource("7_u5sy4")
+player = NodePath("../../Player")
