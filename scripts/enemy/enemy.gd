@@ -1,7 +1,7 @@
 class_name Enemy
 extends CharacterBody2D
 
-@export_category("Base Stats")
+@export_category("Base Enemy Stats")
 @export var max_health: int = 100
 @export var attack_power: int = 10
 @export var movement_speed: int = 50
@@ -22,7 +22,7 @@ func take_damage(amount: int) -> void:
 		die()
 		
 func die() -> void:
-	# code below needs a check (cant make enemy die rn)
+	# for some reason spawns wrong?
 	var new_gem = experience_gem.instantiate()
 	new_gem.global_position = global_position
 	new_gem.experience = experience
