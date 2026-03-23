@@ -9,6 +9,10 @@ var current_health: int
 
 @onready var player = get_tree().get_first_node_in_group("player")
 
+@onready var loot_base = get_tree().get_first_node_in_group("loot")
+var experience_gem = preload("res://scenes/experienceGem.tscn")
+@export var experience: int = 1
+
 func _ready() -> void:
 	current_health = max_health
 	
@@ -18,6 +22,11 @@ func take_damage(amount: int) -> void:
 		die()
 		
 func die() -> void:
+	# code below needs a check (cant make enemy die rn)
+	var new_gem = experience_gem.instantiate()
+	new_gem.global_position = global_position
+	new_gem.experience = experience
+	loot_base.call_deferred("add_child", new_gem)
 	# add animation here for death.
 	queue_free() 
 

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://be8qbmt0fe144"]
 
 [ext_resource type="Texture2D" uid="uid://ue1wepqb6116" path="res://assets/mainCatSpriteSheet.png" id="1_3vyb7"]
-[ext_resource type="Script" uid="uid://c3ubxpp10k6x6" path="res://scripts/player/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://c3ubxpp10k6x6" path="res://scripts/player.gd" id="1_g2els"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
 atlas = ExtResource("1_3vyb7")
@@ -59,6 +59,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qlg0r"]
 size = Vector2(18.998953, 64.00781)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_dovo2"]
+radius = 200.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gmlin"]
+radius = 15.0
+
 [node name="Player" type="CharacterBody2D" unique_id=38899763 groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_g2els")
@@ -66,9 +72,8 @@ script = ExtResource("1_g2els")
 [node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1897477967]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_dqkch")
-animation = &"death"
+animation = &"run"
 autoplay = "run"
-frame_progress = 0.38885963
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2020090961]
 position = Vector2(4.01457, 15.454567)
@@ -76,3 +81,20 @@ rotation = 1.5555334
 shape = SubResource("RectangleShape2D_qlg0r")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=340542417]
+
+[node name="PickupRangeArea" type="Area2D" parent="." unique_id=309044316]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupRangeArea" unique_id=1442801175]
+shape = SubResource("CircleShape2D_dovo2")
+
+[node name="CollectionArea" type="Area2D" parent="." unique_id=282762769]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectionArea" unique_id=1134839840]
+shape = SubResource("CircleShape2D_gmlin")
+
+[connection signal="area_entered" from="PickupRangeArea" to="." method="_on_pickup_range_area_area_entered"]
+[connection signal="area_entered" from="CollectionArea" to="." method="_on_collection_area_area_entered"]

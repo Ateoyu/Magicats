@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://cq6fct064x4b3" path="res://scripts/UI/health_bar.gd" id="7_u5sy4"]
 [ext_resource type="Script" uid="uid://bdtspman5dtsn" path="res://scripts/UI/experience_bar.gd" id="8_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://cujjkff1nuw4t" path="res://scenes/enemy/enemySpawner.tscn" id="8_gee14"]
-[ext_resource type="PackedScene" uid="uid://b5ysadr6xkyjn" path="res://scenes/experienceGem.tscn" id="9_0tnpc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p57ef"]
 texture = ExtResource("5_iywne")
@@ -221,6 +220,3 @@ vertical_alignment = 2
 player = NodePath("../Player")
 
 [node name="Loot" type="Node2D" parent="." unique_id=1008354775 groups=["loot"]]
-
-[node name="ExperienceGem" parent="Loot" unique_id=555789065 instance=ExtResource("9_0tnpc")]
-position = Vector2(27, -13)

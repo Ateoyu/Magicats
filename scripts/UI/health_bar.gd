@@ -4,8 +4,8 @@ extends ProgressBar
 
 func _ready() -> void:
 	if player:
-		player.healthChanged.connect(updateHealth)
+		player.health_changed.connect(updateHealth)
 		updateHealth()
 
 func updateHealth():
-	value = player.currentHealth * 100 / player.maxHealth
+	value = player.current_health * 100 / player.max_health
