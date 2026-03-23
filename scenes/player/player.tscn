@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://be8qbmt0fe144"]
 
 [ext_resource type="Texture2D" uid="uid://ue1wepqb6116" path="res://assets/mainCatSpriteSheet.png" id="1_3vyb7"]
-[ext_resource type="Script" uid="uid://c3ubxpp10k6x6" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://c3ubxpp10k6x6" path="res://scripts/player/player.gd" id="1_g2els"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
 atlas = ExtResource("1_3vyb7")
@@ -59,7 +59,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qlg0r"]
 size = Vector2(18.998953, 64.00781)
 
-[node name="Player" type="CharacterBody2D" unique_id=38899763]
+[node name="Player" type="CharacterBody2D" unique_id=38899763 groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_g2els")
 
@@ -70,7 +70,9 @@ animation = &"death"
 autoplay = "run"
 frame_progress = 0.38885963
 
-[node name="collision" type="CollisionShape2D" parent="." unique_id=2020090961]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2020090961]
 position = Vector2(4.01457, 15.454567)
 rotation = 1.5555334
 shape = SubResource("RectangleShape2D_qlg0r")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=340542417]

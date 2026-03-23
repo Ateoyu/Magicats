@@ -1,22 +1,22 @@
 [gd_scene format=3 uid="uid://cea1sc4qofuos"]
 
-[ext_resource type="Script" uid="uid://lekjychlp37n" path="res://scripts/main_menu.gd" id="1_qkhwq"]
-[ext_resource type="Texture2D" uid="uid://cppyiaj4evhbe" path="res://assets/mainMenu/ButtonsDefault/startDefault.png" id="2_ldpc3"]
-[ext_resource type="Texture2D" uid="uid://bhoyglwgtvtqj" path="res://assets/mainMenu/ButtonsHighlighted/startHighlighted.png" id="4_6b2wv"]
-[ext_resource type="Texture2D" uid="uid://blrm3a72apryq" path="res://assets/mainMenu/ButtonsDefault/optionsDefault.png" id="4_dj72i"]
-[ext_resource type="Texture2D" uid="uid://sonhtoyu76xb" path="res://assets/mainMenu/ButtonsHighlighted/optionsHighlighted.png" id="6_epn8x"]
-[ext_resource type="Texture2D" uid="uid://c2gkmacy5qcpx" path="res://assets/mainMenu/ButtonsDefault/quitDefault.png" id="6_tov5d"]
-[ext_resource type="Texture2D" uid="uid://bqu51y12la6ct" path="res://assets/mainMenu/Background.png" id="8_dj72i"]
-[ext_resource type="Texture2D" uid="uid://7p3nivy6vlw7" path="res://assets/mainMenu/ButtonsHighlighted/quitHighlighted.png" id="8_vt84v"]
-[ext_resource type="PackedScene" uid="uid://sa8ec4kudve1" path="res://scenes/fadeTransition.tscn" id="8_y35fp"]
+[ext_resource type="Script" uid="uid://lekjychlp37n" path="res://scripts/menu/main_menu.gd" id="1_1ynf8"]
+[ext_resource type="Texture2D" uid="uid://bqu51y12la6ct" path="res://assets/mainMenu/Background.png" id="2_r3v84"]
+[ext_resource type="Texture2D" uid="uid://cppyiaj4evhbe" path="res://assets/mainMenu/ButtonsDefault/startDefault.png" id="3_mwrku"]
+[ext_resource type="Texture2D" uid="uid://bhoyglwgtvtqj" path="res://assets/mainMenu/ButtonsHighlighted/startHighlighted.png" id="4_ip6k8"]
+[ext_resource type="Texture2D" uid="uid://blrm3a72apryq" path="res://assets/mainMenu/ButtonsDefault/optionsDefault.png" id="5_q2vti"]
+[ext_resource type="Texture2D" uid="uid://sonhtoyu76xb" path="res://assets/mainMenu/ButtonsHighlighted/optionsHighlighted.png" id="6_1xhek"]
+[ext_resource type="Texture2D" uid="uid://c2gkmacy5qcpx" path="res://assets/mainMenu/ButtonsDefault/quitDefault.png" id="7_3iqac"]
+[ext_resource type="Texture2D" uid="uid://7p3nivy6vlw7" path="res://assets/mainMenu/ButtonsHighlighted/quitHighlighted.png" id="8_4ngqc"]
+[ext_resource type="PackedScene" uid="uid://sa8ec4kudve1" path="res://scenes/fadeTransition.tscn" id="9_eowgv"]
 
 [node name="MainMenu" type="Node2D" unique_id=657582238]
-script = ExtResource("1_qkhwq")
+script = ExtResource("1_1ynf8")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=840568216]
 position = Vector2(576, 361.25)
 scale = Vector2(0.9113924, 0.8509502)
-texture = ExtResource("8_dj72i")
+texture = ExtResource("2_r3v84")
 
 [node name="ButtonManager" type="Control" parent="Background" unique_id=1305778725]
 layout_mode = 3
@@ -36,8 +36,8 @@ offset_top = 22.688976
 offset_right = -352.99664
 offset_bottom = -358.41455
 scale = Vector2(1.4427658, 1.3918597)
-texture_normal = ExtResource("2_ldpc3")
-texture_hover = ExtResource("4_6b2wv")
+texture_normal = ExtResource("3_mwrku")
+texture_hover = ExtResource("4_ip6k8")
 
 [node name="Options" type="TextureButton" parent="Background/ButtonManager" unique_id=109582707]
 layout_mode = 0
@@ -46,8 +46,8 @@ offset_top = 134.32889
 offset_right = 158.19273
 offset_bottom = 208.32889
 scale = Vector2(1.3817644, 1.3817644)
-texture_normal = ExtResource("4_dj72i")
-texture_hover = ExtResource("6_epn8x")
+texture_normal = ExtResource("5_q2vti")
+texture_hover = ExtResource("6_1xhek")
 
 [node name="Quit" type="TextureButton" parent="Background/ButtonManager" unique_id=842749241]
 layout_mode = 0
@@ -56,10 +56,10 @@ offset_top = 241.30487
 offset_right = 141.31424
 offset_bottom = 320.30487
 scale = Vector2(1.4905376, 1.4905376)
-texture_normal = ExtResource("6_tov5d")
-texture_hover = ExtResource("8_vt84v")
+texture_normal = ExtResource("7_3iqac")
+texture_hover = ExtResource("8_4ngqc")
 
-[node name="Fade_transition" parent="." unique_id=1200209534 instance=ExtResource("8_y35fp")]
+[node name="Fade_transition" parent="." unique_id=1200209534 instance=ExtResource("9_eowgv")]
 visible = false
 offset_left = -7.0
 offset_top = -8.0

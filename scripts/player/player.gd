@@ -9,7 +9,7 @@ signal healthChanged
 @export var maxHealth: int = 100
 @onready var currentHealth: int = maxHealth
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	character_direction.x = Input.get_axis("move_left", "move_right")
 	character_direction.y = Input.get_axis("move_up", "move_down")
 	character_direction = character_direction.normalized() # so diagonal isnt faster
