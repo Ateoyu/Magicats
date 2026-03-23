@@ -65,6 +65,9 @@ radius = 200.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_gmlin"]
 radius = 15.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
+radius = 662.0121
+
 [node name="Player" type="CharacterBody2D" unique_id=38899763 groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_g2els")
@@ -96,5 +99,27 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectionArea" unique_id=1134839840]
 shape = SubResource("CircleShape2D_gmlin")
 
+[node name="Attack" type="Node2D" parent="." unique_id=1496071666]
+
+[node name="IceSpearTimer" type="Timer" parent="Attack" unique_id=645459792]
+unique_name_in_owner = true
+wait_time = 1.5
+
+[node name="IceSpearAttackTimer" type="Timer" parent="Attack/IceSpearTimer" unique_id=341950552]
+unique_name_in_owner = true
+wait_time = 0.075
+
+[node name="EnemyDetectionArea" type="Area2D" parent="." unique_id=1584923687]
+collision_layer = 4
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea" unique_id=1495995880]
+shape = SubResource("CircleShape2D_g2els")
+
 [connection signal="area_entered" from="PickupRangeArea" to="." method="_on_pickup_range_area_area_entered"]
 [connection signal="area_entered" from="CollectionArea" to="." method="_on_collection_area_area_entered"]
+[connection signal="timeout" from="Attack/IceSpearTimer" to="." method="_on_ice_spear_timer_timeout"]
+[connection signal="timeout" from="Attack/IceSpearTimer/IceSpearAttackTimer" to="." method="_on_ice_spear_attack_timer_timeout"]
+[connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
+[connection signal="body_exited" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_exited"]

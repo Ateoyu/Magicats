@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bnpoqnb88kmh4"]
+
+[ext_resource type="Script" uid="uid://m4aj3u47odr6" path="res://scripts/spell/ice_spear.gd" id="1_7fq86"]
+[ext_resource type="Texture2D" uid="uid://8d715aomh1ln" path="res://assets/ice_spear.png" id="2_pxy4u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e3hnk"]
+size = Vector2(7.7781763, 33.941128)
+
+[node name="IceSpear" type="Area2D" unique_id=703258928]
+top_level = true
+scale = Vector2(1.9126713, 1.9126713)
+script = ExtResource("1_7fq86")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=41355567]
+texture = ExtResource("2_pxy4u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=5320421 groups=["attack"]]
+light_mask = 4
+visibility_layer = 0
+position = Vector2(0.75000024, -0.7499998)
+rotation = -0.7853982
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_e3hnk")
+
+[node name="Timer" type="Timer" parent="." unique_id=1696988874]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
