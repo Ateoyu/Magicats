@@ -3,8 +3,7 @@ extends CharacterBody2D
 class_name Player
 
 signal health_changed
-signal experience_changed
-signal level_up(new_level)
+signal update_experience_bar
 
 @export var movement_speed: float = 500
 @export var max_health: int = 100
@@ -28,7 +27,7 @@ var character_direction: Vector2
 
 func _ready() -> void:
 	attack()
-	experience_changed.emit()
+	update_experience_bar.emit()
 
 func _physics_process(_delta: float) -> void:
 	character_direction.x = Input.get_axis("move_left", "move_right")
@@ -82,15 +81,14 @@ func add_experience(amount: int) -> void:
 	if experience + collected_experience >= experience_required:
 		collected_experience -= experience_required - experience
 		experience_level += 1
-		level_up.emit(experience_level)
-		experience_changed.emit()
+		update_experience_bar.emit()
 		experience = 0
 		experience_required = calculate_experience_cap()
 		add_experience(0)
 	else:
 		experience += collected_experience
 		collected_experience = 0
-	experience_changed.emit()
+	update_experience_bar.emit()
 
 func calculate_experience_cap() -> int:
 	var experience_cap: int = experience_level

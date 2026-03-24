@@ -5,17 +5,10 @@ extends ProgressBar
 
 func _ready() -> void:
 	if player:
-		player.experience_changed.connect(_on_experience_changed)
-		player.level_up.connect(_on_level_up)
-		_update_display()
+		player.update_experience_bar.connect(_update_experience_bar)
+		_update_experience_bar()
 
-func _on_experience_changed() -> void:
-	_update_display()
-
-func _on_level_up(new_level: int) -> void:
-	_update_display()
-
-func _update_display() -> void:
+func _update_experience_bar() -> void:
 	if player:
 		value = player.experience
 		max_value = player.calculate_experience_cap()
