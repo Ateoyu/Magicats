@@ -6,6 +6,19 @@ var experience: int = 0
 var experience_level: int = 1
 var collected_experience: int = 0
 
+var level_up_panel: TextureRect = null
+var upgrade_options: VBoxContainer = null
+
+func _ready():
+	if level_up_panel == null:
+		print("Panel null at _ready.")
+	else:
+		print("Panel not null at _ready.")
+	if upgrade_options == null:
+		print("Upgrade options null at _ready.")
+	else:
+		print("Upgrade options not null at _ready.")
+
 func add_experience(amount: int) -> void:
 	var experience_required: int = calculate_experience_cap()
 	
@@ -32,3 +45,22 @@ func calculate_experience_cap() -> int:
 	else:
 		experience_cap = 255 + (experience_level - 39) * 12
 	return experience_cap
+
+func set_level_up_panel(panel: TextureRect) -> void: 
+	self.level_up_panel = panel
+	
+func set_upgrade_options(options: VBoxContainer) -> void:
+	self.upgrade_options = options
+	
+#	########## PURELY DEBUG - CAN DELETE LATER ##########
+func check_if_level_up_is_null() -> String:
+	if level_up_panel == null:
+		return "Panel is null"
+	else:
+		return "Panel is NOT null"
+		
+func check_if_upgrade_options_is_null() -> String:
+	if upgrade_options == null:
+		return "Upgrade options is null"
+	else:
+		return "Upgrade options is NOT null"
