@@ -1,46 +1,20 @@
-﻿class_name Spell
+@abstract
+class_name Spell
 extends Area2D
 
-var level: int = 1
-var hp: int = 1
-var damage: int = 5
-var velocity: int = 100
-var attack_size: float = 1.0
-var attack_speed: float = 1.0
-var cooldown: float = 1.0
-var cooldown_remaining: float = 0.0
+var level: int 
+var damage: int
+#var velocity: int = 100
+#var attack_size: float = 1.0
+#var attack_speed: float = 1.0
+var cooldown: float 
+var cooldown_remaining: float
 
-var target = Vector2.ZERO
-var angle = Vector2.ZERO
+@onready var player: Player = $Player
 
-@onready var player = get_tree().get_first_node_in_group("player")
+func _init(p_level: int, p_damage: int, p_cooldown: float) -> void:
+	self.level = p_level
+	self.damage = p_damage
+	self.cooldown = p_cooldown
 
-func _ready():
-	angle = global_position.direction_to(target)
-	rotation = angle.angle() + deg_to_rad(135)
-	
-	area_entered.connect(_on_area_entered)
-
-	match level:
-		1:
-			hp = 1
-			velocity = 100
-			var damage = 5
-			var knockback_amount = 100
-			var attack_size = 1.0
-
-func _physics_process(delta: float) -> void:
-	position += angle * velocity * delta
-
-func enemy_hit(charge = 1):
-	hp -= charge
-	if hp <= 0:
-		queue_free()
-
-func _on_timer_timeout() -> void:
-	queue_free()
-
-func _on_area_entered(area: Area2D) -> void:
-	if area.get_parent() is Enemy:
-		area.get_parent().take_damage(damage)
-		queue_free()
+@abstract func fire(target: Array[Enemy]) -> void
