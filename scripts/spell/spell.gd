@@ -1,12 +1,14 @@
-class_name Spell
+﻿class_name Spell
 extends Area2D
 
-@export_category("Base Spell Stats")
-@export var level: int = 1
-@export var hp: int = 1
-@export var speed: int = 100
-@export var damage: int = 5
-@export var attack_size: float = 1.0
+var level: int = 1
+var hp: int = 1
+var damage: int = 5
+var velocity: int = 100
+var attack_size: float = 1.0
+var attack_speed: float = 1.0
+var cooldown: float = 1.0
+var cooldown_remaining: float = 0.0
 
 var target = Vector2.ZERO
 var angle = Vector2.ZERO
@@ -22,13 +24,13 @@ func _ready():
 	match level:
 		1:
 			hp = 1
-			speed = 100
+			velocity = 100
 			var damage = 5
 			var knockback_amount = 100
 			var attack_size = 1.0
 
 func _physics_process(delta: float) -> void:
-	position += angle * speed * delta
+	position += angle * velocity * delta
 
 func enemy_hit(charge = 1):
 	hp -= charge

@@ -15,6 +15,12 @@ run/main_scene="uid://cea1sc4qofuos"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+ExperienceManager="*uid://cnac8p1lvm266"
+SpellManager="*uid://dv6hmg67164cg"
+GameManager="*uid://8ibxqiq3qoiv"
+
 [display]
 
 window/size/borderless=true

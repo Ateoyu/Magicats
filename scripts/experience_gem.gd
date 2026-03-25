@@ -1,5 +1,4 @@
-extends Area2D
-
+class_name ExperienceGem extends Area2D
 @export var experience: int = 1
 
 var spr_amethyst = preload("res://assets/pickups/amethyst.png")

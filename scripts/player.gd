@@ -3,31 +3,29 @@ extends CharacterBody2D
 class_name Player
 
 signal health_changed
-signal update_experience_bar
 
 @export var movement_speed: float = 500
 @export var max_health: int = 100
 @onready var current_health: int = max_health
-@onready var sprite = %sprite
+@onready var sprite: AnimatedSprite2D = %sprite
 
 var experience: int = 0
 var experience_level: int = 1
 var collected_experience: int = 0
 
-var ice_spear = preload("res://scenes/spell/iceSpear.tscn")
-@onready var ice_spear_timer = get_node("%IceSpearTimer")
-@onready var ice_spear_attack_timer = get_node("%IceSpearAttackTimer")
-var ice_spear_ammo = 0
-var ice_spear_base_ammo = 1
-var ice_spear_attack_speed = 1.5
-var ice_spear_level = 1
-var enemy_close = []
+var ice_spear: PackedScene = preload("res://scenes/spell/iceSpear.tscn")
+@onready var ice_spear_timer: Node = get_node("%IceSpearTimer")
+@onready var ice_spear_attack_timer: Node = get_node("%IceSpearAttackTimer")
+var ice_spear_ammo: int = 0
+var ice_spear_base_ammo: int = 1
+var ice_spear_attack_speed: float = 1.5
+var ice_spear_level: int = 1
+var enemy_close: Array[Enemy] = []
 
 var character_direction: Vector2
 
 func _ready() -> void:
 	attack()
-	update_experience_bar.emit()
 
 func _physics_process(_delta: float) -> void:
 	character_direction.x = Input.get_axis("move_left", "move_right")
@@ -69,37 +67,9 @@ func die() -> void:
 	#if area.is_in_group("loot"):
 		#area.target = self
 
-func _on_collection_area_area_entered(area: Area2D) -> void:
+func _on_collection_area_area_entered(area: ExperienceGem) -> void:
 	if area.is_in_group("loot"):
-		var gem_experience = area.collect()
-		add_experience(gem_experience)
-
-#ideally everything below would be in 'experience_manager.gd'
-func add_experience(amount: int) -> void:
-	var experience_required = calculate_experience_cap()
-	collected_experience += amount
-	if experience + collected_experience >= experience_required:
-		collected_experience -= experience_required - experience
-		experience_level += 1
-		update_experience_bar.emit()
-		experience = 0
-		experience_required = calculate_experience_cap()
-		add_experience(0)
-	else:
-		experience += collected_experience
-		collected_experience = 0
-	update_experience_bar.emit()
-
-func calculate_experience_cap() -> int:
-	var experience_cap: int = experience_level
-	
-	if experience_level < 20:
-		experience_cap = experience_level * 5
-	elif experience_level < 40:
-		experience_cap = 95 * (experience_level - 19) * 8
-	else:
-		experience_cap = 255 + (experience_level - 39) * 12
-	return experience_cap
+		ExperienceManager.add_experience(area.collect())
 
 #ice spear stuff
 func attack():
