@@ -65,9 +65,9 @@ func die() -> void:
 	queue_free()
 
 #broken functionality for crystals moving towards player:
-#func _on_pickup_range_area_area_entered(area: Area2D) -> void:
-	#if area.is_in_group("loot"):
-		#area.target = self
+func _on_pickup_range_area_area_entered(area: Area2D) -> void:
+	if area.is_in_group("loot"):
+		area.target = self
 
 func _on_collection_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("loot"):
@@ -132,8 +132,7 @@ func _on_ice_spear_attack_timer_timeout() -> void:
 		else:
 			ice_spear_attack_timer.stop()
 
-
-func _on_enemy_detection_area_body_entered(body: Node2D) -> void:
+func _on_enemy_detection_area_body_entered(body: Node2D) -> void: # never fires ?	
 	if not enemy_close.has(body):
 		enemy_close.append(body)
 

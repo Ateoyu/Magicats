@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_atpm0"]
 size = Vector2(38, 32)
 
-[node name="ExperienceGem" type="Area2D" unique_id=555789065 groups=["loot"]]
+[node name="ExperienceGem" type="CharacterBody2D" unique_id=475662777 groups=["loot"]]
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_krqci")

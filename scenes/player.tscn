@@ -66,7 +66,7 @@ radius = 200.0
 radius = 15.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
-radius = 662.0121
+radius = 665.003
 
 [node name="Player" type="CharacterBody2D" unique_id=38899763 groups=["player"]]
 collision_layer = 2
@@ -115,6 +115,8 @@ collision_mask = 4
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea" unique_id=1495995880]
+light_mask = 5
+visibility_layer = 5
 shape = SubResource("CircleShape2D_g2els")
 
 [connection signal="area_entered" from="PickupRangeArea" to="." method="_on_pickup_range_area_area_entered"]
