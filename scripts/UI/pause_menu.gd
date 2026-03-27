@@ -2,10 +2,14 @@ extends Control
 
 func _ready():
 	hide()
-	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	
-	#var viewport_size = get_viewport().get_visible_rect().size # center on the screen if needed
-	#position = (viewport_size - size) / 2
+func _input(event):
+	if event.is_action_pressed("ui_cancel") or event.is_action_pressed("pause"):
+		if get_tree().paused:
+			resume()
+		else:
+			pause()
 	
 func resume():
 	hide()
@@ -22,7 +26,7 @@ func _on_resume_pressed() -> void:
 
 func _on_main_menu_pressed() -> void:
 	resume()
-	get_tree().change_scene_to_file("res://scenes/mainMenu.tscn")
+	get_tree().change_scene_to_file("res://scenes/menu/mainMenu.tscn")
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
