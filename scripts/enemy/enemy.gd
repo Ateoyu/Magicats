@@ -22,7 +22,6 @@ func take_damage(amount: int) -> void:
 		die()
 		
 func die() -> void:
-	# for some reason spawns wrong?
 	var new_gem = experience_gem.instantiate()
 	new_gem.global_position = global_position
 	new_gem.experience = experience

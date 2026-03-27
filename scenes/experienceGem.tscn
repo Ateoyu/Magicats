@@ -6,15 +6,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_atpm0"]
 size = Vector2(38, 32)
 
-[node name="ExperienceGem" type="CharacterBody2D" unique_id=475662777 groups=["loot"]]
+[node name="ExperienceGem" type="Area2D" unique_id=377558965 groups=["loot"]]
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_krqci")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=531977118]
-position = Vector2(175, 214)
 texture = ExtResource("1_7ibw3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1396270628]
-position = Vector2(175, 216)
 shape = SubResource("RectangleShape2D_atpm0")

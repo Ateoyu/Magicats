@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Area2D
 
 @export var experience: int = 1
 
@@ -7,7 +7,7 @@ var spr_ruby = preload("res://assets/pickups/ruby.png")
 var spr_diamond = preload("res://assets/pickups/diamond.png")
 
 var target = null
-var speed: float = 5
+var speed: float = 0
 
 @onready var sprite = $Sprite2D
 @onready var collision = $CollisionShape2D
@@ -20,14 +20,10 @@ func _ready():
 	else:
 		sprite.texture = spr_ruby
 
-#broken functionality for crystals moving towards player:
 func _physics_process(delta: float) -> void:
-	var direction = global_position.direction_to(target.global_position)
-	velocity = direction * speed
-	move_and_slide()
-	#if target != null:
-		#global_position = global_position.move_toward(target.global_position, speed)
-		#speed += 2 * delta
+	if target != null:
+		global_position = global_position.move_toward(target.global_position, speed) 
+		speed += 2 * delta
 
 func collect():
 	collision.call_deferred("set", "disabled", true)
