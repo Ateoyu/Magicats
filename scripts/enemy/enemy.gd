@@ -8,8 +8,8 @@ extends CharacterBody2D
 var current_health: int
 
 var player: Player
+var loot_base: Node2D
 
-@onready var loot_base = get_tree().get_first_node_in_group("loot")
 var experience_gem = preload("res://scenes/experienceGem.tscn")
 @export var experience: int = 1
 

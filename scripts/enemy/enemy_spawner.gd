@@ -2,6 +2,7 @@ extends Node2D
 
 @export var spawns: Array[Spawn_info] = []
 @export var player: Player
+@onready var loot_base = get_node("%Loot")
 var time = 0
 
 func _on_timer_timeout() -> void:
@@ -19,6 +20,7 @@ func _on_timer_timeout() -> void:
 					var enemy_spawn = new_enemy.instantiate()
 					enemy_spawn.global_position = get_random_position()
 					enemy_spawn.player = player
+					enemy_spawn.loot_base = loot_base
 					add_child(enemy_spawn)
 					counter += 1
 
