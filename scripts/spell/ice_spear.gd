@@ -16,7 +16,7 @@ func cast() -> void:
 	for i in projectile_count:
 		var target_position: Vector2 = get_random_target()
 
-		var projectile: Node = ice_spear_projectile.instantiate()
+		var projectile: IceSpearProjectile = ice_spear_projectile.instantiate()
 		projectile.global_position = player.global_position
 		projectile.initialize(target_position, damage, velocity, projectile_hp)
 

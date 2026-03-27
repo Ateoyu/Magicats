@@ -1,3 +1,4 @@
+class_name IceSpearProjectile
 extends Area2D
 
 var target: Vector2
@@ -29,3 +30,7 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.get_parent() is Enemy:
 		area.get_parent().take_damage(damage)
 		enemy_hit()
+
+
+func _on_timer_timeout() -> void:
+	queue_free()

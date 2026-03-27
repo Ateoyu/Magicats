@@ -141,10 +141,10 @@ position = Vector2(122, 7)
 
 [node name="Fade_transition" parent="." unique_id=1200209534 instance=ExtResource("3_lbhrr")]
 visible = false
-offset_left = -1029.0
-offset_top = -594.0
-offset_right = 2263.0
-offset_bottom = 1388.0
+offset_left = -1572.0
+offset_top = -1028.0
+offset_right = 1720.0
+offset_bottom = 954.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=311475991]
 

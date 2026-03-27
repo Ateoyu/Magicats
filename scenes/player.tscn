@@ -66,8 +66,8 @@ radius = 200.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_gmlin"]
 radius = 15.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
-radius = 665.003
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
+size = Vector2(2880, 1620)
 
 [node name="Player" type="CharacterBody2D" unique_id=38899763 groups=["player"]]
 collision_layer = 2
@@ -85,6 +85,7 @@ rotation = 1.5555334
 shape = SubResource("RectangleShape2D_qlg0r")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=340542417]
+zoom = Vector2(0.4, 0.4)
 
 [node name="PickupRangeArea" type="Area2D" parent="." unique_id=309044316]
 collision_layer = 0
@@ -112,7 +113,7 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea" unique_id=1495995880]
 light_mask = 5
 visibility_layer = 5
-shape = SubResource("CircleShape2D_g2els")
+shape = SubResource("RectangleShape2D_qhqgy")
 
 [connection signal="area_entered" from="PickupRangeArea" to="." method="_on_pickup_range_area_area_entered"]
 [connection signal="area_entered" from="CollectionArea" to="." method="_on_collection_area_area_entered"]
