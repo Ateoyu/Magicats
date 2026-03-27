@@ -18,6 +18,7 @@ func _on_timer_timeout() -> void:
 				while counter < i.enemy_num:
 					var enemy_spawn = new_enemy.instantiate()
 					enemy_spawn.global_position = get_random_position()
+					enemy_spawn.player = player
 					add_child(enemy_spawn)
 					counter += 1
 

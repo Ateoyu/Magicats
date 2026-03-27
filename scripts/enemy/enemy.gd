@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var movement_speed: int = 50
 var current_health: int
 
-@onready var player = get_tree().get_first_node_in_group("player")
+var player: Player
 
 @onready var loot_base = get_tree().get_first_node_in_group("loot")
 var experience_gem = preload("res://scenes/experienceGem.tscn")
