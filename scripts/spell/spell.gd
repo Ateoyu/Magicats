@@ -1,44 +1,21 @@
+@abstract
 class_name Spell
-extends Area2D
+extends Resource
 
-@export_category("Base Spell Stats")
-@export var level: int = 1
-@export var hp: int = 1
-@export var speed: int = 100
-@export var damage: int = 5
-@export var attack_size: float = 1.0
+var level: int = 1
+var damage: int
+var cooldown: float
+var cooldown_remaining: float
 
-var target = Vector2.ZERO
-var angle = Vector2.ZERO
+var spell_manager: Node2D
+var player: CharacterBody2D
 
-@onready var player = get_tree().get_first_node_in_group("player")
+func _init(p_level: int, p_damage: int, p_cooldown: float, p_spell_manager: Node2D, p_player: CharacterBody2D) -> void:
+	self.level = p_level
+	self.damage = p_damage
+	self.cooldown = p_cooldown
+	self.cooldown_remaining = 0.0
+	self.spell_manager = p_spell_manager
+	self.player = p_player
 
-func _ready():
-	angle = global_position.direction_to(target)
-	rotation = angle.angle() + deg_to_rad(135)
-	
-	area_entered.connect(_on_area_entered)
-
-	match level:
-		1:
-			hp = 1
-			speed = 100
-			var damage = 5
-			var knockback_amount = 100
-			var attack_size = 1.0
-
-func _physics_process(delta: float) -> void:
-	position += angle * speed * delta
-
-func enemy_hit(charge = 1):
-	hp -= charge
-	if hp <= 0:
-		queue_free()
-
-func _on_timer_timeout() -> void:
-	queue_free()
-
-func _on_area_entered(area: Area2D) -> void:
-	if area.get_parent() is Enemy:
-		area.get_parent().take_damage(damage)
-		queue_free()
+@abstract func cast() -> void

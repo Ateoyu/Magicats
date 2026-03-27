@@ -1,6 +1,6 @@
+class_name Player
 extends CharacterBody2D
 
-class_name Player
 
 signal health_changed
 signal update_experience_bar
@@ -16,12 +16,11 @@ var experience: int = 0
 var experience_level: int = 1
 var collected_experience: int = 0
 
-var enemy_close = []
+var enemy_close: Array[Enemy] = []
 
 var character_direction: Vector2
 
 func _ready() -> void:
-	spell_manager.attack()
 	update_experience_bar.emit()
 
 func _physics_process(_delta: float) -> void:

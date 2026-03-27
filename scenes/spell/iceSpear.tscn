@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bnpoqnb88kmh4"]
 
-[ext_resource type="Script" uid="uid://m4aj3u47odr6" path="res://scripts/spell/ice_spear.gd" id="1_7fq86"]
+[ext_resource type="Script" uid="uid://hntqnduwtynt" path="res://scripts/spell/ice_spear_projectile.gd" id="1_7fq86"]
 [ext_resource type="Texture2D" uid="uid://8d715aomh1ln" path="res://assets/ice_spear.png" id="2_pxy4u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e3hnk"]
