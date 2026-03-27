@@ -1,10 +1,61 @@
 [gd_scene format=3 uid="uid://bmxpvw37hc7s1"]
 
 [ext_resource type="Script" uid="uid://crk7d6dmph063" path="res://scripts/UI/options.gd" id="1_c2u1v"]
-[ext_resource type="PackedScene" uid="uid://sa8ec4kudve1" path="res://scenes/fadeTransition.tscn" id="2_yjkok"]
 
-[node name="Options" type="Node2D" unique_id=371544289]
+[sub_resource type="LabelSettings" id="LabelSettings_5ak6t"]
+font_size = 60
+
+[node name="Options" type="Control" unique_id=1532996345]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_c2u1v")
 
-[node name="Fade_transition" parent="." unique_id=1200209534 instance=ExtResource("2_yjkok")]
-visible = false
+[node name="Panel" type="Panel" parent="." unique_id=1044958271]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=1586876838]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer" unique_id=1673142394]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer/VBoxContainer" unique_id=31178177]
+layout_mode = 2
+text = "Settings"
+label_settings = SubResource("LabelSettings_5ak6t")
+horizontal_alignment = 1
+
+[node name="Resolutions" type="OptionButton" parent="Panel/HBoxContainer/VBoxContainer" unique_id=2136031795]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="DisplayModes" type="OptionButton" parent="Panel/HBoxContainer/VBoxContainer" unique_id=2014189869]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Main Menu" type="Button" parent="Panel/HBoxContainer/VBoxContainer" unique_id=216784596]
+layout_mode = 2
+text = "Main Menu"
+
+[connection signal="item_selected" from="Panel/HBoxContainer/VBoxContainer/Resolutions" to="." method="_on_option_button_item_selected"]
+[connection signal="item_selected" from="Panel/HBoxContainer/VBoxContainer/DisplayModes" to="." method="_on_display_modes_item_selected"]
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]
