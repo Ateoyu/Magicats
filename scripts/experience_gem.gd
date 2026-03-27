@@ -7,7 +7,7 @@ var spr_ruby = preload("res://assets/pickups/ruby.png")
 var spr_diamond = preload("res://assets/pickups/diamond.png")
 
 var target = null
-var speed: float = 0
+var speed: float = -1
 
 @onready var sprite = $Sprite2D
 @onready var collision = $CollisionShape2D
@@ -23,7 +23,7 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	if target != null:
 		global_position = global_position.move_toward(target.global_position, speed) 
-		speed += 2 * delta
+		speed += 3 * delta
 
 func collect():
 	collision.call_deferred("set", "disabled", true)

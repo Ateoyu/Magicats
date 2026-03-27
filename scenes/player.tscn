@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ue1wepqb6116" path="res://assets/mainCatSpriteSheet.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://c3ubxpp10k6x6" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://umwf45j2j6o1" path="res://scenes/spell_manager.gd" id="3_qhqgy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
 atlas = ExtResource("1_3vyb7")
@@ -99,13 +100,15 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectionArea" unique_id=1134839840]
 shape = SubResource("CircleShape2D_gmlin")
 
-[node name="Attack" type="Node2D" parent="." unique_id=1496071666]
+[node name="SpellManager" type="Node2D" parent="." unique_id=1496071666]
+unique_name_in_owner = true
+script = ExtResource("3_qhqgy")
 
-[node name="IceSpearTimer" type="Timer" parent="Attack" unique_id=645459792]
+[node name="IceSpearTimer" type="Timer" parent="SpellManager" unique_id=645459792]
 unique_name_in_owner = true
 wait_time = 1.5
 
-[node name="IceSpearAttackTimer" type="Timer" parent="Attack/IceSpearTimer" unique_id=341950552]
+[node name="IceSpearAttackTimer" type="Timer" parent="SpellManager/IceSpearTimer" unique_id=341950552]
 unique_name_in_owner = true
 wait_time = 0.075
 
@@ -121,7 +124,7 @@ shape = SubResource("CircleShape2D_g2els")
 
 [connection signal="area_entered" from="PickupRangeArea" to="." method="_on_pickup_range_area_area_entered"]
 [connection signal="area_entered" from="CollectionArea" to="." method="_on_collection_area_area_entered"]
-[connection signal="timeout" from="Attack/IceSpearTimer" to="." method="_on_ice_spear_timer_timeout"]
-[connection signal="timeout" from="Attack/IceSpearTimer/IceSpearAttackTimer" to="." method="_on_ice_spear_attack_timer_timeout"]
+[connection signal="timeout" from="SpellManager/IceSpearTimer" to="SpellManager" method="_on_ice_spear_timer_timeout"]
+[connection signal="timeout" from="SpellManager/IceSpearTimer/IceSpearAttackTimer" to="SpellManager" method="_on_ice_spear_attack_timer_timeout"]
 [connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
 [connection signal="body_exited" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_exited"]
