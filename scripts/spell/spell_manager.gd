@@ -7,6 +7,8 @@ var equipped_spells: Array[Spell] = []
 func _ready() -> void:
 	var ice_spear: IceSpear = IceSpear.new(self, player)
 	equipped_spells.append(ice_spear)
+	var lightning_strike: LightningStrike = LightningStrike.new(self, player)
+	equipped_spells.append(lightning_strike)
 
 func _process(delta: float) -> void:
 	for spell in equipped_spells:
