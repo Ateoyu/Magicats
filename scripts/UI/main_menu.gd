@@ -33,8 +33,8 @@ func _on_new_game_pressed() -> void:
 		start_new_game()
 
 func start_new_game() -> void:
-	GameManager.new_game()
 	GameManager.delete_save_file()
+	GameManager.new_game()
 	button_type = "new_game"
 	
 	$Fade_transition.show()

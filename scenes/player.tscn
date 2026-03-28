@@ -8,10 +8,6 @@
 atlas = ExtResource("1_3vyb7")
 region = Rect2(0, 200, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
-atlas = ExtResource("1_3vyb7")
-region = Rect2(100, 200, 100, 100)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
 atlas = ExtResource("1_3vyb7")
 region = Rect2(0, 100, 100, 100)
@@ -29,9 +25,6 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qlg0r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tuyoq")
 }],
 "loop": true,
 "name": &"death",
@@ -76,7 +69,7 @@ script = ExtResource("1_g2els")
 [node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1897477967]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_dqkch")
-animation = &"run"
+animation = &"death"
 autoplay = "run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2020090961]

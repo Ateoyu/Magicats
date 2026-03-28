@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://eandpr60jfjm"]
+
+[ext_resource type="Script" uid="uid://ewtajg741ao6" path="res://scenes/menu/death_menu.gd" id="1_jdd88"]
+
+[sub_resource type="Animation" id="Animation_bcaeg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8x1jc"]
+resource_name = "blur"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.850000040375]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jdd88"]
+_data = {
+&"RESET": SubResource("Animation_bcaeg"),
+&"blur": SubResource("Animation_8x1jc")
+}
+
+[node name="deathMenu" type="Control" unique_id=1957216197]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jdd88")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1276836851]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -213.0
+offset_top = -175.5
+offset_right = 213.0
+offset_bottom = 175.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5543935, 1.3966329)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=155442018]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1645908582]
+layout_mode = 2
+text = "U died!"
+horizontal_alignment = 1
+
+[node name="Restart" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1930070299]
+layout_mode = 2
+text = "Restart"
+
+[node name="Main Menu" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1026820478]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1782077146]
+libraries/ = SubResource("AnimationLibrary_jdd88")
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]

@@ -1,7 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
-
+signal player_died
 signal health_changed
 signal update_experience_bar
 
@@ -56,7 +56,8 @@ func heal(amount: int)  -> void:
 	health_changed.emit()
 
 func die() -> void:
-	queue_free()
+	sprite.animation = "death"
+	player_died.emit()
 
 func _on_pickup_range_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("loot"):
