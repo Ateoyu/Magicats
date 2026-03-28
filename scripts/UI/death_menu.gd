@@ -16,6 +16,7 @@ func _on_player_died():
 func _on_restart_pressed() -> void:
 	get_tree().paused = false
 	hide()
+	$AnimationPlayer.play_backwards("blur")
 	GameManager.delete_save_file()
 	GameManager.new_game()
 
@@ -23,4 +24,5 @@ func _on_main_menu_pressed() -> void:
 	get_tree().paused = false
 	GameManager.delete_save_file()
 	hide()
+	$AnimationPlayer.play_backwards("blur")
 	get_tree().change_scene_to_file("res://scenes/menu/mainMenu.tscn")

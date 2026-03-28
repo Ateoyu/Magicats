@@ -8,7 +8,7 @@ shader = ExtResource("1_qeqa7")
 shader_parameter/lod = 0.0
 
 [sub_resource type="Animation" id="Animation_bcaeg"]
-length = 0.001
+length = 0.8333333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -80,10 +80,8 @@ script = ExtResource("1_r5qvj")
 [node name="ColorRect" type="ColorRect" parent="." unique_id=911629539]
 material = SubResource("ShaderMaterial_nwcfo")
 layout_mode = 0
-offset_left = 336.0
-offset_top = 110.0
-offset_right = 762.0
-offset_bottom = 461.0
+offset_right = 1152.0
+offset_bottom = 648.0
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=931483463]
 layout_mode = 1

@@ -1,8 +1,13 @@
 [gd_scene format=3 uid="uid://eandpr60jfjm"]
 
-[ext_resource type="Script" uid="uid://ewtajg741ao6" path="res://scenes/menu/death_menu.gd" id="1_jdd88"]
+[ext_resource type="Script" uid="uid://ewtajg741ao6" path="res://scripts/UI/death_menu.gd" id="1_jdd88"]
+[ext_resource type="Shader" uid="uid://bj4yie4c36orr" path="res://death_menu.gdshader" id="2_u8oxg"]
 
-[sub_resource type="Animation" id="Animation_bcaeg"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2yfuu"]
+shader = ExtResource("2_u8oxg")
+shader_parameter/lod = 0.0
+
+[sub_resource type="Animation" id="Animation_u8oxg"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -26,11 +31,12 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_8x1jc"]
+[sub_resource type="Animation" id="Animation_2yfuu"]
 resource_name = "blur"
+length = 0.46666667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -41,7 +47,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, 0.850000040375]
+"values": [0.0, 0.886000042085]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -50,19 +56,20 @@ tracks/1/path = NodePath("PanelContainer:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0.0009999999, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_jdd88"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8q2ef"]
 _data = {
-&"RESET": SubResource("Animation_bcaeg"),
-&"blur": SubResource("Animation_8x1jc")
+&"RESET": SubResource("Animation_u8oxg"),
+&"blur": SubResource("Animation_2yfuu")
 }
 
-[node name="deathMenu" type="Control" unique_id=1957216197]
+[node name="DeathMenu" type="Control" unique_id=1957216197]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -71,7 +78,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jdd88")
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1516894436]
+material = SubResource("ShaderMaterial_2yfuu")
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1276836851]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -102,8 +116,8 @@ text = "Restart"
 layout_mode = 2
 text = "Main Menu"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1782077146]
-libraries/ = SubResource("AnimationLibrary_jdd88")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1303604500]
+libraries/ = SubResource("AnimationLibrary_8q2ef")
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]
