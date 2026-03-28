@@ -26,15 +26,28 @@ offset_top = -188.67989
 offset_right = 97.77701
 offset_bottom = 97.54875
 
-[node name="Start" type="TextureButton" parent="Background/ButtonManager" unique_id=1357159148]
+[node name="Continue" type="TextureButton" parent="Background/ButtonManager" unique_id=1357159148]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 2.578
 anchor_bottom = 1.59
-offset_left = -29.491322
-offset_top = 22.688976
-offset_right = -352.99664
-offset_bottom = -358.41455
+offset_left = -25.102432
+offset_top = 0.36099434
+offset_right = -348.60773
+offset_bottom = -380.74252
+scale = Vector2(1.4427658, 1.3918597)
+texture_normal = ExtResource("3_mwrku")
+texture_hover = ExtResource("4_ip6k8")
+
+[node name="New Game" type="TextureButton" parent="Background/ButtonManager" unique_id=1931710153]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 2.578
+anchor_bottom = 1.59
+offset_left = -25.102442
+offset_top = 103.77481
+offset_right = -348.6078
+offset_bottom = -277.3287
 scale = Vector2(1.4427658, 1.3918597)
 texture_normal = ExtResource("3_mwrku")
 texture_hover = ExtResource("4_ip6k8")
@@ -42,19 +55,19 @@ texture_hover = ExtResource("4_ip6k8")
 [node name="Options" type="TextureButton" parent="Background/ButtonManager" unique_id=109582707]
 layout_mode = 0
 offset_left = -25.102436
-offset_top = 134.32889
+offset_top = 207.18863
 offset_right = 158.19273
-offset_bottom = 208.32889
+offset_bottom = 281.18866
 scale = Vector2(1.3817644, 1.3817644)
 texture_normal = ExtResource("5_q2vti")
 texture_hover = ExtResource("6_1xhek")
 
 [node name="Quit" type="TextureButton" parent="Background/ButtonManager" unique_id=842749241]
 layout_mode = 0
-offset_left = -31.685768
-offset_top = 241.30487
-offset_right = 141.31424
-offset_bottom = 320.30487
+offset_left = -25.102434
+offset_top = 309.42728
+offset_right = 149.89757
+offset_bottom = 388.42728
 scale = Vector2(1.4905376, 1.4905376)
 texture_normal = ExtResource("7_3iqac")
 texture_hover = ExtResource("8_4ngqc")
@@ -68,7 +81,12 @@ offset_bottom = 657.0
 
 [node name="Fade_timer" type="Timer" parent="Fade_transition" unique_id=892414325]
 
-[connection signal="pressed" from="Background/ButtonManager/Start" to="." method="_on_start_pressed"]
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="." unique_id=878975346]
+
+[connection signal="pressed" from="Background/ButtonManager/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Background/ButtonManager/New Game" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="Background/ButtonManager/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Background/ButtonManager/Quit" to="." method="_on_quit_pressed"]
 [connection signal="timeout" from="Fade_transition/Fade_timer" to="." method="_on_fade_timer_timeout"]
+[connection signal="canceled" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_canceled"]
+[connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]

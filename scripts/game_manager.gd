@@ -40,7 +40,30 @@ func set_enemy_spawner(e: Node2D) -> void:
 
 func has_save_file() -> bool:
 	return FileAccess.file_exists(SAVE_PATH)
+
+func new_game() -> void:
+	if player:
+		player.current_health = player.max_health
+		player.experience = 0
+		player.experience_level = 1
+		player.collected_experience = 0
+		player.position = Vector2(0, 0) 
+		player.health_changed.emit()
+		player.update_experience_bar.emit()
+
+	if enemy_spawner:
+		enemy_spawner.time = 0
+		for spawn in enemy_spawner.spawns:
+			spawn.spawn_delay_counter = 0
 	
+	var enemies = get_tree().get_nodes_in_group("enemy")
+	for enemy in enemies:
+		enemy.queue_free()
+
+func delete_save_file() -> void:
+	if FileAccess.file_exists(SAVE_PATH):
+		DirAccess.remove_absolute(SAVE_PATH)
+
 func save_game() -> void:
 	if player == null:
 		return
