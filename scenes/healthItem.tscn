@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://idio2h5a3bci"]
+
+[ext_resource type="Script" uid="uid://bftux0db2ii53" path="res://scripts/loot/health_item.gd" id="1_ms8l8"]
+[ext_resource type="Texture2D" uid="uid://ntchtqlcby4w" path="res://assets/pickups/chicken_wing.png" id="2_udc6p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8plnh"]
+size = Vector2(38, 32)
+
+[node name="HealthItem" type="Area2D" unique_id=1617944397]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_ms8l8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=272213215]
+texture = ExtResource("2_udc6p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=858262727]
+shape = SubResource("RectangleShape2D_8plnh")

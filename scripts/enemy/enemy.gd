@@ -11,7 +11,10 @@ var player: Player
 var loot_base: Node2D
 
 var experience_gem = preload("res://scenes/experienceGem.tscn")
-@export var experience: int = 1
+var health_item = preload("res://scenes/healthItem.tscn")
+
+@export var experience_dropped: int = 1
+@export var health_dropped: int = 4
 
 func _ready() -> void:
 	current_health = max_health
@@ -26,9 +29,16 @@ func take_damage(amount: int) -> void:
 func die() -> void:
 	var new_gem = experience_gem.instantiate()
 	new_gem.global_position = global_position
-	new_gem.pickup_value = experience
+	new_gem.pickup_value = experience_dropped
 	loot_base.call_deferred("add_child", new_gem)
-	# add animation here for death.
+	
+	if randf() < 0.05:
+		var new_health_item = health_item.instantiate()
+		var health_offset = Vector2(randf_range(-25, 25), randf_range(-25, 25))
+		new_health_item.global_position = global_position + health_offset
+		new_health_item.pickup_value = health_dropped
+		loot_base.call_deferred("add_child", new_health_item)
+	
 	queue_free() 
 
 func _physics_process(_delta: float):
