@@ -8,7 +8,7 @@ signal update_experience_bar
 @export var movement_speed: float = 500
 @export var max_health: int = 100
 @onready var current_health: int = max_health
-@onready var sprite = %sprite
+@onready var sprite: AnimatedSprite2D = %sprite
 
 @onready var spell_manager: SpellManager = $SpellManager
 
@@ -63,37 +63,9 @@ func _on_pickup_range_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("loot"):
 		area.target = self
 
-func _on_collection_area_area_entered(area: Area2D) -> void:
+func _on_collection_area_area_entered(area: ExperienceGem) -> void:
 	if area.is_in_group("loot"):
-		var gem_experience = area.collect()
-		add_experience(gem_experience)
-
-#ideally everything below would be in 'experience_manager.gd'
-func add_experience(amount: int) -> void:
-	var experience_required = calculate_experience_cap()
-	collected_experience += amount
-	if experience + collected_experience >= experience_required:
-		collected_experience -= experience_required - experience
-		experience_level += 1
-		update_experience_bar.emit()
-		experience = 0
-		experience_required = calculate_experience_cap()
-		add_experience(0)
-	else:
-		experience += collected_experience
-		collected_experience = 0
-	update_experience_bar.emit()
-
-func calculate_experience_cap() -> int:
-	var experience_cap: int = experience_level
-	
-	if experience_level < 20:
-		experience_cap = experience_level * 5
-	elif experience_level < 40:
-		experience_cap = 95 * (experience_level - 19) * 8
-	else:
-		experience_cap = 255 + (experience_level - 39) * 12
-	return experience_cap
+		ExperienceManager.add_experience(area.collect())
 
 
 func _on_enemy_detection_area_body_entered(body: Node2D) -> void:	
