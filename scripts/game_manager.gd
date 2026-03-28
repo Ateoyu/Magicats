@@ -59,6 +59,14 @@ func new_game() -> void:
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	for enemy in enemies:
 		enemy.queue_free()
+	
+	var all_loot = get_tree().get_nodes_in_group("loot")
+	for loot in all_loot:
+		loot.queue_free()
+	
+	var spells = get_tree().get_nodes_in_group("spell")
+	for spell in spells:
+		spell.queue_free()
 
 func delete_save_file() -> void:
 	if FileAccess.file_exists(SAVE_PATH):
@@ -171,5 +179,7 @@ func load_enemies_data(enemies_data: Array) -> void:
 			new_enemy.current_health = enemy_data["current_health"]
 			new_enemy.max_health = enemy_data["max_health"]
 			new_enemy.player = player
-			new_enemy.loot_base = enemy_spawner.get_node("%Loot") # not sure if this needs to exist?
+			new_enemy.loot_base = enemy_spawner.get_node("%Loot") 
 			enemy_spawner.add_child(new_enemy)
+
+#gems (or loot in general) will need to be cleaned / saved here as well. however upon adding health items, class "Loot" would be useful for that, so the methods here arent redundant.

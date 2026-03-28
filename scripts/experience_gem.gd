@@ -27,5 +27,5 @@ func _physics_process(delta: float) -> void:
 
 func collect():
 	collision.call_deferred("set", "disabled", true)
-	sprite.visible = false
+	queue_free()
 	return experience	

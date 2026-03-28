@@ -221,5 +221,5 @@ vertical_alignment = 2
 unique_name_in_owner = true
 player = NodePath("../Player")
 
-[node name="Loot" type="Node2D" parent="." unique_id=1008354775 groups=["loot"]]
+[node name="Loot" type="Node2D" parent="." unique_id=1008354775]
 unique_name_in_owner = true

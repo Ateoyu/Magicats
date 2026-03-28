@@ -17,6 +17,8 @@ func _ready() -> void:
 	angle = global_position.direction_to(target)
 	rotation = angle.angle() + deg_to_rad(135)
 	area_entered.connect(_on_area_entered)
+	
+	add_to_group("spell")
 
 func _physics_process(delta: float) -> void:
 	position += angle * velocity * delta

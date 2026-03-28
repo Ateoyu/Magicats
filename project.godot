@@ -48,6 +48,7 @@ player=""
 loot=""
 attack=""
 enemy=""
+spell=""
 
 [input]
 
