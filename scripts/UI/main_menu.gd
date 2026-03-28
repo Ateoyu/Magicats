@@ -12,6 +12,7 @@ func _on_options_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/menu/options.tscn")
 
 func _on_quit_pressed() -> void:
+	GameManager.save_game()
 	get_tree().quit()
 
 func _on_fade_timer_timeout() -> void:
