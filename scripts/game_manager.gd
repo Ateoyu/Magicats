@@ -5,6 +5,7 @@ const SETTINGS_PATH: String = "user://settings.cfg"
 
 var player: Player = null
 var enemy_spawner: Node2D = null
+var loot_base: Node2D = null
 
 func save_display_settings(resolution: Vector2i, display_mode: int) -> void:
 	var config = ConfigFile.new()
@@ -37,6 +38,9 @@ func set_player(p: Player) -> void:
 
 func set_enemy_spawner(e: Node2D) -> void:
 	enemy_spawner = e
+
+func set_loot_base(l: Node2D) -> void:
+	loot_base = l
 
 func has_save_file() -> bool:
 	return FileAccess.file_exists(SAVE_PATH)
@@ -87,7 +91,8 @@ func save_game() -> void:
 			#"spells":
 		},
 		"enemy_spawner": get_enemy_spawner_data(),
-		"enemies": get_alive_enemies_data()
+		"enemies": get_alive_enemies_data(),
+		"loot": get_uncollected_loot_data()
 	}
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	if file:
@@ -114,6 +119,9 @@ func load_game() -> bool:
 			
 			if save_data.has("enemies"):
 				load_enemies_data(save_data["enemies"])
+				
+			if save_data.has("loot"):
+				load_loot_data(save_data["loot"])
 			
 			return true
 	return false
@@ -182,4 +190,40 @@ func load_enemies_data(enemies_data: Array) -> void:
 			new_enemy.loot_base = enemy_spawner.get_node("%Loot") 
 			enemy_spawner.add_child(new_enemy)
 
-#gems (or loot in general) will need to be cleaned / saved here as well. however upon adding health items, class "Loot" would be useful for that, so the methods here arent redundant.
+func get_uncollected_loot_data() -> Array:
+	var all_loot_data = []
+	var all_loot = get_tree().get_nodes_in_group("loot")
+	
+	for loot_item in all_loot:
+		if loot_item is ExperienceGem:
+			var loot_item_data = {
+				"scene_path": loot_item.scene_file_path,
+				"position": {"x": loot_item.position.x, "y": loot_item.position.y},
+				"pickup_value": loot_item.pickup_value,
+				"pickup_type": "experience"
+			}
+			all_loot_data.append(loot_item_data)
+		elif loot_item is HealthItem:
+			var loot_item_data = {
+				"scene_path": loot_item.scene_file_path,
+				"position": {"x": loot_item.position.x, "y": loot_item.position.y},
+				"pickup_value": loot_item.pickup_value,
+				"pickup_type": "health"
+			}
+			all_loot_data.append(loot_item_data)
+	
+	return all_loot_data
+
+func load_loot_data(all_loot_data: Array) -> void:
+	var uncollected_loot = get_tree().get_nodes_in_group("loot")
+	for loot_item in uncollected_loot:
+		loot_item.queue_free()
+	
+	for loot_item_data in all_loot_data:
+		var loot_scene = load(loot_item_data["scene_path"])
+		if loot_scene:
+			var new_loot = loot_scene.instantiate()
+			new_loot.position = Vector2(loot_item_data["position"]["x"], loot_item_data["position"]["y"])
+			new_loot.pickup_value = loot_item_data["pickup_value"]
+			new_loot.pickup_type = loot_item_data["pickup_type"]
+			loot_base.add_child(new_loot)

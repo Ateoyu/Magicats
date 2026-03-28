@@ -26,7 +26,7 @@ func take_damage(amount: int) -> void:
 func die() -> void:
 	var new_gem = experience_gem.instantiate()
 	new_gem.global_position = global_position
-	new_gem.experience = experience
+	new_gem.pickup_value = experience
 	loot_base.call_deferred("add_child", new_gem)
 	# add animation here for death.
 	queue_free() 

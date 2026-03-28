@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b5ysadr6xkyjn"]
 
 [ext_resource type="Texture2D" uid="uid://lykeiu8elxe2" path="res://assets/pickups/diamond.png" id="1_7ibw3"]
-[ext_resource type="Script" uid="uid://d2hp1ew3hdhs3" path="res://scripts/experience_gem.gd" id="1_krqci"]
+[ext_resource type="Script" uid="uid://d2hp1ew3hdhs3" path="res://scripts/loot/experience_gem.gd" id="1_krqci"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_atpm0"]
 size = Vector2(38, 32)
