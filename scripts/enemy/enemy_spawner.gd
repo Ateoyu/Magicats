@@ -51,3 +51,21 @@ func get_random_position():
 	var x_spawn = randf_range(spawn_pos1.x, spawn_pos2.x)
 	var y_spawn = randf_range(spawn_pos1.y, spawn_pos2.y)
 	return Vector2(x_spawn, y_spawn)
+
+# Helper funcs for respawning enemies if we leave the game.
+# to maintain the thythm of the spawns, we need to save the spawn_delay_counter
+func get_spawn_delays() -> Array:
+	var delays = []
+	for spawn in spawns:
+		delays.append({
+			"spawn_delay_counter": spawn.spawn_delay_counter
+			})
+	return delays
+
+func set_spawn_delays(delays: Array) -> void:
+	for i in range(min(spawns.size(), delays.size())):
+		if delays[i].has("spawn_delay_counter"):
+			spawns[i].spawn_delay_counter = delays[i].spawn_delay_counter
+
+func set_time(value: float) -> void:
+	time = value

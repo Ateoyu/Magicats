@@ -63,6 +63,7 @@ func _on_display_modes_item_selected(index: int) -> void:
 	var mode_name = display_modes_option_button.get_item_text(index)
 	var target_mode = display_modes[mode_name]
 	get_window().mode = target_mode
-
+	
 func _on_main_menu_pressed() -> void:
+	GameManager.save_display_settings(get_window().size, get_window().mode)
 	get_tree().change_scene_to_file("res://scenes/menu/mainMenu.tscn")

@@ -15,6 +15,8 @@ var experience_gem = preload("res://scenes/experienceGem.tscn")
 
 func _ready() -> void:
 	current_health = max_health
+	scene_file_path = get_scene_file_path()
+	add_to_group("enemy")
 	
 func take_damage(amount: int) -> void:
 	current_health -= amount
