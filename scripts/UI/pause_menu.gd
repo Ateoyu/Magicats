@@ -1,11 +1,16 @@
 extends Control
 
+@onready var level_up_menu: Control = %LevelUpMenu
+
 func _ready():
 	hide()
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
 func _input(event):
 	if event.is_action_pressed("ui_cancel") or event.is_action_pressed("pause"):
+		if level_up_menu.visible:
+			return
+			
 		if get_tree().paused:
 			resume()
 		else:
@@ -14,12 +19,10 @@ func _input(event):
 func resume():
 	hide()
 	get_tree().paused = false
-	$AnimationPlayer.play_backwards("blur")
 	
 func pause():
 	show()
 	get_tree().paused = true
-	$AnimationPlayer.play("blur")
 
 func _on_resume_pressed() -> void:
 	resume()

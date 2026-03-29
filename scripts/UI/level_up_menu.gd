@@ -1,11 +1,14 @@
 extends Control
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	hide()
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	ExperienceManager.player_levelled_up.connect(_on_player_levelled_up)
+	ExperienceManager.selected_upgrade.connect(_on_selected_upgrade)
+	
+func _on_player_levelled_up():
+	ExperienceManager.show_upgrade_choices()
+	show()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_selected_upgrade(upgrade: Upgrade):
+	hide()

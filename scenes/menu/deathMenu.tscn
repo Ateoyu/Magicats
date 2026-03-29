@@ -2,52 +2,10 @@
 
 [ext_resource type="Script" uid="uid://ewtajg741ao6" path="res://scripts/UI/death_menu.gd" id="1_jdd88"]
 [ext_resource type="Texture2D" uid="uid://bnrg32iya4v6t" path="res://assets/PopupMenu/death_backsplash.png" id="2_gpd6k"]
-[ext_resource type="Shader" uid="uid://bj4yie4c36orr" path="res://death_menu.gdshader" id="2_u8oxg"]
 [ext_resource type="Texture2D" uid="uid://ug2teeb183kn" path="res://assets/PopupMenu/ButtonsDefault/restartDefault.png" id="3_v0asp"]
 [ext_resource type="Texture2D" uid="uid://cm6b2vmdy3t31" path="res://assets/PopupMenu/ButtonsHighlighted/restartHighlighted.png" id="4_qnccg"]
 [ext_resource type="Texture2D" uid="uid://bomu42lm0njq7" path="res://assets/PopupMenu/ButtonsDefault/mainMenuDefault.png" id="5_625lk"]
 [ext_resource type="Texture2D" uid="uid://07ca2drk84km" path="res://assets/PopupMenu/ButtonsHighlighted/mainMenuHighlighted.png" id="6_h1fr3"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2yfuu"]
-shader = ExtResource("2_u8oxg")
-shader_parameter/lod = 0.0
-
-[sub_resource type="Animation" id="Animation_u8oxg"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:material:shader_parameter/lod")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_2yfuu"]
-resource_name = "blur"
-length = 0.46666667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:material:shader_parameter/lod")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 0.886000042085]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_8q2ef"]
-_data = {
-&"RESET": SubResource("Animation_u8oxg"),
-&"blur": SubResource("Animation_2yfuu")
-}
 
 [node name="DeathMenu" type="Control" unique_id=1957216197]
 process_mode = 3
@@ -96,15 +54,6 @@ offset_right = 426.0
 offset_bottom = 218.0
 texture_normal = ExtResource("5_625lk")
 texture_hover = ExtResource("6_h1fr3")
-
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1516894436]
-material = SubResource("ShaderMaterial_2yfuu")
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1303604500]
-libraries/ = SubResource("AnimationLibrary_8q2ef")
 
 [connection signal="pressed" from="LevelUpPanel/ButtonManager/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="LevelUpPanel/ButtonManager/Main Menu" to="." method="_on_main_menu_pressed"]

@@ -5,7 +5,7 @@ signal player_died
 signal health_changed
 signal update_experience_bar
 
-@export var movement_speed: float = 500
+@export var movement_speed: float = 250
 @export var max_health: int = 100
 @onready var current_health: int = max_health
 @onready var sprite: AnimatedSprite2D = %sprite

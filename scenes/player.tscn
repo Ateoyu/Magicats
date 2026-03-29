@@ -3,6 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://ue1wepqb6116" path="res://assets/mainCatSpriteSheet.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://c3ubxpp10k6x6" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Script" uid="uid://umwf45j2j6o1" path="res://scripts/spell/spell_manager.gd" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://ceks2bym8j0sn" path="res://scripts/spell/spell.gd" id="4_tuyoq"]
+[ext_resource type="Script" uid="uid://m4aj3u47odr6" path="res://scripts/spell/ice_spear.gd" id="5_fjrip"]
+[ext_resource type="Script" path="res://scripts/spell/lightning_strike.gd" id="6_smehm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
 atlas = ExtResource("1_3vyb7")
@@ -59,6 +62,13 @@ radius = 200.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_gmlin"]
 radius = 15.0
 
+[sub_resource type="Resource" id="Resource_ur7pv"]
+script = ExtResource("5_fjrip")
+metadata/_custom_type_script = "uid://m4aj3u47odr6"
+
+[sub_resource type="Resource" id="Resource_y4r1p"]
+script = ExtResource("6_smehm")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(2880, 1620)
 
@@ -97,6 +107,7 @@ shape = SubResource("CircleShape2D_gmlin")
 [node name="SpellManager" type="Node2D" parent="." unique_id=1496071666]
 unique_name_in_owner = true
 script = ExtResource("3_qhqgy")
+all_available_spells = Array[ExtResource("4_tuyoq")]([SubResource("Resource_ur7pv"), SubResource("Resource_y4r1p")])
 
 [node name="EnemyDetectionArea" type="Area2D" parent="." unique_id=1584923687]
 collision_layer = 4

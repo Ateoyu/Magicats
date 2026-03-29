@@ -13,9 +13,7 @@ func _ready() -> void:
 	GameManager.set_loot_base(loot_base)
 	ExperienceManager.set_level_up_panel(level_up_panel)
 	ExperienceManager.set_upgrade_options(upgrade_options)
-#	########## PURELY DEBUG - CAN DELETE LATER ##########
-	print(ExperienceManager.check_if_level_up_is_null()) 
-	print(ExperienceManager.check_if_upgrade_options_is_null())
+	ExperienceManager.set_player(player)
 	
 	if GameManager.has_save_file():
 		GameManager.load_game()

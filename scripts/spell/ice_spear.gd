@@ -6,8 +6,8 @@ var projectile_count: int
 var projectile_hp: int
 var ice_spear_projectile: PackedScene = preload("res://scenes/spell/iceSpear.tscn")
 
-func _init(p_spell_manager: Node2D, p_player: CharacterBody2D) -> void:
-	super(1, 5, 0.75, p_spell_manager, p_player)
+func _init(p_spell_manager: Node2D = null, p_player: CharacterBody2D = null) -> void:
+	super("Ice Spear", 1, 5, 0.75, p_spell_manager, p_player)
 	self.velocity = 250
 	self.projectile_count = 1
 	self.projectile_hp = 1
