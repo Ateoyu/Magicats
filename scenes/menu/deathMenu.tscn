@@ -1,7 +1,12 @@
 [gd_scene format=3 uid="uid://eandpr60jfjm"]
 
 [ext_resource type="Script" uid="uid://ewtajg741ao6" path="res://scripts/UI/death_menu.gd" id="1_jdd88"]
+[ext_resource type="Texture2D" uid="uid://bnrg32iya4v6t" path="res://assets/PopupMenu/death_backsplash.png" id="2_gpd6k"]
 [ext_resource type="Shader" uid="uid://bj4yie4c36orr" path="res://death_menu.gdshader" id="2_u8oxg"]
+[ext_resource type="Texture2D" uid="uid://ug2teeb183kn" path="res://assets/PopupMenu/ButtonsDefault/restartDefault.png" id="3_v0asp"]
+[ext_resource type="Texture2D" uid="uid://cm6b2vmdy3t31" path="res://assets/PopupMenu/ButtonsHighlighted/restartHighlighted.png" id="4_qnccg"]
+[ext_resource type="Texture2D" uid="uid://bomu42lm0njq7" path="res://assets/PopupMenu/ButtonsDefault/mainMenuDefault.png" id="5_625lk"]
+[ext_resource type="Texture2D" uid="uid://07ca2drk84km" path="res://assets/PopupMenu/ButtonsHighlighted/mainMenuHighlighted.png" id="6_h1fr3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2yfuu"]
 shader = ExtResource("2_u8oxg")
@@ -21,18 +26,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PanelContainer:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_2yfuu"]
 resource_name = "blur"
@@ -48,18 +41,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 0.886000042085]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PanelContainer:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.0009999999, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8q2ef"]
@@ -78,46 +59,52 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jdd88")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1516894436]
-material = SubResource("ShaderMaterial_2yfuu")
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1276836851]
-modulate = Color(1, 1, 1, 0)
+[node name="LevelUpPanel" type="TextureRect" parent="." unique_id=1017225564]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -213.0
-offset_top = -175.5
-offset_right = 213.0
-offset_bottom = 175.5
+offset_left = -255.0
+offset_top = -222.0
+offset_right = 438.0
+offset_bottom = 417.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.5543935, 1.3966329)
+scale = Vector2(0.83107036, 0.7467222)
+texture = ExtResource("2_gpd6k")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=155442018]
-layout_mode = 2
+[node name="ButtonManager" type="Control" parent="LevelUpPanel" unique_id=1621692039]
+anchors_preset = 0
+offset_left = 150.36938
+offset_top = 181.87364
+offset_right = 576.3694
+offset_bottom = 532.87366
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1645908582]
-layout_mode = 2
-text = "U died!"
-horizontal_alignment = 1
+[node name="Restart" type="TextureButton" parent="LevelUpPanel/ButtonManager" unique_id=767084305]
+layout_mode = 0
+offset_right = 426.0
+offset_bottom = 107.0
+texture_normal = ExtResource("3_v0asp")
+texture_hover = ExtResource("4_qnccg")
 
-[node name="Restart" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1930070299]
-layout_mode = 2
-text = "Restart"
+[node name="Main Menu" type="TextureButton" parent="LevelUpPanel/ButtonManager" unique_id=995325892]
+layout_mode = 0
+offset_top = 111.0
+offset_right = 426.0
+offset_bottom = 218.0
+texture_normal = ExtResource("5_625lk")
+texture_hover = ExtResource("6_h1fr3")
 
-[node name="Main Menu" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1026820478]
-layout_mode = 2
-text = "Main Menu"
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1516894436]
+material = SubResource("ShaderMaterial_2yfuu")
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1303604500]
 libraries/ = SubResource("AnimationLibrary_8q2ef")
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="LevelUpPanel/ButtonManager/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="LevelUpPanel/ButtonManager/Main Menu" to="." method="_on_main_menu_pressed"]

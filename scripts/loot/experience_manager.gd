@@ -6,15 +6,6 @@ var experience: int = 0
 var experience_level: int = 1
 var collected_experience: int = 0
 
-var level_up_panel: Panel = null
-var upgrade_options: VBoxContainer = null
-
-func _ready():
-	if level_up_panel == null:
-		print("panel still fucking null")
-	else:
-		print("we happy now")
-
 func add_experience(amount: int) -> void:
 	var experience_required: int = calculate_experience_cap()
 	

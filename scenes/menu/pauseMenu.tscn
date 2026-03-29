@@ -2,6 +2,13 @@
 
 [ext_resource type="Shader" uid="uid://dlt7iso3hpytb" path="res://pause_menu.gdshader" id="1_qeqa7"]
 [ext_resource type="Script" uid="uid://bhuxd2g4365tt" path="res://scripts/UI/pause_menu.gd" id="1_r5qvj"]
+[ext_resource type="Texture2D" uid="uid://dieyqshddux6m" path="res://assets/PopupMenu/paused_backsplash.png" id="3_2rsru"]
+[ext_resource type="Texture2D" uid="uid://h6msqtwiybkk" path="res://assets/PopupMenu/ButtonsDefault/resumeDefault.png" id="4_ttg34"]
+[ext_resource type="Texture2D" uid="uid://c14gx5u1sq1qs" path="res://assets/PopupMenu/ButtonsHighlighted/resumeHighlighted.png" id="5_hgu3o"]
+[ext_resource type="Texture2D" uid="uid://bomu42lm0njq7" path="res://assets/PopupMenu/ButtonsDefault/mainMenuDefault.png" id="6_upwmg"]
+[ext_resource type="Texture2D" uid="uid://07ca2drk84km" path="res://assets/PopupMenu/ButtonsHighlighted/mainMenuHighlighted.png" id="7_1afwy"]
+[ext_resource type="Texture2D" uid="uid://q2lloph1x2af" path="res://assets/PopupMenu/ButtonsDefault/quitDefault.png" id="8_eypti"]
+[ext_resource type="Texture2D" uid="uid://bm8c3kn3i4334" path="res://assets/PopupMenu/ButtonsHighlighted/quitHighlighted.png" id="9_7wjqf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nwcfo"]
 shader = ExtResource("1_qeqa7")
@@ -83,44 +90,57 @@ layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=931483463]
+[node name="PanelContainer" type="TextureRect" parent="." unique_id=650021452]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.60300004
-anchor_top = 0.60700005
-anchor_right = 0.60300004
-anchor_bottom = 0.60700005
-offset_left = -331.65607
-offset_top = -244.83603
-offset_right = 94.34393
-offset_bottom = 106.16397
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -231.0
+offset_top = -198.0
+offset_right = 462.0
+offset_bottom = 441.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.5543935, 1.3966329)
+scale = Vector2(0.83107036, 0.7467222)
+texture = ExtResource("3_2rsru")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=2141845136]
-layout_mode = 2
+[node name="ButtonManager" type="Control" parent="PanelContainer" unique_id=2023571718]
+anchors_preset = 0
+offset_left = 152.81494
+offset_top = 171.41583
+offset_right = 578.81494
+offset_bottom = 522.4158
+scale = Vector2(1.0018675, 1.0018675)
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer" unique_id=933442399]
-layout_mode = 2
-text = "PAUSED"
-horizontal_alignment = 1
+[node name="Resume" type="TextureButton" parent="PanelContainer/ButtonManager" unique_id=395580235]
+z_index = 1
+layout_mode = 0
+offset_right = 426.0
+offset_bottom = 107.0
+texture_normal = ExtResource("4_ttg34")
+texture_hover = ExtResource("5_hgu3o")
 
-[node name="Resume" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1155762965]
-layout_mode = 2
-text = "Resume"
+[node name="Main Menu" type="TextureButton" parent="PanelContainer/ButtonManager" unique_id=1475439517]
+layout_mode = 0
+offset_top = 111.0
+offset_right = 426.0
+offset_bottom = 218.0
+texture_normal = ExtResource("6_upwmg")
+texture_hover = ExtResource("7_1afwy")
 
-[node name="Main Menu" type="Button" parent="PanelContainer/VBoxContainer" unique_id=3720379]
-layout_mode = 2
-text = "Main Menu"
-
-[node name="Quit" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1099946179]
-layout_mode = 2
-text = "Quit"
+[node name="Quit" type="TextureButton" parent="PanelContainer/ButtonManager" unique_id=1687524604]
+layout_mode = 0
+offset_top = 222.0
+offset_right = 426.0
+offset_bottom = 329.0
+texture_normal = ExtResource("8_eypti")
+texture_hover = ExtResource("9_7wjqf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2002200047]
 libraries/ = SubResource("AnimationLibrary_3lcxj")
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="PanelContainer/ButtonManager/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PanelContainer/ButtonManager/Main Menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="PanelContainer/ButtonManager/Quit" to="." method="_on_quit_pressed"]

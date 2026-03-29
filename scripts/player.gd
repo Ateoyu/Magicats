@@ -64,14 +64,10 @@ func _on_pickup_range_area_area_entered(area: Area2D) -> void:
 		area.target = self
 
 func _on_collection_area_area_entered(area: Area2D) -> void:
-	print("Area entered: ", area.name, " Groups: ", area.get_groups())
 	if area.is_in_group("loot"):
-		print("It's loot! Type: ", area)
 		if area is ExperienceGem:
-			print("It's an ExperienceGem")
 			ExperienceManager.add_experience(area.collect())
 		elif area is HealthItem:
-			print("It's a HealthItem - Healing for: ", area.collect())
 			heal(area.collect())
 
 func _on_enemy_detection_area_body_entered(body: Node2D) -> void:	

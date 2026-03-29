@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://5ag2gqi6rtq1"]
 
+[ext_resource type="Texture2D" uid="uid://xfbs7nmy1o30" path="res://assets/PopupMenu/level_up_backsplash.png" id="1_eedwy"]
+
 [node name="LevelUpMenu" type="Control" unique_id=1672626486]
 layout_mode = 3
 anchors_preset = 15
@@ -8,8 +10,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="LevelUpPanel" type="Panel" parent="." unique_id=602094401]
-unique_name_in_owner = true
+[node name="LevelUpPanel" type="TextureRect" parent="." unique_id=1061868967]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -17,23 +18,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.0
-offset_top = -64.0
-offset_right = 48.0
-offset_bottom = 64.0
+offset_left = -231.0
+offset_top = -198.0
+offset_right = 462.0
+offset_bottom = 441.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Label" type="Label" parent="LevelUpPanel" unique_id=1662347444]
-layout_mode = 0
-offset_right = 96.0
-offset_bottom = 23.0
-size_flags_vertical = 0
-text = "LEVEL UP!"
-horizontal_alignment = 1
+scale = Vector2(0.83107036, 0.7467222)
+texture = ExtResource("1_eedwy")
 
 [node name="UpgradeOptions" type="VBoxContainer" parent="LevelUpPanel" unique_id=1262124721]
 unique_name_in_owner = true
 layout_mode = 0
-offset_right = 96.0
-offset_bottom = 128.0
+offset_left = -138.97742
+offset_top = -162.7111
+offset_right = -42.977417
+offset_bottom = -34.711105

@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://c201kqm66rjry" path="res://scenes/menu/pauseMenu.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://eandpr60jfjm" path="res://scenes/menu/deathMenu.tscn" id="5_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://cqjr25648e16d" path="res://assets/pixelArtTopDownAssetsPack/Texture/Extra/TX Props with Shadow.png" id="5_iywne"]
-[ext_resource type="PackedScene" uid="uid://5ag2gqi6rtq1" path="res://scenes/menu/levelUpMenu.tscn" id="6_vtaks"]
 [ext_resource type="Script" uid="uid://cq6fct064x4b3" path="res://scripts/UI/health_bar.gd" id="7_u5sy4"]
 [ext_resource type="Script" uid="uid://bdtspman5dtsn" path="res://scripts/UI/experience_bar.gd" id="8_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://cujjkff1nuw4t" path="res://scenes/enemy/enemySpawner.tscn" id="8_gee14"]
@@ -149,18 +148,16 @@ offset_top = -1028.0
 offset_right = 1720.0
 offset_bottom = 954.0
 
-[node name="Menu" type="CanvasLayer" parent="." unique_id=311475991]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=311475991]
 
-[node name="PauseMenu" parent="Menu" unique_id=1004427110 instance=ExtResource("4_lbhrr")]
+[node name="PauseMenu" parent="CanvasLayer" unique_id=1004427110 instance=ExtResource("4_lbhrr")]
 offset_left = 48.0
 offset_top = -8.0
 offset_right = -223.0
 offset_bottom = -72.0
 
-[node name="deathMenu" parent="Menu" unique_id=1957216197 node_paths=PackedStringArray("player") instance=ExtResource("5_0tnpc")]
+[node name="deathMenu" parent="CanvasLayer" unique_id=1957216197 node_paths=PackedStringArray("player") instance=ExtResource("5_0tnpc")]
 player = NodePath("../../Player")
-
-[node name="LevelUpMenu" parent="Menu" unique_id=1672626486 instance=ExtResource("6_vtaks")]
 
 [node name="Layer0" type="TileMapLayer" parent="." unique_id=234565971]
 tile_map_data = PackedByteArray(0, 0, 1, 0, 1, 0, 0, 0, 11, 0, 8, 0, 0, 0, 251, 255, 2, 0, 0, 0, 11, 0, 5, 0, 0, 0, 251, 255, 252, 255, 0, 0, 11, 0, 5, 0, 0, 0, 7, 0, 2, 0, 0, 0, 11, 0, 5, 0, 0, 0, 7, 0, 252, 255, 0, 0, 11, 0, 5, 0, 0, 0)

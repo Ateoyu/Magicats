@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cam57adkvmaoc"
-path="res://.godot/imported/quitHighlighted.png-2a1c443ee6d3a6767fa87e77b4518d2a.ctex"
+path="res://.godot/imported/quitHighlighted.png-489811386ddbb889f5270a4a892be2a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/mainMenu/ButtonsHighlighted/quitHighlighted.png"
-dest_files=["res://.godot/imported/quitHighlighted.png-2a1c443ee6d3a6767fa87e77b4518d2a.ctex"]
+source_file="res://assets/MainMenu/ButtonsHighlighted/quitHighlighted.png"
+dest_files=["res://.godot/imported/quitHighlighted.png-489811386ddbb889f5270a4a892be2a3.ctex"]
 
 [params]
 

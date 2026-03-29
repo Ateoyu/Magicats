@@ -1,34 +1,34 @@
 [gd_scene format=3 uid="uid://cea1sc4qofuos"]
 
 [ext_resource type="Script" uid="uid://lekjychlp37n" path="res://scripts/UI/main_menu.gd" id="1_1ynf8"]
-[ext_resource type="Texture2D" uid="uid://bqu51y12la6ct" path="res://assets/mainMenu/Background.png" id="2_r3v84"]
-[ext_resource type="Texture2D" uid="uid://cn86ua8vo4ue8" path="res://assets/mainMenu/ButtonsDefault/continueDefault.png" id="3_mwrku"]
-[ext_resource type="Texture2D" uid="uid://c6k78mfy3qlcw" path="res://assets/mainMenu/ButtonsHighlighted/continueHighlighted.png" id="4_ip6k8"]
-[ext_resource type="Texture2D" uid="uid://sy4dwc3nireq" path="res://assets/mainMenu/ButtonsDefault/newGameDefault.png" id="5_1xhek"]
-[ext_resource type="Texture2D" uid="uid://7ru318o6ajy3" path="res://assets/mainMenu/ButtonsDefault/optionsDefault.png" id="5_q2vti"]
-[ext_resource type="Texture2D" uid="uid://dqsp5w5y4kg2x" path="res://assets/mainMenu/ButtonsHighlighted/optionsHighlighted.png" id="6_1xhek"]
-[ext_resource type="Texture2D" uid="uid://dehm42s54elw7" path="res://assets/mainMenu/ButtonsHighlighted/newGameHighlighted.png" id="6_3iqac"]
-[ext_resource type="Texture2D" uid="uid://oqa8gwwj484m" path="res://assets/mainMenu/ButtonsDefault/quitDefault.png" id="7_3iqac"]
-[ext_resource type="Texture2D" uid="uid://cam57adkvmaoc" path="res://assets/mainMenu/ButtonsHighlighted/quitHighlighted.png" id="8_4ngqc"]
+[ext_resource type="Texture2D" uid="uid://bqu51y12la6ct" path="res://assets/MainMenu/Background.png" id="2_r3v84"]
+[ext_resource type="Texture2D" uid="uid://cn86ua8vo4ue8" path="res://assets/MainMenu/ButtonsDefault/continueDefault.png" id="3_mwrku"]
+[ext_resource type="Texture2D" uid="uid://c6k78mfy3qlcw" path="res://assets/MainMenu/ButtonsHighlighted/continueHighlighted.png" id="4_ip6k8"]
+[ext_resource type="Texture2D" uid="uid://sy4dwc3nireq" path="res://assets/MainMenu/ButtonsDefault/newGameDefault.png" id="5_1xhek"]
+[ext_resource type="Texture2D" uid="uid://7ru318o6ajy3" path="res://assets/MainMenu/ButtonsDefault/optionsDefault.png" id="5_q2vti"]
+[ext_resource type="Texture2D" uid="uid://dqsp5w5y4kg2x" path="res://assets/MainMenu/ButtonsHighlighted/optionsHighlighted.png" id="6_1xhek"]
+[ext_resource type="Texture2D" uid="uid://dehm42s54elw7" path="res://assets/MainMenu/ButtonsHighlighted/newGameHighlighted.png" id="6_3iqac"]
+[ext_resource type="Texture2D" uid="uid://oqa8gwwj484m" path="res://assets/MainMenu/ButtonsDefault/quitDefault.png" id="7_3iqac"]
+[ext_resource type="Texture2D" uid="uid://cam57adkvmaoc" path="res://assets/MainMenu/ButtonsHighlighted/quitHighlighted.png" id="8_4ngqc"]
 [ext_resource type="PackedScene" uid="uid://sa8ec4kudve1" path="res://scenes/fadeTransition.tscn" id="9_eowgv"]
 
 [node name="MainMenu" type="Node2D" unique_id=657582238]
 script = ExtResource("1_1ynf8")
 
-[node name="Background" type="Sprite2D" parent="." unique_id=840568216]
-position = Vector2(576, 361.25)
-scale = Vector2(0.9113924, 0.8509502)
+[node name="PanelContainer" type="TextureRect" parent="." unique_id=606517109]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.90904284, 0.86051047)
 texture = ExtResource("2_r3v84")
 
-[node name="ButtonManager" type="Control" parent="Background" unique_id=1305778725]
-layout_mode = 3
+[node name="ButtonManager" type="Control" parent="PanelContainer" unique_id=1305778725]
 anchors_preset = 0
-offset_left = -95.59201
-offset_top = -188.67989
-offset_right = 97.77701
-offset_bottom = 97.54875
+offset_left = 531.7215
+offset_top = 228.50842
+offset_right = 725.0905
+offset_bottom = 514.73706
 
-[node name="Continue" type="TextureButton" parent="Background/ButtonManager" unique_id=1357159148]
+[node name="Continue" type="TextureButton" parent="PanelContainer/ButtonManager" unique_id=1357159148]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 2.578
@@ -41,7 +41,7 @@ scale = Vector2(1.4427658, 1.3918597)
 texture_normal = ExtResource("3_mwrku")
 texture_hover = ExtResource("4_ip6k8")
 
-[node name="New Game" type="TextureButton" parent="Background/ButtonManager" unique_id=1931710153]
+[node name="New Game" type="TextureButton" parent="PanelContainer/ButtonManager" unique_id=1931710153]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 2.578
@@ -54,7 +54,7 @@ scale = Vector2(1.4427658, 1.3918597)
 texture_normal = ExtResource("5_1xhek")
 texture_hover = ExtResource("6_3iqac")
 
-[node name="Options" type="TextureButton" parent="Background/ButtonManager" unique_id=109582707]
+[node name="Options" type="TextureButton" parent="PanelContainer/ButtonManager" unique_id=109582707]
 layout_mode = 0
 offset_left = -25.102436
 offset_top = 207.18863
@@ -64,7 +64,7 @@ scale = Vector2(1.3817644, 1.3817644)
 texture_normal = ExtResource("5_q2vti")
 texture_hover = ExtResource("6_1xhek")
 
-[node name="Quit" type="TextureButton" parent="Background/ButtonManager" unique_id=842749241]
+[node name="Quit" type="TextureButton" parent="PanelContainer/ButtonManager" unique_id=842749241]
 layout_mode = 0
 offset_left = -25.102434
 offset_top = 309.42728
@@ -87,10 +87,10 @@ offset_bottom = 657.0
 oversampling_override = 1.0
 position = Vector2i(0, 36)
 
-[connection signal="pressed" from="Background/ButtonManager/Continue" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="Background/ButtonManager/New Game" to="." method="_on_new_game_pressed"]
-[connection signal="pressed" from="Background/ButtonManager/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="Background/ButtonManager/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="PanelContainer/ButtonManager/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="PanelContainer/ButtonManager/New Game" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="PanelContainer/ButtonManager/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="PanelContainer/ButtonManager/Quit" to="." method="_on_quit_pressed"]
 [connection signal="timeout" from="Fade_transition/Fade_timer" to="." method="_on_fade_timer_timeout"]
 [connection signal="canceled" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_canceled"]
 [connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]
