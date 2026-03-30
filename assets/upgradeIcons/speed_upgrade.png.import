@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwddkccfkuckf"
-path="res://.godot/imported/Lightning_strick_sprite_sheet.png-e5c6c8705d9e1e7d271aab717de60fc0.ctex"
+uid="uid://nuo3hqhrc6fj"
+path="res://.godot/imported/speed_upgrade.png-53448f37ba393824d2be2ee2f1e77b75.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Lightning_strick_sprite_sheet.png"
-dest_files=["res://.godot/imported/Lightning_strick_sprite_sheet.png-e5c6c8705d9e1e7d271aab717de60fc0.ctex"]
+source_file="res://assets/upgradeIcons/speed_upgrade.png"
+dest_files=["res://.godot/imported/speed_upgrade.png-53448f37ba393824d2be2ee2f1e77b75.ctex"]
 
 [params]
 

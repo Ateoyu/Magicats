@@ -10,8 +10,8 @@ var current_health: int
 var player: Player
 var loot_base: Node2D
 
-var experience_gem = preload("res://scenes/experienceGem.tscn")
-var health_item = preload("res://scenes/healthItem.tscn")
+var experience_gem = preload("res://scenes/loot/experienceGem.tscn")
+var health_item = preload("res://scenes/loot/healthItem.tscn")
 
 @export var experience_dropped: int = 1
 @export var health_dropped: int = 4

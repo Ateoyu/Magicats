@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bmo7bltura1e0"]
 
 [ext_resource type="Script" uid="uid://ufyko45pvfuy" path="res://scripts/enemy/enemy_rat.gd" id="1_6rqi6"]
-[ext_resource type="Texture2D" uid="uid://bcy337j7jcx4w" path="res://assets/enemyRatSpriteSheet.png" id="1_p20aq"]
-[ext_resource type="PackedScene" uid="uid://dhq0pa6na6p7k" path="res://scenes/hitbox.tscn" id="2_g4cd1"]
+[ext_resource type="Texture2D" uid="uid://bcy337j7jcx4w" path="res://assets/enemy/enemyRatSpriteSheet.png" id="1_p20aq"]
+[ext_resource type="PackedScene" uid="uid://dhq0pa6na6p7k" path="res://scenes/enemy/hitbox.tscn" id="2_g4cd1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g4cd1"]
 atlas = ExtResource("1_p20aq")

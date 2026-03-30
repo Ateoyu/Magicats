@@ -5,7 +5,9 @@
 [ext_resource type="Script" uid="uid://umwf45j2j6o1" path="res://scripts/spell/spell_manager.gd" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://ceks2bym8j0sn" path="res://scripts/spell/spell.gd" id="4_tuyoq"]
 [ext_resource type="Script" uid="uid://m4aj3u47odr6" path="res://scripts/spell/ice_spear.gd" id="5_fjrip"]
-[ext_resource type="Script" path="res://scripts/spell/lightning_strike.gd" id="6_smehm"]
+[ext_resource type="Script" uid="uid://d0v2tewqs0x0a" path="res://scripts/spell/lightning_strike.gd" id="6_smehm"]
+[ext_resource type="AudioStream" uid="uid://1oeu5wj37nrv" path="res://SFX/collect_xp.wav" id="7_smehm"]
+[ext_resource type="AudioStream" uid="uid://dyw33t1xk3blr" path="res://SFX/collect_health.wav" id="8_ur7pv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
 atlas = ExtResource("1_3vyb7")
@@ -118,6 +120,12 @@ monitorable = false
 light_mask = 5
 visibility_layer = 5
 shape = SubResource("RectangleShape2D_qhqgy")
+
+[node name="CollectXp" type="AudioStreamPlayer" parent="." unique_id=69773849]
+stream = ExtResource("7_smehm")
+
+[node name="CollectHealth" type="AudioStreamPlayer" parent="." unique_id=1080822620]
+stream = ExtResource("8_ur7pv")
 
 [connection signal="area_entered" from="PickupRangeArea" to="." method="_on_pickup_range_area_area_entered"]
 [connection signal="area_entered" from="CollectionArea" to="." method="_on_collection_area_area_entered"]

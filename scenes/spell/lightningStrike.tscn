@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://u8ixq3n730h1"]
 
-[ext_resource type="Texture2D" uid="uid://dwddkccfkuckf" path="res://assets/Lightning_strick_sprite_sheet.png" id="1_2d58k"]
-[ext_resource type="Script" uid="uid://45dmwlhcqlus" path="res://scripts/spell/lightning_strike_projectile.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://dwddkccfkuckf" path="res://assets/spell/Lightning_strick_sprite_sheet.png" id="1_2d58k"]
+[ext_resource type="Script" path="res://scripts/spell/lightning_strike_projectile.gd" id="1_script"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nff04"]
 atlas = ExtResource("1_2d58k")

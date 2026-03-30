@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bnpoqnb88kmh4"]
 
 [ext_resource type="Script" uid="uid://hntqnduwtynt" path="res://scripts/spell/ice_spear_projectile.gd" id="1_7fq86"]
-[ext_resource type="Texture2D" uid="uid://8d715aomh1ln" path="res://assets/ice_spear.png" id="2_pxy4u"]
+[ext_resource type="Texture2D" uid="uid://8d715aomh1ln" path="res://assets/spell/ice_spear.png" id="2_pxy4u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e3hnk"]
 size = Vector2(7.7781763, 33.941128)

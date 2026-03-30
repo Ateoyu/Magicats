@@ -11,6 +11,7 @@ func _ready() -> void:
 	GameManager.set_player(player)
 	GameManager.set_enemy_spawner(enemy_spawner)
 	GameManager.set_loot_base(loot_base)
+	GameManager.set_experience_manager(ExperienceManager)
 	ExperienceManager.set_level_up_panel(level_up_panel)
 	ExperienceManager.set_upgrade_options(upgrade_options)
 	ExperienceManager.set_player(player)

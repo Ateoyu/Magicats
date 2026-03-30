@@ -15,6 +15,12 @@ var player: Player = null
 var available_upgrades: Array[Upgrade] = []
 var current_upgrade_options: Array[Upgrade] = []
 
+func reset() -> void:
+	experience = 0
+	experience_level = 1
+	collected_experience = 0
+	update_experience_bar.emit()
+	
 func add_experience(amount: int) -> void:
 	var experience_required: int = calculate_experience_cap()
 	
@@ -99,10 +105,12 @@ func apply_upgrade(upgrade: Upgrade) -> void:
 func get_possible_upgrades() -> Array[Upgrade]:
 	var upgrades: Array[Upgrade] = []
 	
+	# TODO: add max amounts / dont show heal if max health
 	var heal_upgrade = Upgrade.new()
 	heal_upgrade.upgrade_name = "Heal"
 	heal_upgrade.upgrade_description = "Restore 50 HP"
 	heal_upgrade.upgrade_type = "heal"
+	heal_upgrade.upgrade_icon = load("res://assets/upgradeIcons/heal.png")
 	heal_upgrade.upgrade_value = 50
 	upgrades.append(heal_upgrade)
 	
@@ -110,6 +118,7 @@ func get_possible_upgrades() -> Array[Upgrade]:
 	hp_upgrade.upgrade_name = "Vitality"
 	hp_upgrade.upgrade_description = "Increase max HP by 20"
 	hp_upgrade.upgrade_type = "max_health"
+	hp_upgrade.upgrade_icon = load("res://assets/upgradeIcons/health_upgrade.png")
 	hp_upgrade.upgrade_value = 20
 	upgrades.append(hp_upgrade)
 	
@@ -117,6 +126,7 @@ func get_possible_upgrades() -> Array[Upgrade]:
 	speed_upgrade.upgrade_name = "Haste"
 	speed_upgrade.upgrade_description = "Increase movement speed by 50"
 	speed_upgrade.upgrade_type = "speed"
+	speed_upgrade.upgrade_icon = load("res://assets/upgradeIcons/speed_upgrade.png")
 	speed_upgrade.upgrade_value = 50
 	upgrades.append(speed_upgrade)
 	
@@ -130,8 +140,10 @@ func get_possible_upgrades() -> Array[Upgrade]:
 			
 		if spell.level == 0:
 			spell_upgrade.upgrade_description = "Unlock " + spell.name
+			spell_upgrade.upgrade_icon = load("res://assets/upgradeIcons/new_spell.png")
 		else:
 			spell_upgrade.upgrade_description = "Level up "  + spell.name + " to Level " + str(spell.level + 1)
+			spell_upgrade.upgrade_icon = load("res://assets/upgradeIcons/spell_upgrade.png")
 		
 		upgrades.append(spell_upgrade)
 	

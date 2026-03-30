@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://c201kqm66rjry"]
 
 [ext_resource type="Script" uid="uid://bhuxd2g4365tt" path="res://scripts/UI/pause_menu.gd" id="1_r5qvj"]
-[ext_resource type="Texture2D" uid="uid://dieyqshddux6m" path="res://assets/PopupMenu/paused_backsplash.png" id="3_2rsru"]
-[ext_resource type="Texture2D" uid="uid://h6msqtwiybkk" path="res://assets/PopupMenu/ButtonsDefault/resumeDefault.png" id="4_ttg34"]
-[ext_resource type="Texture2D" uid="uid://c14gx5u1sq1qs" path="res://assets/PopupMenu/ButtonsHighlighted/resumeHighlighted.png" id="5_hgu3o"]
-[ext_resource type="Texture2D" uid="uid://bomu42lm0njq7" path="res://assets/PopupMenu/ButtonsDefault/mainMenuDefault.png" id="6_upwmg"]
-[ext_resource type="Texture2D" uid="uid://07ca2drk84km" path="res://assets/PopupMenu/ButtonsHighlighted/mainMenuHighlighted.png" id="7_1afwy"]
-[ext_resource type="Texture2D" uid="uid://q2lloph1x2af" path="res://assets/PopupMenu/ButtonsDefault/quitDefault.png" id="8_eypti"]
-[ext_resource type="Texture2D" uid="uid://bm8c3kn3i4334" path="res://assets/PopupMenu/ButtonsHighlighted/quitHighlighted.png" id="9_7wjqf"]
+[ext_resource type="Texture2D" uid="uid://dieyqshddux6m" path="res://assets/popupMenu/paused_backsplash.png" id="3_2rsru"]
+[ext_resource type="Texture2D" uid="uid://h6msqtwiybkk" path="res://assets/popupMenu/ButtonsDefault/resumeDefault.png" id="4_ttg34"]
+[ext_resource type="Texture2D" uid="uid://c14gx5u1sq1qs" path="res://assets/popupMenu/ButtonsHighlighted/resumeHighlighted.png" id="5_hgu3o"]
+[ext_resource type="Texture2D" uid="uid://bomu42lm0njq7" path="res://assets/popupMenu/ButtonsDefault/mainMenuDefault.png" id="6_upwmg"]
+[ext_resource type="Texture2D" uid="uid://07ca2drk84km" path="res://assets/popupMenu/ButtonsHighlighted/mainMenuHighlighted.png" id="7_1afwy"]
+[ext_resource type="Texture2D" uid="uid://q2lloph1x2af" path="res://assets/popupMenu/ButtonsDefault/quitDefault.png" id="8_eypti"]
+[ext_resource type="Texture2D" uid="uid://bm8c3kn3i4334" path="res://assets/popupMenu/ButtonsHighlighted/quitHighlighted.png" id="9_7wjqf"]
+[ext_resource type="AudioStream" uid="uid://cxw4ddca3786y" path="res://SFX/hover.wav" id="9_ttg34"]
 
 [node name="PauseMenu" type="Control" unique_id=1004427110]
 process_mode = 3
@@ -67,6 +68,12 @@ offset_bottom = 329.0
 texture_normal = ExtResource("8_eypti")
 texture_hover = ExtResource("9_7wjqf")
 
+[node name="Hover" type="AudioStreamPlayer" parent="PanelContainer/ButtonManager" unique_id=492218018]
+stream = ExtResource("9_ttg34")
+
+[connection signal="mouse_entered" from="PanelContainer/ButtonManager/Resume" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="PanelContainer/ButtonManager/Resume" to="." method="_on_resume_pressed"]
+[connection signal="mouse_entered" from="PanelContainer/ButtonManager/Main Menu" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="PanelContainer/ButtonManager/Main Menu" to="." method="_on_main_menu_pressed"]
+[connection signal="mouse_entered" from="PanelContainer/ButtonManager/Quit" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="PanelContainer/ButtonManager/Quit" to="." method="_on_quit_pressed"]

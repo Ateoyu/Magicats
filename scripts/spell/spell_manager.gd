@@ -26,5 +26,4 @@ func upgrade_spell(spell: Spell):
 	if spell.level == 0:
 		equipped_spells.append(spell)
 	spell.level += 1
-	print("Spell levelled up")
-	# logic for upgrades..
+	# TODO: Implement logic for upgrading spells

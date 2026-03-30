@@ -3,6 +3,7 @@ extends Node
 const SAVE_PATH: String = "user://savegame.dat"
 const SETTINGS_PATH: String = "user://settings.cfg"
 
+var experience_manager: ExperienceManager = null
 var player: Player = null
 var enemy_spawner: Node2D = null
 var loot_base: Node2D = null
@@ -36,6 +37,9 @@ func load_display_settings() -> Dictionary:
 func set_player(p: Player) -> void:
 	player = p
 
+func set_experience_manager(m: ExperienceManager) -> void:
+	experience_manager = m
+
 func set_enemy_spawner(e: Node2D) -> void:
 	enemy_spawner = e
 
@@ -48,13 +52,12 @@ func has_save_file() -> bool:
 func new_game() -> void:
 	if player:
 		player.current_health = player.max_health
-		player.experience = 0
-		player.experience_level = 1
-		player.collected_experience = 0
 		player.position = Vector2(0, 0) 
 		player.health_changed.emit()
-		player.update_experience_bar.emit()
-
+		
+	if experience_manager:
+			experience_manager.reset()
+	
 	if enemy_spawner:
 		enemy_spawner.time = 0
 		for spawn in enemy_spawner.spawns:
@@ -84,12 +87,10 @@ func save_game() -> void:
 		"player": {
 			"current_health": player.current_health,
 			"max_health": player.max_health,
-			"experience": player.experience,
-			"experience_level": player.experience_level,
-			"collected_experience": player.collected_experience,
 			"position": {"x": player.position.x, "y": player.position.y},
 			#"spells":
 		},
+		"experience_manager": get_experience_manager_data(),
 		"enemy_spawner": get_enemy_spawner_data(),
 		"enemies": get_alive_enemies_data(),
 		"loot": get_uncollected_loot_data()
@@ -114,6 +115,9 @@ func load_game() -> bool:
 		if save_data:
 			load_player_data(save_data["player"])
 			
+			if save_data.has("experience_manager"):
+				load_experience_manager_data(save_data["experience_manager"])
+			
 			if save_data.has("enemy_spawner"):
 				load_spawner_data(save_data["enemy_spawner"])
 			
@@ -123,6 +127,7 @@ func load_game() -> bool:
 			if save_data.has("loot"):
 				load_loot_data(save_data["loot"])
 			
+			experience_manager.update_experience_bar.emit()
 			return true
 	return false
 
@@ -131,14 +136,20 @@ func load_player_data(player_data: Dictionary) -> void:
 		return
 	player.current_health = player_data["current_health"]
 	player.max_health = player_data["max_health"]
-	player.experience = player_data["experience"]
-	player.experience_level = player_data["experience_level"]
-	player.collected_experience = player_data["collected_experience"]
 	player.position = Vector2(player_data["position"]["x"], player_data["position"]["y"])
-	
+
 	player.health_changed.emit()
-	player.update_experience_bar.emit()
+	experience_manager.update_experience_bar.emit()
 	
+func load_experience_manager_data(exp_manager_data: Dictionary) -> void:
+	if experience_manager == null:
+		return
+	
+	experience_manager.experience = exp_manager_data["experience"]
+	experience_manager.experience_level = exp_manager_data["experience_level"]
+	experience_manager.collected_experience  = exp_manager_data["collected_experience"]
+	experience_manager.update_experience_bar.emit()
+
 func load_spawner_data(spawner_data: Dictionary) -> void:
 	if enemy_spawner == null:
 		return
@@ -148,6 +159,15 @@ func load_spawner_data(spawner_data: Dictionary) -> void:
 	
 	if spawner_data.has("spawn_delays"):
 		enemy_spawner.set_spawn_delays(spawner_data["spawn_delays"])
+
+func get_experience_manager_data() -> Dictionary:
+	if experience_manager == null:
+		return {}
+	return {
+		"experience": experience_manager.experience,
+		"experience_level": experience_manager.experience_level,
+		"collected_experience": experience_manager.collected_experience
+	}
 
 func get_enemy_spawner_data() -> Dictionary:
 	if enemy_spawner == null:

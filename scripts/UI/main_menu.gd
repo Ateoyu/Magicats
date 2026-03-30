@@ -4,6 +4,8 @@ var button_type = null
 var waiting_for_confirmation: bool = false
 @onready var confirmation_dialog: ConfirmationDialog = $ConfirmationDialog
 
+@onready var hover_sound: AudioStreamPlayer = $PanelContainer/ButtonManager/Hover
+
 func _ready() -> void:
 	var saved_settings = GameManager.load_display_settings()
 	get_window().size = saved_settings["resolution"]
@@ -61,3 +63,6 @@ func _on_confirmation_dialog_confirmed() -> void:
 
 func _on_confirmation_dialog_canceled() -> void:
 	waiting_for_confirmation = false
+
+func _on_button_mouse_entered() -> void:
+	hover_sound.play()

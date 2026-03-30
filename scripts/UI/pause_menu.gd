@@ -2,6 +2,8 @@ extends Control
 
 @onready var level_up_menu: Control = %LevelUpMenu
 
+@onready var hover_sound: AudioStreamPlayer = $PanelContainer/ButtonManager/Hover
+
 func _ready():
 	hide()
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -35,3 +37,6 @@ func _on_main_menu_pressed() -> void:
 func _on_quit_pressed() -> void:
 	GameManager.save_game()
 	get_tree().quit()
+
+func _on_button_mouse_entered() -> void:
+	hover_sound.play()

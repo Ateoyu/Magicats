@@ -1,44 +1,48 @@
 [gd_scene format=3 uid="uid://cpcd5q7jth03p"]
 
+[ext_resource type="Texture2D" uid="uid://dcwwnga1fgdjy" path="res://assets/popupMenu/plank.png" id="1_2mj8y"]
 [ext_resource type="Script" uid="uid://blsamcxt4ub1f" path="res://scripts/UI/upgrade_option.gd" id="1_7iuiw"]
+[ext_resource type="AudioStream" uid="uid://cxw4ddca3786y" path="res://SFX/hover.wav" id="2_8qye5"]
 
-[node name="UpgradeOption" type="ColorRect" unique_id=394927220]
+[node name="UpgradeOption" type="TextureRect" unique_id=749649769]
 light_mask = 16
 visibility_layer = 16
-custom_minimum_size = Vector2(185, 65)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -967.0
-offset_bottom = -583.0
+offset_left = -107.0
+offset_top = -19.0
+offset_right = -862.0
+offset_bottom = -517.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.30448082, 0.30587727, 0.3096956, 1)
+texture = ExtResource("1_2mj8y")
 script = ExtResource("1_7iuiw")
 
-[node name="UpgradeIcon" type="ColorRect" parent="." unique_id=1018007190]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1403375290]
 layout_mode = 0
-offset_left = 6.0
-offset_top = 5.0
-offset_right = 40.0
-offset_bottom = 39.0
-color = Color(0, 0, 0, 1)
+offset_left = 33.0
+offset_top = 43.0
+offset_right = 368.0
+offset_bottom = 107.0
 
-[node name="UpgradeName" type="Label" parent="." unique_id=723217474]
-layout_mode = 0
-offset_left = 45.0
-offset_top = 3.0
-offset_right = 149.0
-offset_bottom = 26.0
+[node name="UpgradeIcon" type="TextureRect" parent="HBoxContainer" unique_id=1244078736]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=2103502848]
+layout_mode = 2
+
+[node name="UpgradeName" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=723217474]
+layout_mode = 2
 text = "Name"
 
-[node name="UpgradeDescription" type="Label" parent="." unique_id=1736774944]
-layout_mode = 0
-offset_left = 46.0
-offset_top = 28.0
-offset_right = 139.0
-offset_bottom = 51.0
-scale = Vector2(0.55587834, 0.55587834)
+[node name="UpgradeDescription" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=1736774944]
+layout_mode = 2
 text = "Description"
 
+[node name="Hover" type="AudioStreamPlayer" parent="." unique_id=1649965265]
+stream = ExtResource("2_8qye5")
+
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

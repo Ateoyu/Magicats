@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://5ag2gqi6rtq1"]
 
 [ext_resource type="Script" uid="uid://dtsqeciait5jv" path="res://scripts/UI/level_up_menu.gd" id="1_756vm"]
-[ext_resource type="Texture2D" uid="uid://xfbs7nmy1o30" path="res://assets/PopupMenu/level_up_backsplash.png" id="1_eedwy"]
+[ext_resource type="Texture2D" uid="uid://xfbs7nmy1o30" path="res://assets/popupMenu/level_up_backsplash.png" id="1_eedwy"]
+[ext_resource type="AudioStream" uid="uid://d3bvmvg3arqpx" path="res://SFX/level_up.wav" id="3_hhfjv"]
 
 [node name="LevelUpMenu" type="Control" unique_id=1672626486]
 process_mode = 3
@@ -32,13 +33,18 @@ texture = ExtResource("1_eedwy")
 [node name="UpgradeOptions" type="VBoxContainer" parent="LevelUpPanel" unique_id=1262124721]
 light_mask = 16
 visibility_layer = 16
+custom_minimum_size = Vector2(250, 320)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.45100003
 anchor_top = 0.27
 anchor_right = 0.45100003
 anchor_bottom = 0.27
-offset_left = -71.88951
-offset_top = 2.9033508
-offset_right = 178.39014
-offset_bottom = 322.9688
+offset_left = -163.33786
+offset_top = -15.845245
+offset_right = 86.66214
+offset_bottom = 304.15472
+scale = Vector2(1.5782896, 1.2329639)
+
+[node name="LevelUp" type="AudioStreamPlayer" parent="." unique_id=1083350233]
+stream = ExtResource("3_hhfjv")

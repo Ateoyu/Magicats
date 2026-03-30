@@ -33,12 +33,16 @@ naming/script_name_casing=4
 [file_customization]
 
 folder_colors={
-"res://assets/MainMenu/": "red",
-"res://assets/MainMenu/ButtonsDefault/": "red",
-"res://assets/MainMenu/ButtonsHighlighted/": "red",
-"res://assets/PopupMenu/": "red",
-"res://assets/pickups/": "yellow",
-"res://assets/pixelArtTopDownAssetsPack/": "orange",
+"res://SFX/": "purple",
+"res://assets/": "red",
+"res://assets/enemy/": "red",
+"res://assets/mainMenu/": "red",
+"res://assets/mainMenu/ButtonsDefault/": "red",
+"res://assets/mainMenu/ButtonsHighlighted/": "red",
+"res://assets/pickups/": "red",
+"res://assets/pixelArtTopDownAssetsPack/": "red",
+"res://assets/popupMenu/": "red",
+"res://assets/spell/": "red",
 "res://scenes/": "teal",
 "res://scripts/": "blue"
 }

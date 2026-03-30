@@ -2,6 +2,8 @@ extends Control
 
 @export var player: Player
 
+@onready var hover_sound: AudioStreamPlayer = $LevelUpPanel/ButtonManager/Hover
+
 func _ready():
 	hide()
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -23,3 +25,6 @@ func _on_main_menu_pressed() -> void:
 	GameManager.delete_save_file()
 	hide()
 	get_tree().change_scene_to_file("res://scenes/menu/mainMenu.tscn")
+
+func _on_button_mouse_entered() -> void:
+	hover_sound.play()

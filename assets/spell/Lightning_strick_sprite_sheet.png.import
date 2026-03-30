@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcy337j7jcx4w"
-path="res://.godot/imported/enemyRatSpriteSheet.png-827265afff46fb6cc261f2a224839faa.ctex"
+uid="uid://dwddkccfkuckf"
+path="res://.godot/imported/Lightning_strick_sprite_sheet.png-990dd6ead204217e563dbc04847f9e6f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemyRatSpriteSheet.png"
-dest_files=["res://.godot/imported/enemyRatSpriteSheet.png-827265afff46fb6cc261f2a224839faa.ctex"]
+source_file="res://assets/spell/Lightning_strick_sprite_sheet.png"
+dest_files=["res://.godot/imported/Lightning_strick_sprite_sheet.png-990dd6ead204217e563dbc04847f9e6f.ctex"]
 
 [params]
 

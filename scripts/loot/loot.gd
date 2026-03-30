@@ -26,6 +26,10 @@ func _physics_process(delta: float) -> void:
 		speed += 3 * delta
 
 func collect() -> int:
+	play_collect_sound_effect()
 	collision.call_deferred("set", "disabled", true)
 	queue_free()
 	return pickup_value	
+
+func play_collect_sound_effect() -> void:
+	pass

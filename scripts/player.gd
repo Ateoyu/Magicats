@@ -3,25 +3,23 @@ extends CharacterBody2D
 
 signal player_died
 signal health_changed
-signal update_experience_bar
 
 @export var movement_speed: float = 250
-@export var max_health: int = 100
+@export var max_health: int = 100:
+	set(value):
+		max_health = value
+		health_changed.emit()
 @onready var current_health: int = max_health
 @onready var sprite: AnimatedSprite2D = %sprite
 
 @onready var spell_manager: SpellManager = $SpellManager
 
-var experience: int = 0
-var experience_level: int = 1
-var collected_experience: int = 0
+@onready var collect_experience_gem_sound: AudioStreamPlayer = $CollectXp
+@onready var collect_health_sound: AudioStreamPlayer = $CollectHealth
 
 var enemy_close: Array[Enemy] = []
 
 var character_direction: Vector2
-
-func _ready() -> void:
-	update_experience_bar.emit()
 
 func _physics_process(_delta: float) -> void:
 	character_direction.x = Input.get_axis("move_left", "move_right")
@@ -66,8 +64,11 @@ func _on_pickup_range_area_area_entered(area: Area2D) -> void:
 func _on_collection_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("loot"):
 		if area is ExperienceGem:
-			ExperienceManager.add_experience(area.collect())
+			collect_experience_gem_sound.play()
+			var exp_value = area.collect()
+			ExperienceManager.add_experience(exp_value)
 		elif area is HealthItem:
+			collect_health_sound.play()
 			heal(area.collect())
 
 func _on_enemy_detection_area_body_entered(body: Node2D) -> void:	

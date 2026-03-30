@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://8d715aomh1ln"
-path="res://.godot/imported/ice_spear.png-b6aedc1e50df70ab7aed5453b2b50bac.ctex"
+path="res://.godot/imported/ice_spear.png-044da243b4fe12456b0cf1ceebab6d3b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ice_spear.png"
-dest_files=["res://.godot/imported/ice_spear.png-b6aedc1e50df70ab7aed5453b2b50bac.ctex"]
+source_file="res://assets/spell/ice_spear.png"
+dest_files=["res://.godot/imported/ice_spear.png-044da243b4fe12456b0cf1ceebab6d3b.ctex"]
 
 [params]
 

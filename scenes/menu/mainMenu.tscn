@@ -1,16 +1,17 @@
 [gd_scene format=3 uid="uid://cea1sc4qofuos"]
 
 [ext_resource type="Script" uid="uid://lekjychlp37n" path="res://scripts/UI/main_menu.gd" id="1_1ynf8"]
-[ext_resource type="Texture2D" uid="uid://bqu51y12la6ct" path="res://assets/MainMenu/Background.png" id="2_r3v84"]
-[ext_resource type="Texture2D" uid="uid://cn86ua8vo4ue8" path="res://assets/MainMenu/ButtonsDefault/continueDefault.png" id="3_mwrku"]
-[ext_resource type="Texture2D" uid="uid://c6k78mfy3qlcw" path="res://assets/MainMenu/ButtonsHighlighted/continueHighlighted.png" id="4_ip6k8"]
-[ext_resource type="Texture2D" uid="uid://sy4dwc3nireq" path="res://assets/MainMenu/ButtonsDefault/newGameDefault.png" id="5_1xhek"]
-[ext_resource type="Texture2D" uid="uid://7ru318o6ajy3" path="res://assets/MainMenu/ButtonsDefault/optionsDefault.png" id="5_q2vti"]
-[ext_resource type="Texture2D" uid="uid://dqsp5w5y4kg2x" path="res://assets/MainMenu/ButtonsHighlighted/optionsHighlighted.png" id="6_1xhek"]
-[ext_resource type="Texture2D" uid="uid://dehm42s54elw7" path="res://assets/MainMenu/ButtonsHighlighted/newGameHighlighted.png" id="6_3iqac"]
-[ext_resource type="Texture2D" uid="uid://oqa8gwwj484m" path="res://assets/MainMenu/ButtonsDefault/quitDefault.png" id="7_3iqac"]
-[ext_resource type="Texture2D" uid="uid://cam57adkvmaoc" path="res://assets/MainMenu/ButtonsHighlighted/quitHighlighted.png" id="8_4ngqc"]
+[ext_resource type="Texture2D" uid="uid://bqu51y12la6ct" path="res://assets/mainMenu/Background.png" id="2_r3v84"]
+[ext_resource type="Texture2D" uid="uid://cn86ua8vo4ue8" path="res://assets/mainMenu/ButtonsDefault/continueDefault.png" id="3_mwrku"]
+[ext_resource type="Texture2D" uid="uid://c6k78mfy3qlcw" path="res://assets/mainMenu/ButtonsHighlighted/continueHighlighted.png" id="4_ip6k8"]
+[ext_resource type="Texture2D" uid="uid://sy4dwc3nireq" path="res://assets/mainMenu/ButtonsDefault/newGameDefault.png" id="5_1xhek"]
+[ext_resource type="Texture2D" uid="uid://7ru318o6ajy3" path="res://assets/mainMenu/ButtonsDefault/optionsDefault.png" id="5_q2vti"]
+[ext_resource type="Texture2D" uid="uid://dqsp5w5y4kg2x" path="res://assets/mainMenu/ButtonsHighlighted/optionsHighlighted.png" id="6_1xhek"]
+[ext_resource type="Texture2D" uid="uid://dehm42s54elw7" path="res://assets/mainMenu/ButtonsHighlighted/newGameHighlighted.png" id="6_3iqac"]
+[ext_resource type="Texture2D" uid="uid://oqa8gwwj484m" path="res://assets/mainMenu/ButtonsDefault/quitDefault.png" id="7_3iqac"]
+[ext_resource type="Texture2D" uid="uid://cam57adkvmaoc" path="res://assets/mainMenu/ButtonsHighlighted/quitHighlighted.png" id="8_4ngqc"]
 [ext_resource type="PackedScene" uid="uid://sa8ec4kudve1" path="res://scenes/fadeTransition.tscn" id="9_eowgv"]
+[ext_resource type="AudioStream" uid="uid://cxw4ddca3786y" path="res://SFX/hover.wav" id="11_q2vti"]
 
 [node name="MainMenu" type="Node2D" unique_id=657582238]
 script = ExtResource("1_1ynf8")
@@ -74,6 +75,9 @@ scale = Vector2(1.4905376, 1.4905376)
 texture_normal = ExtResource("7_3iqac")
 texture_hover = ExtResource("8_4ngqc")
 
+[node name="Hover" type="AudioStreamPlayer" parent="PanelContainer/ButtonManager" unique_id=524487581]
+stream = ExtResource("11_q2vti")
+
 [node name="Fade_transition" parent="." unique_id=1200209534 instance=ExtResource("9_eowgv")]
 visible = false
 offset_left = -7.0
@@ -87,9 +91,13 @@ offset_bottom = 657.0
 oversampling_override = 1.0
 position = Vector2i(0, 36)
 
+[connection signal="mouse_entered" from="PanelContainer/ButtonManager/Continue" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="PanelContainer/ButtonManager/Continue" to="." method="_on_continue_pressed"]
+[connection signal="mouse_entered" from="PanelContainer/ButtonManager/New Game" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="PanelContainer/ButtonManager/New Game" to="." method="_on_new_game_pressed"]
+[connection signal="mouse_entered" from="PanelContainer/ButtonManager/Options" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="PanelContainer/ButtonManager/Options" to="." method="_on_options_pressed"]
+[connection signal="mouse_entered" from="PanelContainer/ButtonManager/Quit" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="PanelContainer/ButtonManager/Quit" to="." method="_on_quit_pressed"]
 [connection signal="timeout" from="Fade_transition/Fade_timer" to="." method="_on_fade_timer_timeout"]
 [connection signal="canceled" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_canceled"]
