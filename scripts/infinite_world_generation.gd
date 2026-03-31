@@ -1,18 +1,20 @@
 extends TileMapLayer
 
-var moisture: FastNoiseLite = FastNoiseLite.new()
-var temperature: FastNoiseLite = FastNoiseLite.new()
-var altitude: FastNoiseLite = FastNoiseLite.new()
-
 const CHUNK_SIZE: int = 256
 const TILE_SIZE: int = 32
 const CHUNK_LOAD_THRESHOLD: int = 2000
-const WATER_THRESHOLD: float = -0.5
 
-const SOURCE_GRASS: int = 0
-const SOURCE_WATER: int = 1
-var grass_tiles: Array[Vector2i] = []
-var water_tiles: Array[Vector2i] = []
+const SOURCE_REGULAR_GRASS: int = 0
+const SOURCE_FLOWER_GRASS: int = 1
+const SOURCE_STONE_SLABS: int = 2
+
+var regular_grass_tiles: Array[Vector2i] = []
+var flower_grass_tiles: Array[Vector2i] = []
+var stone_path_tiles: Array[Vector2i] = []
+
+# Noise for blob generation (Stone Paths)
+var path_noise: FastNoiseLite = FastNoiseLite.new()
+const PATH_THRESHOLD: float = 0.4 # Adjust this for path rarity (higher = rarer)
 
 @onready var player: Player = GameManager.player
 
@@ -20,32 +22,31 @@ var generated_chunks: Dictionary[Variant, Variant] = {}
 var chunk_queue: Array[Variant] = []
 
 func _ready() -> void:
-	if tile_set:
-		var source_grass: TileSetAtlasSource = tile_set.get_source(SOURCE_GRASS)
-		if source_grass:
-			for i in range(source_grass.get_tiles_count()):
-				grass_tiles.append(source_grass.get_tile_id(i))
-				
-		var source_water: TileSetAtlasSource = tile_set.get_source(SOURCE_WATER)
-		if source_water:
-			for i in range(source_water.get_tiles_count()):
-				water_tiles.append(source_water.get_tile_id(i))
+	# Initialize noise for paths
+	path_noise.seed = randi()
+	path_noise.frequency = 0.03 # Low frequency creates larger, smoother blobs
 	
-	initialise_noise()
+	if tile_set:
+		var source_regular: TileSetAtlasSource = tile_set.get_source(SOURCE_REGULAR_GRASS)
+		if source_regular:
+			for i in range(source_regular.get_tiles_count()):
+				regular_grass_tiles.append(source_regular.get_tile_id(i))
+				
+		var source_flower: TileSetAtlasSource = tile_set.get_source(SOURCE_FLOWER_GRASS)
+		if source_flower:
+			for i in range(source_flower.get_tiles_count()):
+				flower_grass_tiles.append(source_flower.get_tile_id(i))
+				
+		var source_stone: TileSetAtlasSource = tile_set.get_source(SOURCE_STONE_SLABS)
+		if source_stone:
+			for i in range(source_stone.get_tiles_count()):
+				stone_path_tiles.append(source_stone.get_tile_id(i))
+	
 	generate_chunk(Vector2i(0, 0))
 
 func _physics_process(delta: float) -> void:
 	check_chunk_loading() # Check if we need a new chunk
 	process_chunk_queue() # Process chunks gradually
-	
-func initialise_noise() -> void:
-	moisture.seed = randi()
-	temperature.seed = randi()
-	
-	altitude.seed = randi()
-	altitude.frequency = 0.05
-	altitude.fractal_type = FastNoiseLite.FRACTAL_FBM
-	altitude.fractal_octaves = 2
 	
 func generate_chunk(chunk_position: Vector2i) -> void:
 	if chunk_position in generated_chunks:
@@ -66,17 +67,27 @@ func process_chunk_queue() -> void:
 			var world_x = chunk_offset.x + x
 			var world_y = chunk_offset.y + y
 			
-			var altitude_value: float = altitude.get_noise_2d(world_x, world_y)
-			
 			var source_id: int
 			var atlas_coord: Vector2i
 			
-			if altitude_value < WATER_THRESHOLD:
-				source_id = SOURCE_WATER
-				atlas_coord = water_tiles[randi() % water_tiles.size()] if not water_tiles.is_empty() else Vector2i(0, 0)
+			# 1. Determine if this cell is part of a Stone Path "Blob"
+			var noise_val = path_noise.get_noise_2d(world_x, world_y)
+			
+			if noise_val > PATH_THRESHOLD and not stone_path_tiles.is_empty():
+				# It's a stone path blob
+				source_id = SOURCE_STONE_SLABS
+				atlas_coord = stone_path_tiles.pick_random()
 			else:
-				source_id = SOURCE_GRASS
-				atlas_coord = grass_tiles[randi() % grass_tiles.size()] if not grass_tiles.is_empty() else Vector2i(0, 0)
+				# 2. It's regular ground. Apply weights for Flowers vs Grass
+				var spawn_chance = randf()
+				if spawn_chance < 0.15 and not flower_grass_tiles.is_empty():
+					# 15% chance for flowers
+					source_id = SOURCE_FLOWER_GRASS
+					atlas_coord = flower_grass_tiles.pick_random()
+				else:
+					# 85% chance for regular grass
+					source_id = SOURCE_REGULAR_GRASS
+					atlas_coord = regular_grass_tiles.pick_random() if not regular_grass_tiles.is_empty() else Vector2i(0, 0)
 			
 			set_cell(Vector2i(world_x, world_y), source_id, atlas_coord, 0)
 	
