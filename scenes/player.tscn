@@ -123,9 +123,11 @@ shape = SubResource("RectangleShape2D_qhqgy")
 
 [node name="CollectXp" type="AudioStreamPlayer" parent="." unique_id=69773849]
 stream = ExtResource("7_smehm")
+bus = &"SFX"
 
 [node name="CollectHealth" type="AudioStreamPlayer" parent="." unique_id=1080822620]
 stream = ExtResource("8_ur7pv")
+bus = &"SFX"
 
 [connection signal="area_entered" from="PickupRangeArea" to="." method="_on_pickup_range_area_area_entered"]
 [connection signal="area_entered" from="CollectionArea" to="." method="_on_collection_area_area_entered"]

@@ -77,6 +77,7 @@ texture_hover = ExtResource("8_4ngqc")
 
 [node name="Hover" type="AudioStreamPlayer" parent="PanelContainer/ButtonManager" unique_id=524487581]
 stream = ExtResource("11_q2vti")
+bus = &"SFX"
 
 [node name="Fade_transition" parent="." unique_id=1200209534 instance=ExtResource("9_eowgv")]
 visible = false
