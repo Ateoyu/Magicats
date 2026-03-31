@@ -12,7 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -107.0
 offset_top = -19.0
-offset_right = -862.0
+offset_right = -859.0
 offset_bottom = -517.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -43,6 +43,7 @@ text = "Description"
 
 [node name="Hover" type="AudioStreamPlayer" parent="." unique_id=1649965265]
 stream = ExtResource("2_8qye5")
+bus = &"SFX"
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

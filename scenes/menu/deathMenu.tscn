@@ -58,6 +58,7 @@ texture_hover = ExtResource("6_h1fr3")
 
 [node name="Hover" type="AudioStreamPlayer" parent="LevelUpPanel/ButtonManager" unique_id=636505070]
 stream = ExtResource("7_gpd6k")
+bus = &"SFX"
 
 [connection signal="mouse_entered" from="LevelUpPanel/ButtonManager/Restart" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="LevelUpPanel/ButtonManager/Restart" to="." method="_on_restart_pressed"]

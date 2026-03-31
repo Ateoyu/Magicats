@@ -48,3 +48,4 @@ scale = Vector2(1.5782896, 1.2329639)
 
 [node name="LevelUp" type="AudioStreamPlayer" parent="." unique_id=1083350233]
 stream = ExtResource("3_hhfjv")
+bus = &"SFX"

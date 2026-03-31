@@ -19,6 +19,16 @@ func save_display_settings(resolution: Vector2i, display_mode: int) -> void:
 	
 	config.save(SETTINGS_PATH)
 
+func save_sound_settings(master_volume: float, sfx_volume: float) -> void:
+	var config = ConfigFile.new()
+	
+	config.load(SETTINGS_PATH)
+	
+	config.set_value("sound", "master_volume", master_volume)
+	config.set_value("sound", "sfx_volume", sfx_volume)
+	
+	config.save(SETTINGS_PATH)
+
 func load_display_settings() -> Dictionary:
 	var config = ConfigFile.new()
 	var settings = {
@@ -31,6 +41,19 @@ func load_display_settings() -> Dictionary:
 		var resolution_y = config.get_value("display", "resolution_y", 1080)
 		settings["resolution"] = Vector2i(resolution_x, resolution_y)
 		settings["display_mode"] = config.get_value("display", "display_mode", Window.MODE_WINDOWED)
+	
+	return settings
+
+func load_sound_settings() -> Dictionary:
+	var config = ConfigFile.new()
+	var settings = {
+		"master_volume": 1.0,
+		"sfx_volume": 1.0,
+	}
+	
+	if config.load(SETTINGS_PATH) == OK:
+		settings["master_volume"] = config.get_value("sound", "master_volume", 1.0)
+		settings["sfx_volume"] = config.get_value("sound", "sfx_volume", 1.0)
 	
 	return settings
 
