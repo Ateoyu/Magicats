@@ -7,7 +7,7 @@ var lightning_projectile: PackedScene = preload("res://scenes/spell/lightningStr
 
 func _init(p_spell_manager: Node2D = null, p_player: CharacterBody2D = null) -> void:
 	super("Lightning Strike", 1, 10, 2.0, p_spell_manager, p_player)
-	self.projectile_count = 3
+	self.projectile_count = 1
 	self.aoe_radius = 50.0
 
 func cast() -> void:

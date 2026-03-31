@@ -7,13 +7,13 @@ const CHUNK_LOAD_THRESHOLD: int = 2000
 const SOURCE_REGULAR_GRASS: int = 0
 const SOURCE_FLOWER_GRASS: int = 1
 const SOURCE_STONE_SLABS: int = 2
+const FLOWER_GRASS_CHANCE: float = 0.15
 
 var regular_grass_tiles: Array[Vector2i] = []
 var flower_grass_tiles: Array[Vector2i] = []
 var stone_path_tiles: Array[Vector2i] = []
 
-# Noise for blob generation (Stone Paths)
-var path_noise: FastNoiseLite = FastNoiseLite.new()
+var path_noise: FastNoiseLite = FastNoiseLite.new() # Noise for blob generation (Stone Paths)
 const PATH_THRESHOLD: float = 0.4 # Adjust this for path rarity (higher = rarer)
 
 @onready var player: Player = GameManager.player
@@ -22,8 +22,7 @@ var generated_chunks: Dictionary[Variant, Variant] = {}
 var chunk_queue: Array[Variant] = []
 
 func _ready() -> void:
-	# Initialize noise for paths
-	path_noise.seed = randi()
+	path_noise.seed = randi() 	# Initialize noise for paths
 	path_noise.frequency = 0.03 # Low frequency creates larger, smoother blobs
 	
 	if tile_set:
@@ -43,6 +42,7 @@ func _ready() -> void:
 				stone_path_tiles.append(source_stone.get_tile_id(i))
 	
 	generate_chunk(Vector2i(0, 0))
+	generate_chunk(Vector2i(-1, -1))
 
 func _physics_process(delta: float) -> void:
 	check_chunk_loading() # Check if we need a new chunk
@@ -55,7 +55,6 @@ func generate_chunk(chunk_position: Vector2i) -> void:
 	chunk_queue.append(chunk_position)
 	
 func process_chunk_queue() -> void:
-
 	if chunk_queue.is_empty():
 		return
 	
@@ -70,22 +69,18 @@ func process_chunk_queue() -> void:
 			var source_id: int
 			var atlas_coord: Vector2i
 			
-			# 1. Determine if this cell is part of a Stone Path "Blob"
-			var noise_val = path_noise.get_noise_2d(world_x, world_y)
+			# Determine if this cell is part of a Stone Path "Blob"
+			var noise_val: float = path_noise.get_noise_2d(world_x, world_y)
 			
 			if noise_val > PATH_THRESHOLD and not stone_path_tiles.is_empty():
-				# It's a stone path blob
 				source_id = SOURCE_STONE_SLABS
 				atlas_coord = stone_path_tiles.pick_random()
 			else:
-				# 2. It's regular ground. Apply weights for Flowers vs Grass
-				var spawn_chance = randf()
-				if spawn_chance < 0.15 and not flower_grass_tiles.is_empty():
-					# 15% chance for flowers
+				var spawn_chance: float = randf()
+				if spawn_chance < FLOWER_GRASS_CHANCE and not flower_grass_tiles.is_empty():
 					source_id = SOURCE_FLOWER_GRASS
 					atlas_coord = flower_grass_tiles.pick_random()
 				else:
-					# 85% chance for regular grass
 					source_id = SOURCE_REGULAR_GRASS
 					atlas_coord = regular_grass_tiles.pick_random() if not regular_grass_tiles.is_empty() else Vector2i(0, 0)
 			
