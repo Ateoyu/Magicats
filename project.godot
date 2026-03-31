@@ -22,7 +22,6 @@ GameManager="*uid://belhu84l6mjfm"
 
 [display]
 
-window/size/borderless=true
 window/stretch/mode="canvas_items"
 
 [editor]
@@ -101,4 +100,4 @@ move_right={
 
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
-environment/defaults/default_clear_color=Color(0.06719029, 0.12228564, 0.02096647, 1)
+environment/defaults/default_clear_color=Color(0.3019608, 0.3019608, 0.3019608, 0)

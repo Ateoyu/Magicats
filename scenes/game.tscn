@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://wp4bxhujcbjw" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://dcgf1u64ix7fq" path="res://scenes/infiniteWorldGeneration.tscn" id="3_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://sa8ec4kudve1" path="res://scenes/fadeTransition.tscn" id="3_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://c201kqm66rjry" path="res://scenes/menu/pauseMenu.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://eandpr60jfjm" path="res://scenes/menu/deathMenu.tscn" id="5_0tnpc"]
@@ -138,8 +139,20 @@ cache/0/25/0/scale = 1.0
 [node name="Game" type="Node2D" unique_id=179032308]
 script = ExtResource("1_lnu2h")
 
+[node name="InfiniteWorldGeneration" parent="." unique_id=2009469228 instance=ExtResource("3_kvpfn")]
+
+[node name="Layer0" type="TileMapLayer" parent="." unique_id=234565971]
+tile_map_data = PackedByteArray(0, 0, 1, 0, 1, 0, 0, 0, 11, 0, 8, 0, 0, 0, 251, 255, 2, 0, 0, 0, 11, 0, 5, 0, 0, 0, 251, 255, 252, 255, 0, 0, 11, 0, 5, 0, 0, 0, 7, 0, 2, 0, 0, 0, 11, 0, 5, 0, 0, 0, 7, 0, 252, 255, 0, 0, 11, 0, 5, 0, 0, 0)
+tile_set = SubResource("TileSet_u5sy4")
+
+[node name="Layer1" type="TileMapLayer" parent="." unique_id=645881973]
+tile_map_data = PackedByteArray(0, 0, 1, 0, 255, 255, 0, 0, 13, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_u5sy4")
+
 [node name="Player" parent="." unique_id=38899763 instance=ExtResource("1_uwrxv")]
 unique_name_in_owner = true
+light_mask = 2
+visibility_layer = 2
 position = Vector2(122, 7)
 
 [node name="Fade_transition" parent="." unique_id=1200209534 instance=ExtResource("3_lbhrr")]
@@ -162,14 +175,6 @@ player = NodePath("../../Player")
 
 [node name="LevelUpMenu" parent="CanvasLayer" unique_id=1672626486 instance=ExtResource("6_vtaks")]
 unique_name_in_owner = true
-
-[node name="Layer0" type="TileMapLayer" parent="." unique_id=234565971]
-tile_map_data = PackedByteArray(0, 0, 1, 0, 1, 0, 0, 0, 11, 0, 8, 0, 0, 0, 251, 255, 2, 0, 0, 0, 11, 0, 5, 0, 0, 0, 251, 255, 252, 255, 0, 0, 11, 0, 5, 0, 0, 0, 7, 0, 2, 0, 0, 0, 11, 0, 5, 0, 0, 0, 7, 0, 252, 255, 0, 0, 11, 0, 5, 0, 0, 0)
-tile_set = SubResource("TileSet_u5sy4")
-
-[node name="Layer1" type="TileMapLayer" parent="." unique_id=645881973]
-tile_map_data = PackedByteArray(0, 0, 1, 0, 255, 255, 0, 0, 13, 0, 0, 0, 0, 0)
-tile_set = SubResource("TileSet_u5sy4")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1458710854]
 
