@@ -23,6 +23,7 @@ metadata/_custom_type_script = "uid://bkq5xbyc84gpn"
 
 [sub_resource type="Resource" id="Resource_kcqxw"]
 script = ExtResource("2_tq322")
+time_start = 60
 time_end = 120
 enemy = ExtResource("4_gun4l")
 enemy_num = 5
@@ -39,7 +40,8 @@ metadata/_custom_type_script = "uid://bkq5xbyc84gpn"
 
 [sub_resource type="Resource" id="Resource_rrp6n"]
 script = ExtResource("2_tq322")
-time_end = 120
+time_start = 120
+time_end = 240
 enemy = ExtResource("6_evh8q")
 enemy_num = 3
 enemy_spawn_delay = 3
@@ -47,7 +49,8 @@ metadata/_custom_type_script = "uid://bkq5xbyc84gpn"
 
 [sub_resource type="Resource" id="Resource_l5hko"]
 script = ExtResource("2_tq322")
-time_end = 120
+time_start = 120
+time_end = 240
 enemy = ExtResource("7_rrp6n")
 enemy_num = 3
 enemy_spawn_delay = 5
@@ -55,7 +58,8 @@ metadata/_custom_type_script = "uid://bkq5xbyc84gpn"
 
 [sub_resource type="Resource" id="Resource_slime"]
 script = ExtResource("2_tq322")
-time_end = 180
+time_start = 60
+time_end = 240
 enemy = ExtResource("8_slime")
 enemy_num = 5
 enemy_spawn_delay = 2
@@ -63,6 +67,7 @@ metadata/_custom_type_script = "uid://bkq5xbyc84gpn"
 
 [sub_resource type="Resource" id="Resource_canine"]
 script = ExtResource("2_tq322")
+time_start = 60
 time_end = 240
 enemy = ExtResource("9_canine")
 enemy_num = 4
@@ -71,7 +76,8 @@ metadata/_custom_type_script = "uid://bkq5xbyc84gpn"
 
 [sub_resource type="Resource" id="Resource_fungi"]
 script = ExtResource("2_tq322")
-time_end = 300
+time_start = 180
+time_end = 360
 enemy = ExtResource("10_fungi")
 enemy_num = 4
 enemy_spawn_delay = 3
@@ -79,7 +85,8 @@ metadata/_custom_type_script = "uid://bkq5xbyc84gpn"
 
 [sub_resource type="Resource" id="Resource_necro"]
 script = ExtResource("2_tq322")
-time_end = 400
+time_start = 120
+time_end = 240
 enemy = ExtResource("11_necro")
 enemy_num = 3
 enemy_spawn_delay = 5
@@ -87,6 +94,7 @@ metadata/_custom_type_script = "uid://bkq5xbyc84gpn"
 
 [sub_resource type="Resource" id="Resource_golem"]
 script = ExtResource("2_tq322")
+time_start = 180
 time_end = 600
 enemy = ExtResource("12_golem")
 enemy_num = 2

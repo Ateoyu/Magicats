@@ -3,6 +3,7 @@ extends Control
 @export var player: Player
 
 @onready var hover_sound: AudioStreamPlayer = $LevelUpPanel/ButtonManager/Hover
+@onready var death_sound: AudioStreamPlayer = $DeathSound
 
 func _ready():
 	hide()
@@ -13,6 +14,7 @@ func _ready():
 func _on_player_died():
 	show()
 	get_tree().paused = true
+	death_sound.play()
 
 func _on_restart_pressed() -> void:
 	get_tree().paused = false

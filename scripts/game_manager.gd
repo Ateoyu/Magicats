@@ -74,9 +74,14 @@ func has_save_file() -> bool:
 
 func new_game() -> void:
 	if player:
+		player.max_health = player.default_max_health
+		player.movement_speed = player.default_movement_speed
 		player.current_health = player.max_health
-		player.position = Vector2(0, 0) 
+		player.position = Vector2(0, 0)
 		player.health_changed.emit()
+
+		if player.spell_manager:
+			player.spell_manager.reset()
 		
 	if experience_manager:
 			experience_manager.reset()
@@ -98,6 +103,8 @@ func new_game() -> void:
 	for spell in spells:
 		spell.queue_free()
 
+
+
 func delete_save_file() -> void:
 	if FileAccess.file_exists(SAVE_PATH):
 		DirAccess.remove_absolute(SAVE_PATH)
@@ -110,6 +117,7 @@ func save_game() -> void:
 		"player": {
 			"current_health": player.current_health,
 			"max_health": player.max_health,
+			"movement_speed": player.movement_speed,
 			"position": {"x": player.position.x, "y": player.position.y},
 			"spells": get_spell_data()
 		},
@@ -151,6 +159,7 @@ func load_game() -> bool:
 				load_loot_data(save_data["loot"])
 
 			if save_data.has("spells"):
+				player.spell_manager.reset()
 				load_spell_data(save_data["spells"])
 			
 			experience_manager.update_experience_bar.emit()
@@ -162,6 +171,8 @@ func load_player_data(player_data: Dictionary) -> void:
 		return
 	player.current_health = player_data["current_health"]
 	player.max_health = player_data["max_health"]
+	if player_data.has("movement_speed"):
+		player.movement_speed = player_data["movement_speed"]
 	player.position = Vector2(player_data["position"]["x"], player_data["position"]["y"])
 
 	player.health_changed.emit()

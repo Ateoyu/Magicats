@@ -21,6 +21,12 @@ func append_all_spells_to_list(spell_list: Array) -> void:
 	all_available_spells.append(IceSpear.new(self, player))
 	all_available_spells.append(LightningStrike.new(self, player))
 
+func reset() -> void:
+	all_available_spells.clear()
+	equipped_spells.clear()
+	append_all_spells_to_list(all_available_spells)
+	equipped_spells.append(all_available_spells[0])
+
 func get_upgradable_spells() -> Array[Spell]:
 	return all_available_spells.filter(func(spell): return spell.level < Spell.MAX_LEVEL)
 

@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://cq6fct064x4b3" path="res://scripts/UI/health_bar.gd" id="7_u5sy4"]
 [ext_resource type="Script" uid="uid://bdtspman5dtsn" path="res://scripts/UI/experience_bar.gd" id="8_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://cujjkff1nuw4t" path="res://scenes/enemy/enemySpawner.tscn" id="8_gee14"]
+[ext_resource type="AudioStream" uid="uid://7rpkeohxodsq" path="res://SFX/background/in_game_music.mp3" id="12_dinhu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p57ef"]
 texture = ExtResource("5_iywne")
@@ -232,3 +233,8 @@ player = NodePath("../Player")
 
 [node name="Loot" type="Node2D" parent="." unique_id=1008354775]
 unique_name_in_owner = true
+
+[node name="InGameMusic" type="AudioStreamPlayer" parent="." unique_id=254537463]
+stream = ExtResource("12_dinhu")
+autoplay = true
+parameters/looping = true
