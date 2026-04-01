@@ -6,9 +6,44 @@ var aoe_radius: float
 var lightning_projectile: PackedScene = preload("res://scenes/spell/lightningStrike.tscn")
 
 func _init(p_spell_manager: Node2D = null, p_player: CharacterBody2D = null) -> void:
-	super("Lightning Strike", 1, 10, 2.0, p_spell_manager, p_player)
-	self.projectile_count = 1
-	self.aoe_radius = 50.0
+	super("Lightning Strike", 0, p_spell_manager, p_player)
+	apply_level_stats()
+
+func apply_level_stats() -> void:
+	match level:
+		1:
+			damage = 10
+			cooldown = 2.0
+			projectile_count = 1
+			aoe_radius = 50.0
+		2:
+			damage = 14
+			cooldown = 1.85
+			projectile_count = 1
+			aoe_radius = 60.0
+		3:
+			damage = 18
+			cooldown = 1.7
+			projectile_count = 2
+			aoe_radius = 70.0
+		4:
+			damage = 22
+			cooldown = 1.5
+			projectile_count = 3
+			aoe_radius = 85.0
+		5:
+			damage = 28
+			cooldown = 1.2
+			projectile_count = 5
+			aoe_radius = 110.0
+
+func get_upgrade_description() -> String:
+	match level + 1:
+		2: return "Lightning Strike deals more damage with a wider blast"
+		3: return "Lightning Strike hits 2 targets simultaneously"
+		4: return "Lightning Strike calls down 3 bolts"
+		5: return "Lightning Strike becomes a devastating storm"
+		_: return ""
 
 func cast() -> void:
 	var targets_hit: Array[Enemy] = []

@@ -65,7 +65,7 @@ func level_up() -> void:
 func show_upgrade_choices() -> void:
 	current_upgrade_options.clear()
 	
-	var possible_upgrades = get_possible_upgrades()
+	var possible_upgrades: Array[Upgrade] = get_possible_upgrades()
 	
 	possible_upgrades.shuffle()
 	for i in range(min(3, possible_upgrades.size())):
@@ -77,7 +77,7 @@ func populate_upgrade_options():
 	for child in upgrade_options.get_children():
 		child.queue_free()
 	
-	var scene_path = preload("res://scenes/menu/upgradeOption.tscn")
+	var scene_path: PackedScene = preload("res://scenes/menu/upgradeOption.tscn")
 	for upgrade_option in current_upgrade_options:
 		var upgrade_option_instance = scene_path.instantiate()
 		upgrade_options.add_child(upgrade_option_instance)
@@ -106,7 +106,7 @@ func get_possible_upgrades() -> Array[Upgrade]:
 	var upgrades: Array[Upgrade] = []
 	
 	# TODO: add max amounts / dont show heal if max health
-	var heal_upgrade = Upgrade.new()
+	var heal_upgrade: Upgrade = Upgrade.new()
 	heal_upgrade.upgrade_name = "Heal"
 	heal_upgrade.upgrade_description = "Restore 50 HP"
 	heal_upgrade.upgrade_type = "heal"
@@ -114,7 +114,7 @@ func get_possible_upgrades() -> Array[Upgrade]:
 	heal_upgrade.upgrade_value = 50
 	upgrades.append(heal_upgrade)
 	
-	var hp_upgrade = Upgrade.new()
+	var hp_upgrade: Upgrade = Upgrade.new()
 	hp_upgrade.upgrade_name = "Vitality"
 	hp_upgrade.upgrade_description = "Increase max HP by 20"
 	hp_upgrade.upgrade_type = "max_health"
@@ -122,7 +122,7 @@ func get_possible_upgrades() -> Array[Upgrade]:
 	hp_upgrade.upgrade_value = 20
 	upgrades.append(hp_upgrade)
 	
-	var speed_upgrade = Upgrade.new()
+	var speed_upgrade: Upgrade = Upgrade.new()
 	speed_upgrade.upgrade_name = "Haste"
 	speed_upgrade.upgrade_description = "Increase movement speed by 50"
 	speed_upgrade.upgrade_type = "speed"
@@ -130,10 +130,10 @@ func get_possible_upgrades() -> Array[Upgrade]:
 	speed_upgrade.upgrade_value = 50
 	upgrades.append(speed_upgrade)
 	
-	var available_spells = player.spell_manager.get_upgradable_spells()
+	var available_spells: Array[Spell] = player.spell_manager.get_upgradable_spells()
 	
 	for spell in available_spells:
-		var spell_upgrade = Upgrade.new()
+		var spell_upgrade: Upgrade = Upgrade.new()
 		spell_upgrade.upgrade_name = spell.name
 		spell_upgrade.upgrade_type = "spell_upgrade"
 		spell_upgrade.upgrade_value = spell
@@ -142,7 +142,7 @@ func get_possible_upgrades() -> Array[Upgrade]:
 			spell_upgrade.upgrade_description = "Unlock " + spell.name
 			spell_upgrade.upgrade_icon = load("res://assets/upgradeIcons/new_spell.png")
 		else:
-			spell_upgrade.upgrade_description = "Level up "  + spell.name + " to Level " + str(spell.level + 1)
+			spell_upgrade.upgrade_description = spell.get_upgrade_description()
 			spell_upgrade.upgrade_icon = load("res://assets/upgradeIcons/spell_upgrade.png")
 		
 		upgrades.append(spell_upgrade)

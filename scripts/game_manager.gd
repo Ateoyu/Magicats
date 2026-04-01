@@ -111,7 +111,7 @@ func save_game() -> void:
 			"current_health": player.current_health,
 			"max_health": player.max_health,
 			"position": {"x": player.position.x, "y": player.position.y},
-			#"spells":
+			"spells": get_spell_data()
 		},
 		"experience_manager": get_experience_manager_data(),
 		"enemy_spawner": get_enemy_spawner_data(),
@@ -149,6 +149,9 @@ func load_game() -> bool:
 				
 			if save_data.has("loot"):
 				load_loot_data(save_data["loot"])
+
+			if save_data.has("spells"):
+				load_spell_data(save_data["spells"])
 			
 			experience_manager.update_experience_bar.emit()
 			return true
@@ -270,3 +273,23 @@ func load_loot_data(all_loot_data: Array) -> void:
 			new_loot.pickup_value = loot_item_data["pickup_value"]
 			new_loot.pickup_type = loot_item_data["pickup_type"]
 			loot_base.add_child(new_loot)
+
+func get_spell_data() -> Array:
+	var spell_data: Array = []
+	for spell in player.spell_manager.equipped_spells:
+		spell_data.append({"name": spell.name, "level": spell.level})
+	return spell_data
+
+func load_spell_data(spell_data_array: Array) -> void:
+	if player == null or player.spell_manager == null:
+		return
+	player.spell_manager.equipped_spells.clear()
+	for saved_spell in spell_data_array:
+		for spell in player.spell_manager.all_available_spells:
+			if spell.name == saved_spell["name"]:
+				spell.level = int(saved_spell["level"])
+				if spell.level > 0:
+					spell.spell_manager = player.spell_manager
+					spell.player = player
+					spell.apply_level_stats()
+					player.spell_manager.equipped_spells.append(spell)
