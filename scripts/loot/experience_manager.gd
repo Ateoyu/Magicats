@@ -110,9 +110,9 @@ func get_possible_upgrades() -> Array[Upgrade]:
 	
 	var pickup_range_upgrade: Upgrade = Upgrade.new()
 	pickup_range_upgrade.upgrade_name = "Pickup Range"
-	pickup_range_upgrade.upgrade_description = "Make your gem pickup range bigger by 10!" #TODO: change desc
+	pickup_range_upgrade.upgrade_description = "Extend gem pickup range by 10!"
 	pickup_range_upgrade.upgrade_type = "pickup_range"
-	pickup_range_upgrade.upgrade_icon = load("res://assets/upgradeIcons/heal.png") #TODO: change icon
+	pickup_range_upgrade.upgrade_icon = load("res://assets/upgradeIcons/gem_pickup_upgrade.png")
 	pickup_range_upgrade.upgrade_value = 10
 	upgrades.append(pickup_range_upgrade)
 	
