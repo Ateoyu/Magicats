@@ -102,7 +102,6 @@ enemy_spawn_delay = 8
 metadata/_custom_type_script = "uid://bkq5xbyc84gpn"
 
 [node name="EnemySpawner" type="Node2D" unique_id=294658530]
-position = Vector2(-1, 0)
 script = ExtResource("1_8geys")
 spawns = Array[ExtResource("2_tq322")]([SubResource("Resource_lx5bb"), SubResource("Resource_kcqxw"), SubResource("Resource_evh8q"), SubResource("Resource_rrp6n"), SubResource("Resource_l5hko"), SubResource("Resource_slime"), SubResource("Resource_canine"), SubResource("Resource_fungi"), SubResource("Resource_necro"), SubResource("Resource_golem")])
 

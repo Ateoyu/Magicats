@@ -5,7 +5,7 @@ var projectile_count: int
 var aoe_radius: float
 var lightning_projectile: PackedScene = preload("res://scenes/spell/lightningStrike.tscn")
 
-func _init(p_spell_manager: Node2D = null, p_player: CharacterBody2D = null) -> void:
+func _init(p_spell_manager: Node2D, p_player: CharacterBody2D) -> void:
 	super("Lightning Strike", 0, p_spell_manager, p_player)
 	apply_level_stats()
 
