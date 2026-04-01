@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://eandpr60jfjm"]
 
 [ext_resource type="Script" uid="uid://ewtajg741ao6" path="res://scripts/UI/death_menu.gd" id="1_jdd88"]
-[ext_resource type="Texture2D" uid="uid://bnrg32iya4v6t" path="res://assets/PopupMenu/death_backsplash.png" id="2_gpd6k"]
-[ext_resource type="Texture2D" uid="uid://ug2teeb183kn" path="res://assets/PopupMenu/ButtonsDefault/restartDefault.png" id="3_v0asp"]
-[ext_resource type="Texture2D" uid="uid://cm6b2vmdy3t31" path="res://assets/PopupMenu/ButtonsHighlighted/restartHighlighted.png" id="4_qnccg"]
-[ext_resource type="Texture2D" uid="uid://bomu42lm0njq7" path="res://assets/PopupMenu/ButtonsDefault/mainMenuDefault.png" id="5_625lk"]
-[ext_resource type="Texture2D" uid="uid://07ca2drk84km" path="res://assets/PopupMenu/ButtonsHighlighted/mainMenuHighlighted.png" id="6_h1fr3"]
+[ext_resource type="Texture2D" uid="uid://bnrg32iya4v6t" path="res://assets/popupMenu/death_backsplash.png" id="2_gpd6k"]
+[ext_resource type="Texture2D" uid="uid://ug2teeb183kn" path="res://assets/popupMenu/ButtonsDefault/restartDefault.png" id="3_v0asp"]
+[ext_resource type="Texture2D" uid="uid://cm6b2vmdy3t31" path="res://assets/popupMenu/ButtonsHighlighted/restartHighlighted.png" id="4_qnccg"]
+[ext_resource type="Texture2D" uid="uid://bomu42lm0njq7" path="res://assets/popupMenu/ButtonsDefault/mainMenuDefault.png" id="5_625lk"]
+[ext_resource type="Texture2D" uid="uid://07ca2drk84km" path="res://assets/popupMenu/ButtonsHighlighted/mainMenuHighlighted.png" id="6_h1fr3"]
 [ext_resource type="AudioStream" uid="uid://cxw4ddca3786y" path="res://SFX/hover.wav" id="7_gpd6k"]
 [ext_resource type="AudioStream" uid="uid://drh8kai2hs0xm" path="res://SFX/death-sound.mp3" id="8_v0asp"]
 
@@ -63,6 +63,7 @@ bus = &"SFX"
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="." unique_id=671868266]
 stream = ExtResource("8_v0asp")
+bus = &"Music"
 
 [connection signal="mouse_entered" from="LevelUpPanel/ButtonManager/Restart" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="LevelUpPanel/ButtonManager/Restart" to="." method="_on_restart_pressed"]

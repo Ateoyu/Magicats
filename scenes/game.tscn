@@ -237,4 +237,5 @@ unique_name_in_owner = true
 [node name="InGameMusic" type="AudioStreamPlayer" parent="." unique_id=254537463]
 stream = ExtResource("12_dinhu")
 autoplay = true
+bus = &"Music"
 parameters/looping = true

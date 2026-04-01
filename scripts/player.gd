@@ -4,6 +4,9 @@ extends CharacterBody2D
 signal player_died
 signal health_changed
 
+var default_pickup_range: float
+@export var pickup_range: float = 200.0
+
 var default_movement_speed: float
 @export var movement_speed: float = 250
 
@@ -21,6 +24,8 @@ var default_max_health: int
 @onready var collect_experience_gem_sound: AudioStreamPlayer = $CollectXp
 @onready var collect_health_sound: AudioStreamPlayer = $CollectHealth
 
+@onready var pickup_range_collision: CollisionShape2D = $PickupRangeArea/PickupRangeCollision
+
 var enemy_close: Array[Enemy] = []
 
 var character_direction: Vector2
@@ -28,6 +33,7 @@ var character_direction: Vector2
 func _ready() -> void:
 	default_movement_speed = movement_speed
 	default_max_health = max_health
+	default_pickup_range = pickup_range
 
 func _physics_process(_delta: float) -> void:
 	character_direction.x = Input.get_axis("move_left", "move_right")

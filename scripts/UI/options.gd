@@ -25,6 +25,7 @@ var display_modes = {
 
 @onready var master_volume: HSlider = $Panel/TextureRect/HBoxContainer/VBoxContainer/MasterVolume
 @onready var sfx_volume: HSlider = $Panel/TextureRect/HBoxContainer/VBoxContainer/SFXVolume
+@onready var music_volume: HSlider = $Panel/TextureRect/HBoxContainer/VBoxContainer/MusicVolume
 
 func _ready() -> void:
 	add_options_to_buttons()
@@ -33,6 +34,7 @@ func _ready() -> void:
 	
 	master_volume.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master")))
 	sfx_volume.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX")))
+	music_volume.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music")))
 
 func add_options_to_buttons():
 	for resolution in resolutions:
@@ -74,7 +76,7 @@ func _on_display_modes_item_selected(index: int) -> void:
 	
 func _on_main_menu_pressed() -> void:
 	GameManager.save_display_settings(get_window().size, get_window().mode)
-	GameManager.save_sound_settings(master_volume.value, sfx_volume.value)
+	GameManager.save_sound_settings(master_volume.value, sfx_volume.value, music_volume.value)
 	get_tree().change_scene_to_file("res://scenes/menu/mainMenu.tscn")
 
 func _on_master_volume_value_changed(value: float) -> void:
@@ -82,6 +84,9 @@ func _on_master_volume_value_changed(value: float) -> void:
 
 func _on_sfx_volume_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(value))
+
+func _on_music_volume_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(value))
 
 func _on_mouse_entered() -> void:
 	hover_sound.play()
@@ -91,6 +96,8 @@ func load_sound_settings():
 	
 	master_volume.value = sound_settings["master_volume"]
 	sfx_volume.value = sound_settings["sfx_volume"]
+	music_volume.value = sound_settings["music_volume"]
 	
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(sound_settings["master_volume"]))
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(sound_settings["sfx_volume"]))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(sound_settings["music_volume"]))

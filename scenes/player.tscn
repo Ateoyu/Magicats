@@ -86,7 +86,8 @@ zoom = Vector2(0.4, 0.4)
 collision_layer = 0
 collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupRangeArea" unique_id=1442801175]
+[node name="PickupRangeCollision" type="CollisionShape2D" parent="PickupRangeArea" unique_id=1442801175]
+unique_name_in_owner = true
 shape = SubResource("CircleShape2D_dovo2")
 
 [node name="CollectionArea" type="Area2D" parent="." unique_id=282762769]

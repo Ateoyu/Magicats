@@ -19,13 +19,14 @@ func save_display_settings(resolution: Vector2i, display_mode: int) -> void:
 	
 	config.save(SETTINGS_PATH)
 
-func save_sound_settings(master_volume: float, sfx_volume: float) -> void:
+func save_sound_settings(master_volume: float, sfx_volume: float, music_volume: float) -> void:
 	var config = ConfigFile.new()
 	
 	config.load(SETTINGS_PATH)
 	
 	config.set_value("sound", "master_volume", master_volume)
 	config.set_value("sound", "sfx_volume", sfx_volume)
+	config.set_value("sound", "music_volume", music_volume)
 	
 	config.save(SETTINGS_PATH)
 
@@ -49,11 +50,13 @@ func load_sound_settings() -> Dictionary:
 	var settings = {
 		"master_volume": 1.0,
 		"sfx_volume": 1.0,
+		"music_volume": 1.0
 	}
 	
 	if config.load(SETTINGS_PATH) == OK:
 		settings["master_volume"] = config.get_value("sound", "master_volume", 1.0)
 		settings["sfx_volume"] = config.get_value("sound", "sfx_volume", 1.0)
+		settings["music_volume"] = config.get_value("sound", "music_volume", 1.0)
 	
 	return settings
 
@@ -77,6 +80,7 @@ func new_game() -> void:
 		player.max_health = player.default_max_health
 		player.movement_speed = player.default_movement_speed
 		player.current_health = player.max_health
+		player.pickup_range = player.default_pickup_range
 		player.position = Vector2(0, 0)
 		player.health_changed.emit()
 
@@ -103,8 +107,6 @@ func new_game() -> void:
 	for spell in spells:
 		spell.queue_free()
 
-
-
 func delete_save_file() -> void:
 	if FileAccess.file_exists(SAVE_PATH):
 		DirAccess.remove_absolute(SAVE_PATH)
@@ -118,6 +120,7 @@ func save_game() -> void:
 			"current_health": player.current_health,
 			"max_health": player.max_health,
 			"movement_speed": player.movement_speed,
+			"pickup_range": player.pickup_range,
 			"position": {"x": player.position.x, "y": player.position.y},
 			"spells": get_spell_data()
 		},
@@ -171,8 +174,8 @@ func load_player_data(player_data: Dictionary) -> void:
 		return
 	player.current_health = player_data["current_health"]
 	player.max_health = player_data["max_health"]
-	if player_data.has("movement_speed"):
-		player.movement_speed = player_data["movement_speed"]
+	player.movement_speed = player_data["movement_speed"]
+	player.pickup_range = player_data["pickup_range"]
 	player.position = Vector2(player_data["position"]["x"], player_data["position"]["y"])
 
 	player.health_changed.emit()

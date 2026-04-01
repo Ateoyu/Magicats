@@ -96,6 +96,7 @@ position = Vector2i(0, 36)
 [node name="MainMenuMusic" type="AudioStreamPlayer" parent="." unique_id=1509967231]
 stream = ExtResource("13_q2vti")
 autoplay = true
+bus = &"Music"
 parameters/looping = true
 
 [connection signal="mouse_entered" from="PanelContainer/ButtonManager/Continue" to="." method="_on_button_mouse_entered"]

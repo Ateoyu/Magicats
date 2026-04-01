@@ -100,10 +100,21 @@ func apply_upgrade(upgrade: Upgrade) -> void:
 			player.spell_manager.upgrade_spell(upgrade.upgrade_value)
 		"speed":
 			player.movement_speed += upgrade.upgrade_value
+		"pickup_range":
+			player.pickup_range += upgrade.upgrade_value
+			player.get_node("%PickupRangeCollision").shape.radius = player.pickup_range
 	selected_upgrade.emit(upgrade)
 
 func get_possible_upgrades() -> Array[Upgrade]:
 	var upgrades: Array[Upgrade] = []
+	
+	var pickup_range_upgrade: Upgrade = Upgrade.new()
+	pickup_range_upgrade.upgrade_name = "Pickup Range"
+	pickup_range_upgrade.upgrade_description = "Make your gem pickup range bigger by 10!" #TODO: change desc
+	pickup_range_upgrade.upgrade_type = "pickup_range"
+	pickup_range_upgrade.upgrade_icon = load("res://assets/upgradeIcons/heal.png") #TODO: change icon
+	pickup_range_upgrade.upgrade_value = 10
+	upgrades.append(pickup_range_upgrade)
 	
 	# TODO: add max amounts / dont show heal if max health
 	var heal_upgrade: Upgrade = Upgrade.new()
@@ -126,7 +137,7 @@ func get_possible_upgrades() -> Array[Upgrade]:
 	speed_upgrade.upgrade_name = "Haste"
 	speed_upgrade.upgrade_description = "Increase movement speed by 50"
 	speed_upgrade.upgrade_type = "speed"
-	speed_upgrade.upgrade_icon = load("res://assets/upgradeIcons/speed_upgrade.png")
+	speed_upgrade.upgrade_icon = load("res://assets/upgradeIcons/speed_upgrade.png") 
 	speed_upgrade.upgrade_value = 50
 	upgrades.append(speed_upgrade)
 	

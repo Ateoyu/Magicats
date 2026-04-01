@@ -7,9 +7,14 @@ var waiting_for_confirmation: bool = false
 @onready var hover_sound: AudioStreamPlayer = $PanelContainer/ButtonManager/Hover
 
 func _ready() -> void:
-	var saved_settings = GameManager.load_display_settings()
-	get_window().size = saved_settings["resolution"]
-	get_window().mode = saved_settings["display_mode"]
+	var saved_display_settings = GameManager.load_display_settings()
+	get_window().size = saved_display_settings["resolution"]
+	get_window().mode = saved_display_settings["display_mode"]
+	
+	var saved_sound_settings = GameManager.load_sound_settings()
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(saved_sound_settings["master_volume"]))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(saved_sound_settings["sfx_volume"]))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(saved_sound_settings["music_volume"]))
 	
 	if get_window().mode == Window.MODE_WINDOWED:
 		var screen_id = get_window().current_screen

@@ -102,4 +102,3 @@ bus = &"SFX"
 [connection signal="pressed" from="Panel/TextureRect/HBoxContainer/VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]
 [connection signal="value_changed" from="Panel/TextureRect/HBoxContainer/VBoxContainer/MasterVolume" to="." method="_on_master_volume_value_changed"]
 [connection signal="value_changed" from="Panel/TextureRect/HBoxContainer/VBoxContainer/SFXVolume" to="." method="_on_sfx_volume_value_changed"]
-[connection signal="value_changed" from="Panel/TextureRect/HBoxContainer/VBoxContainer/MusicVolume" to="." method="_on_music_volume_value_changed"]
