@@ -40,19 +40,22 @@ size = Vector2(35, 16.5)
 size = Vector2(35, 16)
 
 [node name="EnemyRat" type="CharacterBody2D" unique_id=1873200892 groups=["enemy"]]
+scale = Vector2(1.25, 1.25)
 collision_layer = 4
 collision_mask = 4
 motion_mode = 1
 script = ExtResource("1_6rqi6")
-max_health = 25
+max_health = 10
 attack_power = 5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1215340022]
+position = Vector2(5.5999985, 0)
 sprite_frames = SubResource("SpriteFrames_5mbbb")
 autoplay = "default"
 frame_progress = 0.64292806
 
 [node name="Hitbox" parent="." unique_id=1623623051 instance=ExtResource("2_g4cd1")]
+position = Vector2(5.5999985, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1412697424]
 light_mask = 4
@@ -61,5 +64,5 @@ position = Vector2(-5.5, 0)
 shape = SubResource("RectangleShape2D_6rqi6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=690061906]
-position = Vector2(-5.5, 0)
+position = Vector2(0.099998474, 0)
 shape = SubResource("RectangleShape2D_dfclm")

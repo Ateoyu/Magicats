@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://dwqjrxbsc8qs3"]
+
+[ext_resource type="Script" uid="uid://dm4ogm4ekbmft" path="res://scripts/enemy/enemy_skeleton_mace.gd" id="1_qtwg1"]
+[ext_resource type="PackedScene" uid="uid://dhq0pa6na6p7k" path="res://scenes/enemy/hitbox.tscn" id="2_h0jy4"]
+[ext_resource type="Texture2D" uid="uid://cc1rwlvoryn2c" path="res://assets/enemy/enemySkeletonMace.png" id="2_kcdop"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0jy4"]
+atlas = ExtResource("2_kcdop")
+region = Rect2(768, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kcdop"]
+atlas = ExtResource("2_kcdop")
+region = Rect2(704, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikxyd"]
+atlas = ExtResource("2_kcdop")
+region = Rect2(640, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25f0a"]
+atlas = ExtResource("2_kcdop")
+region = Rect2(576, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4g7g3"]
+atlas = ExtResource("2_kcdop")
+region = Rect2(512, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mm37a"]
+atlas = ExtResource("2_kcdop")
+region = Rect2(448, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2slyq"]
+atlas = ExtResource("2_kcdop")
+region = Rect2(384, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eelgg"]
+atlas = ExtResource("2_kcdop")
+region = Rect2(320, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4t3fq"]
+atlas = ExtResource("2_kcdop")
+region = Rect2(256, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olboh"]
+atlas = ExtResource("2_kcdop")
+region = Rect2(192, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqhn5"]
+atlas = ExtResource("2_kcdop")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l66vo"]
+atlas = ExtResource("2_kcdop")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7k2k7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0jy4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kcdop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikxyd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25f0a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4g7g3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mm37a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2slyq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eelgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4t3fq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olboh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqhn5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l66vo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1corh"]
+radius = 8.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e3iwr"]
+radius = 8.0
+
+[node name="enemySkeletonMace" type="CharacterBody2D" unique_id=1240443003 groups=["enemy"]]
+position = Vector2(5, 5)
+scale = Vector2(3, 3)
+motion_mode = 1
+script = ExtResource("1_qtwg1")
+max_health = 40
+attack_power = 20
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=964758323]
+position = Vector2(-1.6666718, -1.6666718)
+sprite_frames = SubResource("SpriteFrames_7k2k7")
+autoplay = "default"
+frame_progress = 0.91179323
+
+[node name="Hitbox" parent="." unique_id=1623623051 instance=ExtResource("2_h0jy4")]
+position = Vector2(-1.6666718, -1.6666718)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1115934568]
+shape = SubResource("CapsuleShape2D_1corh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=136603771]
+position = Vector2(-1.6666718, -1.6666718)
+shape = SubResource("CapsuleShape2D_e3iwr")

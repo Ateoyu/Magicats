@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://d4bpui5j6untx"]
+
+[ext_resource type="Script" uid="uid://b0r8ttd5s88e2" path="res://scripts/enemy/enemy_golem.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://bevtmsytqqx1k" path="res://assets/enemy/enemyGolemnSpriteSheet.png" id="2_sprite"]
+[ext_resource type="PackedScene" uid="uid://dhq0pa6na6p7k" path="res://scenes/enemy/hitbox.tscn" id="3_hitbox"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tp7kt"]
+atlas = ExtResource("2_sprite")
+region = Rect2(0, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iaf41"]
+atlas = ExtResource("2_sprite")
+region = Rect2(90, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78i5j"]
+atlas = ExtResource("2_sprite")
+region = Rect2(180, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vl553"]
+atlas = ExtResource("2_sprite")
+region = Rect2(270, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dc2d"]
+atlas = ExtResource("2_sprite")
+region = Rect2(360, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57ler"]
+atlas = ExtResource("2_sprite")
+region = Rect2(450, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibdsx"]
+atlas = ExtResource("2_sprite")
+region = Rect2(540, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xikg"]
+atlas = ExtResource("2_sprite")
+region = Rect2(630, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlvtp"]
+atlas = ExtResource("2_sprite")
+region = Rect2(720, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqpbf"]
+atlas = ExtResource("2_sprite")
+region = Rect2(810, 0, 90, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_golem"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tp7kt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iaf41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78i5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vl553")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7dc2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_57ler")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibdsx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xikg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlvtp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqpbf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hit"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_body"]
+
+[node name="EnemyGolem" type="CharacterBody2D" unique_id=1194122452 groups=["enemy"]]
+scale = Vector2(4, 4)
+collision_layer = 4
+collision_mask = 4
+motion_mode = 1
+script = ExtResource("1_script")
+max_health = 60
+attack_power = 20
+movement_speed = 35
+experience_dropped = 8
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=339169866]
+position = Vector2(0, -15.6)
+sprite_frames = SubResource("SpriteFrames_golem")
+autoplay = "default"
+frame_progress = 0.71246266
+
+[node name="Hitbox" parent="." unique_id=1068326074 instance=ExtResource("3_hitbox")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=2058757321]
+shape = SubResource("CapsuleShape2D_hit")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1441561940]
+shape = SubResource("CapsuleShape2D_body")

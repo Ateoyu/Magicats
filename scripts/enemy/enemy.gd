@@ -44,4 +44,10 @@ func die() -> void:
 func _physics_process(_delta: float):
 	var direction = global_position.direction_to(player.global_position)
 	velocity = direction * movement_speed
+
+	if direction.x > 0:
+		$AnimatedSprite2D.flip_h = true
+	elif direction.x < 0:
+		$AnimatedSprite2D.flip_h = false
+
 	move_and_slide()

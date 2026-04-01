@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://o4hebwljvwwl"]
+
+[ext_resource type="Script" uid="uid://bqt4kifkxbe3g" path="res://scripts/enemy/enemy_mushroom.gd" id="1_rjvg7"]
+[ext_resource type="Texture2D" uid="uid://b3ux3bhlm4q1h" path="res://assets/enemy/enemyMushroomSpiteSheet.png" id="2_l3cu0"]
+[ext_resource type="PackedScene" uid="uid://dhq0pa6na6p7k" path="res://scenes/enemy/hitbox.tscn" id="3_vj50m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dc27a"]
+atlas = ExtResource("2_l3cu0")
+region = Rect2(0, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdhdy"]
+atlas = ExtResource("2_l3cu0")
+region = Rect2(80, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uc7js"]
+atlas = ExtResource("2_l3cu0")
+region = Rect2(160, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0vf8"]
+atlas = ExtResource("2_l3cu0")
+region = Rect2(240, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fy54"]
+atlas = ExtResource("2_l3cu0")
+region = Rect2(320, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ek8ub"]
+atlas = ExtResource("2_l3cu0")
+region = Rect2(400, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aju32"]
+atlas = ExtResource("2_l3cu0")
+region = Rect2(480, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8f86c"]
+atlas = ExtResource("2_l3cu0")
+region = Rect2(560, 0, 80, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c5tm3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dc27a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdhdy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uc7js")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0vf8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fy54")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ek8ub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aju32")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8f86c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1adkq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ik2l"]
+
+[node name="enemyMushroom" type="CharacterBody2D" unique_id=804114638 groups=["enemy"]]
+scale = Vector2(2, 2)
+collision_layer = 4
+collision_mask = 4
+motion_mode = 1
+script = ExtResource("1_rjvg7")
+max_health = 20
+movement_speed = 70
+health_dropped = 6
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=694873862]
+position = Vector2(1, -15)
+sprite_frames = SubResource("SpriteFrames_c5tm3")
+autoplay = "default"
+frame_progress = 0.76990736
+
+[node name="Hitbox" parent="." unique_id=1623623051 instance=ExtResource("3_vj50m")]
+position = Vector2(1, -15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1050643515]
+position = Vector2(-1, 15)
+shape = SubResource("CapsuleShape2D_1adkq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=501613031]
+shape = SubResource("CapsuleShape2D_3ik2l")

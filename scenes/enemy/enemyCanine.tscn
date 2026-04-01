@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://dd4wdesrqty6t"]
+
+[ext_resource type="Script" uid="uid://c5k6sbxv4j84l" path="res://scripts/enemy/enemy_canine.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://c7h5u4hodyol5" path="res://assets/enemy/enemyCanineSpriteSheet.png" id="2_sprite"]
+[ext_resource type="PackedScene" uid="uid://dhq0pa6na6p7k" path="res://scenes/enemy/hitbox.tscn" id="3_hitbox"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ej0y7"]
+atlas = ExtResource("2_sprite")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjurq"]
+atlas = ExtResource("2_sprite")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j002b"]
+atlas = ExtResource("2_sprite")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fu3e"]
+atlas = ExtResource("2_sprite")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_reujd"]
+atlas = ExtResource("2_sprite")
+region = Rect2(0, 32, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ug5fh"]
+atlas = ExtResource("2_sprite")
+region = Rect2(48, 32, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_canine"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ej0y7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjurq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j002b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fu3e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_reujd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ug5fh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a7o74"]
+radius = 6.0
+height = 37.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hv2dy"]
+radius = 6.0
+height = 37.0
+
+[node name="EnemyCanine" type="CharacterBody2D" unique_id=2106153361 groups=["enemy"]]
+scale = Vector2(2.25, 2.25)
+collision_layer = 4
+collision_mask = 4
+motion_mode = 1
+script = ExtResource("1_script")
+max_health = 20
+attack_power = 12
+movement_speed = 80
+experience_dropped = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1048770708]
+position = Vector2(0, -4)
+sprite_frames = SubResource("SpriteFrames_canine")
+autoplay = "default"
+frame_progress = 0.8143103
+
+[node name="Hitbox" parent="." unique_id=1653653282 instance=ExtResource("3_hitbox")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=59810725]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_a7o74")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=114328672]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_hv2dy")

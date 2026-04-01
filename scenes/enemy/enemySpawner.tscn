@@ -3,6 +3,15 @@
 [ext_resource type="Script" uid="uid://cuvroqbppa8iy" path="res://scripts/enemy/enemy_spawner.gd" id="1_8geys"]
 [ext_resource type="Script" uid="uid://bkq5xbyc84gpn" path="res://scripts/enemy/spawn_info.gd" id="2_tq322"]
 [ext_resource type="PackedScene" uid="uid://bmo7bltura1e0" path="res://scenes/enemy/enemyRat.tscn" id="3_2sabj"]
+[ext_resource type="PackedScene" uid="uid://o4hebwljvwwl" path="res://scenes/enemy/enemyMushroom.tscn" id="4_gun4l"]
+[ext_resource type="PackedScene" uid="uid://b1ojnd62f4rqs" path="res://scenes/enemy/enemyBat.tscn" id="5_kcqxw"]
+[ext_resource type="PackedScene" uid="uid://slbryweccned" path="res://scenes/enemy/enemySkeleton.tscn" id="6_evh8q"]
+[ext_resource type="PackedScene" uid="uid://dwqjrxbsc8qs3" path="res://scenes/enemy/enemySkeletonMace.tscn" id="7_rrp6n"]
+[ext_resource type="PackedScene" uid="uid://b1wu8xt3w8q43" path="res://scenes/enemy/enemySlime.tscn" id="8_slime"]
+[ext_resource type="PackedScene" uid="uid://dd4wdesrqty6t" path="res://scenes/enemy/enemyCanine.tscn" id="9_canine"]
+[ext_resource type="PackedScene" uid="uid://djhqwpgysghji" path="res://scenes/enemy/enemyFungiSpore.tscn" id="10_fungi"]
+[ext_resource type="PackedScene" uid="uid://6pjqcyyiqreg" path="res://scenes/enemy/enemyNecromancer.tscn" id="11_necro"]
+[ext_resource type="PackedScene" uid="uid://d4bpui5j6untx" path="res://scenes/enemy/enemyGolem.tscn" id="12_golem"]
 
 [sub_resource type="Resource" id="Resource_lx5bb"]
 script = ExtResource("2_tq322")
@@ -12,9 +21,82 @@ enemy_num = 5
 enemy_spawn_delay = 1
 metadata/_custom_type_script = "uid://bkq5xbyc84gpn"
 
+[sub_resource type="Resource" id="Resource_kcqxw"]
+script = ExtResource("2_tq322")
+time_end = 120
+enemy = ExtResource("4_gun4l")
+enemy_num = 5
+enemy_spawn_delay = 3
+metadata/_custom_type_script = "uid://bkq5xbyc84gpn"
+
+[sub_resource type="Resource" id="Resource_evh8q"]
+script = ExtResource("2_tq322")
+time_end = 120
+enemy = ExtResource("5_kcqxw")
+enemy_num = 10
+enemy_spawn_delay = 2
+metadata/_custom_type_script = "uid://bkq5xbyc84gpn"
+
+[sub_resource type="Resource" id="Resource_rrp6n"]
+script = ExtResource("2_tq322")
+time_end = 120
+enemy = ExtResource("6_evh8q")
+enemy_num = 3
+enemy_spawn_delay = 3
+metadata/_custom_type_script = "uid://bkq5xbyc84gpn"
+
+[sub_resource type="Resource" id="Resource_l5hko"]
+script = ExtResource("2_tq322")
+time_end = 120
+enemy = ExtResource("7_rrp6n")
+enemy_num = 3
+enemy_spawn_delay = 5
+metadata/_custom_type_script = "uid://bkq5xbyc84gpn"
+
+[sub_resource type="Resource" id="Resource_slime"]
+script = ExtResource("2_tq322")
+time_end = 180
+enemy = ExtResource("8_slime")
+enemy_num = 5
+enemy_spawn_delay = 2
+metadata/_custom_type_script = "uid://bkq5xbyc84gpn"
+
+[sub_resource type="Resource" id="Resource_canine"]
+script = ExtResource("2_tq322")
+time_end = 240
+enemy = ExtResource("9_canine")
+enemy_num = 4
+enemy_spawn_delay = 3
+metadata/_custom_type_script = "uid://bkq5xbyc84gpn"
+
+[sub_resource type="Resource" id="Resource_fungi"]
+script = ExtResource("2_tq322")
+time_end = 300
+enemy = ExtResource("10_fungi")
+enemy_num = 4
+enemy_spawn_delay = 3
+metadata/_custom_type_script = "uid://bkq5xbyc84gpn"
+
+[sub_resource type="Resource" id="Resource_necro"]
+script = ExtResource("2_tq322")
+time_end = 400
+enemy = ExtResource("11_necro")
+enemy_num = 3
+enemy_spawn_delay = 5
+metadata/_custom_type_script = "uid://bkq5xbyc84gpn"
+
+[sub_resource type="Resource" id="Resource_golem"]
+script = ExtResource("2_tq322")
+time_end = 600
+enemy = ExtResource("12_golem")
+enemy_num = 2
+enemy_spawn_delay = 8
+metadata/_custom_type_script = "uid://bkq5xbyc84gpn"
+
 [node name="EnemySpawner" type="Node2D" unique_id=294658530]
+position = Vector2(-1, 0)
 script = ExtResource("1_8geys")
-spawns = Array[ExtResource("2_tq322")]([SubResource("Resource_lx5bb")])
+spawns = Array[ExtResource("2_tq322")]([SubResource("Resource_lx5bb"), SubResource("Resource_kcqxw"), SubResource("Resource_evh8q"), SubResource("Resource_rrp6n"), SubResource("Resource_l5hko"), SubResource("Resource_slime"), SubResource("Resource_canine"), SubResource("Resource_fungi"), SubResource("Resource_necro"), SubResource("Resource_golem")])
 
 [node name="Timer" type="Timer" parent="." unique_id=333968338]
 autostart = true

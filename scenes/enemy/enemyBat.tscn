@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://b1ojnd62f4rqs"]
+
+[ext_resource type="Script" uid="uid://da5i2v8ompeue" path="res://scripts/enemy/enemy_bat.gd" id="1_a1f4c"]
+[ext_resource type="Texture2D" uid="uid://ddlghcx6k0xhg" path="res://assets/enemy/enemyBatSpriteSheet.png" id="1_ac8tx"]
+[ext_resource type="PackedScene" uid="uid://dhq0pa6na6p7k" path="res://scenes/enemy/hitbox.tscn" id="2_a1f4c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37etm"]
+atlas = ExtResource("1_ac8tx")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nen5"]
+atlas = ExtResource("1_ac8tx")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekwr0"]
+atlas = ExtResource("1_ac8tx")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uc18t"]
+atlas = ExtResource("1_ac8tx")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egvdc"]
+atlas = ExtResource("1_ac8tx")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h60ue"]
+atlas = ExtResource("1_ac8tx")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljjuo"]
+atlas = ExtResource("1_ac8tx")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3cff"]
+atlas = ExtResource("1_ac8tx")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ii2ul"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37etm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nen5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekwr0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uc18t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egvdc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h60ue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljjuo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3cff")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3d0e0"]
+radius = 4.1231055
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mswx4"]
+radius = 4.0
+
+[node name="enemyBat" type="CharacterBody2D" unique_id=1780605007 groups=["enemy"]]
+scale = Vector2(1.5, 1.5)
+collision_layer = 4
+collision_mask = 4
+motion_mode = 1
+script = ExtResource("1_a1f4c")
+max_health = 10
+attack_power = 7
+movement_speed = 100
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=826673047]
+sprite_frames = SubResource("SpriteFrames_ii2ul")
+autoplay = "default"
+frame_progress = 0.5091229
+
+[node name="Hitbox" parent="." unique_id=1623623051 instance=ExtResource("2_a1f4c")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1118370971]
+shape = SubResource("CircleShape2D_3d0e0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2062971515]
+shape = SubResource("CircleShape2D_mswx4")
