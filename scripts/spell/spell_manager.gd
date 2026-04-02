@@ -21,6 +21,7 @@ func append_all_spells_to_list(spell_list: Array) -> void:
 	all_available_spells.append(IceSpear.new(self, player))
 	all_available_spells.append(LightningStrike.new(self, player))
 	all_available_spells.append(BloodVortex.new(self, player))
+	all_available_spells.append(BookSpin.new(self, player))
 
 func reset() -> void:
 	all_available_spells.clear()

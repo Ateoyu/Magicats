@@ -13,7 +13,7 @@ var cooldown_remaining: float
 var spell_manager: Node2D
 var player: CharacterBody2D
 
-func _init(p_name: String, p_level: int, p_spell_manager: Node2D = null, p_player: CharacterBody2D = null) -> void:
+func _init(p_name: String, p_level: int, p_spell_manager: Node2D, p_player: CharacterBody2D) -> void:
 	self.name = p_name
 	self.level = p_level
 	self.cooldown_remaining = 0.0

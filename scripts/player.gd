@@ -31,6 +31,7 @@ var enemy_close: Array[Enemy] = []
 var character_direction: Vector2
 
 func _ready() -> void:
+#	GameManager.set_player(self)
 	default_movement_speed = movement_speed
 	default_max_health = max_health
 	default_pickup_range = pickup_range

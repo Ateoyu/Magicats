@@ -141,6 +141,13 @@ cache/0/25/0/scale = 1.0
 [node name="Game" type="Node2D" unique_id=179032308]
 script = ExtResource("1_lnu2h")
 
+[node name="Player" parent="." unique_id=38899763 instance=ExtResource("1_uwrxv")]
+unique_name_in_owner = true
+light_mask = 2
+visibility_layer = 2
+z_index = 1
+position = Vector2(122, 7)
+
 [node name="InfiniteWorldGeneration" parent="." unique_id=2009469228 instance=ExtResource("3_kvpfn")]
 
 [node name="Layer0" type="TileMapLayer" parent="." unique_id=234565971]
@@ -150,12 +157,6 @@ tile_set = SubResource("TileSet_u5sy4")
 [node name="Layer1" type="TileMapLayer" parent="." unique_id=645881973]
 tile_map_data = PackedByteArray(0, 0, 1, 0, 255, 255, 0, 0, 13, 0, 0, 0, 0, 0)
 tile_set = SubResource("TileSet_u5sy4")
-
-[node name="Player" parent="." unique_id=38899763 instance=ExtResource("1_uwrxv")]
-unique_name_in_owner = true
-light_mask = 2
-visibility_layer = 2
-position = Vector2(122, 7)
 
 [node name="Fade_transition" parent="." unique_id=1200209534 instance=ExtResource("3_lbhrr")]
 visible = false
