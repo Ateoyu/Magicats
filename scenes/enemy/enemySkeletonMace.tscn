@@ -103,12 +103,12 @@ radius = 8.0
 radius = 8.0
 
 [node name="enemySkeletonMace" type="CharacterBody2D" unique_id=1240443003 groups=["enemy"]]
-position = Vector2(5, 5)
 scale = Vector2(3, 3)
 motion_mode = 1
 script = ExtResource("1_qtwg1")
-max_health = 40
-attack_power = 20
+attack_power = 25
+experience_dropped = 14
+health_dropped = 24
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=964758323]
 position = Vector2(-1.6666718, -1.6666718)

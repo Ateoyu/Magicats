@@ -24,10 +24,10 @@ metadata/_custom_type_script = "uid://bkq5xbyc84gpn"
 [sub_resource type="Resource" id="Resource_kcqxw"]
 script = ExtResource("2_tq322")
 time_start = 60
-time_end = 120
+time_end = 150
 enemy = ExtResource("4_gun4l")
-enemy_num = 5
-enemy_spawn_delay = 3
+enemy_num = 6
+enemy_spawn_delay = 2
 metadata/_custom_type_script = "uid://bkq5xbyc84gpn"
 
 [sub_resource type="Resource" id="Resource_evh8q"]
@@ -40,70 +40,106 @@ metadata/_custom_type_script = "uid://bkq5xbyc84gpn"
 
 [sub_resource type="Resource" id="Resource_rrp6n"]
 script = ExtResource("2_tq322")
-time_start = 120
-time_end = 240
+time_start = 105
+time_end = 300
 enemy = ExtResource("6_evh8q")
-enemy_num = 3
-enemy_spawn_delay = 3
+enemy_num = 4
+enemy_spawn_delay = 2
 metadata/_custom_type_script = "uid://bkq5xbyc84gpn"
 
 [sub_resource type="Resource" id="Resource_l5hko"]
 script = ExtResource("2_tq322")
-time_start = 120
-time_end = 240
+time_start = 105
+time_end = 300
 enemy = ExtResource("7_rrp6n")
 enemy_num = 3
-enemy_spawn_delay = 5
+enemy_spawn_delay = 3
 metadata/_custom_type_script = "uid://bkq5xbyc84gpn"
 
 [sub_resource type="Resource" id="Resource_slime"]
 script = ExtResource("2_tq322")
-time_start = 60
-time_end = 240
+time_start = 55
+time_end = 300
 enemy = ExtResource("8_slime")
-enemy_num = 5
-enemy_spawn_delay = 2
+enemy_num = 6
+enemy_spawn_delay = 1
 metadata/_custom_type_script = "uid://bkq5xbyc84gpn"
 
 [sub_resource type="Resource" id="Resource_canine"]
 script = ExtResource("2_tq322")
-time_start = 60
-time_end = 240
+time_start = 55
+time_end = 300
 enemy = ExtResource("9_canine")
-enemy_num = 4
-enemy_spawn_delay = 3
+enemy_num = 5
+enemy_spawn_delay = 2
 metadata/_custom_type_script = "uid://bkq5xbyc84gpn"
 
 [sub_resource type="Resource" id="Resource_fungi"]
 script = ExtResource("2_tq322")
-time_start = 180
-time_end = 360
+time_start = 150
+time_end = 600
 enemy = ExtResource("10_fungi")
-enemy_num = 4
-enemy_spawn_delay = 3
+enemy_num = 6
+enemy_spawn_delay = 2
 metadata/_custom_type_script = "uid://bkq5xbyc84gpn"
 
 [sub_resource type="Resource" id="Resource_necro"]
 script = ExtResource("2_tq322")
 time_start = 120
-time_end = 240
+time_end = 600
 enemy = ExtResource("11_necro")
-enemy_num = 3
-enemy_spawn_delay = 5
+enemy_num = 5
+enemy_spawn_delay = 3
 metadata/_custom_type_script = "uid://bkq5xbyc84gpn"
 
 [sub_resource type="Resource" id="Resource_golem"]
 script = ExtResource("2_tq322")
-time_start = 180
+time_start = 150
 time_end = 600
 enemy = ExtResource("12_golem")
-enemy_num = 2
-enemy_spawn_delay = 8
+enemy_num = 3
+enemy_spawn_delay = 4
+metadata/_custom_type_script = "uid://bkq5xbyc84gpn"
+
+[sub_resource type="Resource" id="Resource_rats2"]
+script = ExtResource("2_tq322")
+time_start = 60
+time_end = 180
+enemy = ExtResource("3_2sabj")
+enemy_num = 12
+enemy_spawn_delay = 1
+metadata/_custom_type_script = "uid://bkq5xbyc84gpn"
+
+[sub_resource type="Resource" id="Resource_bats2"]
+script = ExtResource("2_tq322")
+time_start = 120
+time_end = 300
+enemy = ExtResource("5_kcqxw")
+enemy_num = 15
+enemy_spawn_delay = 1
+metadata/_custom_type_script = "uid://bkq5xbyc84gpn"
+
+[sub_resource type="Resource" id="Resource_skel2"]
+script = ExtResource("2_tq322")
+time_start = 240
+time_end = 600
+enemy = ExtResource("6_evh8q")
+enemy_num = 8
+enemy_spawn_delay = 1
+metadata/_custom_type_script = "uid://bkq5xbyc84gpn"
+
+[sub_resource type="Resource" id="Resource_golem2"]
+script = ExtResource("2_tq322")
+time_start = 360
+time_end = 600
+enemy = ExtResource("12_golem")
+enemy_num = 5
+enemy_spawn_delay = 3
 metadata/_custom_type_script = "uid://bkq5xbyc84gpn"
 
 [node name="EnemySpawner" type="Node2D" unique_id=294658530]
 script = ExtResource("1_8geys")
-spawns = Array[ExtResource("2_tq322")]([SubResource("Resource_lx5bb"), SubResource("Resource_kcqxw"), SubResource("Resource_evh8q"), SubResource("Resource_rrp6n"), SubResource("Resource_l5hko"), SubResource("Resource_slime"), SubResource("Resource_canine"), SubResource("Resource_fungi"), SubResource("Resource_necro"), SubResource("Resource_golem")])
+spawns = Array[ExtResource("2_tq322")]([SubResource("Resource_lx5bb"), SubResource("Resource_kcqxw"), SubResource("Resource_evh8q"), SubResource("Resource_rrp6n"), SubResource("Resource_l5hko"), SubResource("Resource_slime"), SubResource("Resource_canine"), SubResource("Resource_fungi"), SubResource("Resource_necro"), SubResource("Resource_golem"), SubResource("Resource_rats2"), SubResource("Resource_bats2"), SubResource("Resource_skel2"), SubResource("Resource_golem2")])
 
 [node name="Timer" type="Timer" parent="." unique_id=333968338]
 autostart = true

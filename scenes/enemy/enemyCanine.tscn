@@ -68,10 +68,11 @@ collision_layer = 4
 collision_mask = 4
 motion_mode = 1
 script = ExtResource("1_script")
-max_health = 20
-attack_power = 12
-movement_speed = 80
-experience_dropped = 2
+max_health = 35
+attack_power = 14
+movement_speed = 100
+experience_dropped = 3
+health_dropped = 7
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1048770708]
 position = Vector2(0, -4)

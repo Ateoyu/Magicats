@@ -11,7 +11,7 @@ func _init():
 func get_texture_for_value(value: int) -> Texture2D:
 	if value < 5:
 		return spr_amethyst
-	elif value < 25:
+	elif value < 15:
 		return spr_ruby
 	else:
 		return spr_diamond
