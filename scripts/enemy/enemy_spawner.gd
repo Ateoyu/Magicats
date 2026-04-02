@@ -1,12 +1,26 @@
 extends Node2D
 
+signal player_won
+
 @export var spawns: Array[Spawn_info] = []
 @export var player: Player
 @onready var loot_base = get_node("%Loot")
 var time = 0
 
+@onready var time_left: Label = %TimeLeft
+
+
 func _on_timer_timeout() -> void:
 	time += 1
+	
+	var minutes = int(time) / 60
+	var seconds = int(time) % 60
+	time_left.text = "%02d:%02d" % [minutes, seconds]
+	
+	if time >= 620:
+		player_won.emit()
+		return
+	
 	var enemy_spawns: Array[Spawn_info] = spawns
 	for i in enemy_spawns:
 		if time >= i.time_start and time <= i.time_end:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnrg32iya4v6t"
-path="res://.godot/imported/death_backsplash.png-3383aa02a4134b4521239e733f4ce64a.ctex"
+uid="uid://r61y3g8gw0ir"
+path="res://.godot/imported/death_backsplash.png-7c4d75a107649031a69c616735af7961.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/PopupMenu/death_backsplash.png"
-dest_files=["res://.godot/imported/death_backsplash.png-3383aa02a4134b4521239e733f4ce64a.ctex"]
+source_file="res://assets/popupMenu/death_backsplash.png"
+dest_files=["res://.godot/imported/death_backsplash.png-7c4d75a107649031a69c616735af7961.ctex"]
 
 [params]
 

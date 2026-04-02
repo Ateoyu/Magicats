@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ug2teeb183kn"
-path="res://.godot/imported/restartDefault.png-fc1a30ca4969d01855f06e4c079a1dc4.ctex"
+uid="uid://11vifnsxemk8"
+path="res://.godot/imported/win_backsplash.png-d3dee6c67d1ffbc82ff4c9045d2d1d01.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/popupMenu/ButtonsDefault/restartDefault.png"
-dest_files=["res://.godot/imported/restartDefault.png-fc1a30ca4969d01855f06e4c079a1dc4.ctex"]
+source_file="res://assets/popupMenu/win_backsplash.png"
+dest_files=["res://.godot/imported/win_backsplash.png-d3dee6c67d1ffbc82ff4c9045d2d1d01.ctex"]
 
 [params]
 

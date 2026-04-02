@@ -117,6 +117,7 @@ bus = &"SFX"
 
 [node name="CollectHealth" type="AudioStreamPlayer" parent="." unique_id=1080822620]
 stream = ExtResource("8_ur7pv")
+volume_db = -10.0
 bus = &"SFX"
 
 [connection signal="area_entered" from="PickupRangeArea" to="." method="_on_pickup_range_area_area_entered"]

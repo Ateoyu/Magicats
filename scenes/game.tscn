@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://cq6fct064x4b3" path="res://scripts/UI/health_bar.gd" id="7_u5sy4"]
 [ext_resource type="Script" uid="uid://bdtspman5dtsn" path="res://scripts/UI/experience_bar.gd" id="8_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://cujjkff1nuw4t" path="res://scenes/enemy/enemySpawner.tscn" id="8_gee14"]
+[ext_resource type="PackedScene" uid="uid://cx6u4mmjwh4bf" path="res://scenes/menu/winMenu.tscn" id="9_kvuet"]
 [ext_resource type="AudioStream" uid="uid://7rpkeohxodsq" path="res://SFX/background/in_game_music.mp3" id="12_dinhu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p57ef"]
@@ -178,6 +179,8 @@ player = NodePath("../../Player")
 [node name="LevelUpMenu" parent="CanvasLayer" unique_id=1672626486 instance=ExtResource("6_vtaks")]
 unique_name_in_owner = true
 
+[node name="WinMenu" parent="CanvasLayer" unique_id=1795173207 instance=ExtResource("9_kvuet")]
+
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1458710854]
 
 [node name="Control" type="Control" parent="HUD" unique_id=68865347]
@@ -227,6 +230,16 @@ theme_override_font_sizes/font_size = 25
 text = "Level: 1"
 horizontal_alignment = 1
 vertical_alignment = 2
+
+[node name="TimeLeft" type="Label" parent="HUD/Control" unique_id=227992522]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 2.9945269
+offset_top = -14.772797
+offset_right = 44.917904
+offset_bottom = 8.227203
+scale = Vector2(1.2793387, -2.5891907)
+text = "00:00"
 
 [node name="EnemySpawner" parent="." unique_id=294658530 node_paths=PackedStringArray("player") instance=ExtResource("8_gee14")]
 unique_name_in_owner = true
