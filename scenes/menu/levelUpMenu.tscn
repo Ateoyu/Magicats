@@ -33,18 +33,13 @@ texture = ExtResource("1_eedwy")
 [node name="UpgradeOptions" type="VBoxContainer" parent="LevelUpPanel" unique_id=1262124721]
 light_mask = 16
 visibility_layer = 16
-custom_minimum_size = Vector2(250, 320)
+custom_minimum_size = Vector2(400, 350)
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.45100003
-anchor_top = 0.27
-anchor_right = 0.45100003
-anchor_bottom = 0.27
-offset_left = -163.33786
-offset_top = -15.845245
-offset_right = 86.66214
-offset_bottom = 304.15472
-scale = Vector2(1.5782896, 1.2329639)
+anchors_preset = 0
+offset_left = 145.0
+offset_top = 155.0
+offset_right = 555.0
+offset_bottom = 530.0
 
 [node name="LevelUp" type="AudioStreamPlayer" parent="." unique_id=1083350233]
 stream = ExtResource("3_hhfjv")
