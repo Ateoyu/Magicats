@@ -122,8 +122,8 @@ func save_game() -> void:
 			"movement_speed": player.movement_speed,
 			"pickup_range": player.pickup_range,
 			"position": {"x": player.position.x, "y": player.position.y},
-			"spells": get_spell_data()
 		},
+		"spells": get_spell_data(),
 		"experience_manager": get_experience_manager_data(),
 		"enemy_spawner": get_enemy_spawner_data(),
 		"enemies": get_alive_enemies_data(),
@@ -162,7 +162,6 @@ func load_game() -> bool:
 				load_loot_data(save_data["loot"])
 
 			if save_data.has("spells"):
-				player.spell_manager.reset()
 				load_spell_data(save_data["spells"])
 			
 			experience_manager.update_experience_bar.emit()
@@ -297,7 +296,9 @@ func get_spell_data() -> Array:
 func load_spell_data(spell_data_array: Array) -> void:
 	if player == null or player.spell_manager == null:
 		return
+		
 	player.spell_manager.equipped_spells.clear()
+	
 	for saved_spell in spell_data_array:
 		for spell in player.spell_manager.all_available_spells:
 			if spell.name == saved_spell["name"]:
