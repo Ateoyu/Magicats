@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b5lma8xgj75fk"
-path="res://.godot/imported/paused_backsplash.png-a833ee4e9587b96236087f24d1f6484a.ctex"
+path="res://.godot/imported/paused_backsplash.png-37dc1d4fe299acccc82f74d074400ba4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/popupMenu/paused_backsplash.png"
-dest_files=["res://.godot/imported/paused_backsplash.png-a833ee4e9587b96236087f24d1f6484a.ctex"]
+source_file="res://assets/PopupMenu/paused_backsplash.png"
+dest_files=["res://.godot/imported/paused_backsplash.png-37dc1d4fe299acccc82f74d074400ba4.ctex"]
 
 [params]
 
