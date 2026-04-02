@@ -9,7 +9,7 @@ var active_projectiles: Array[BookSpinProjectile] = []
 var book_spin_projectile: PackedScene = preload("res://scenes/spell/bookSpin.tscn")
 
 func _init(p_spell_manager: Node2D, p_player: CharacterBody2D) -> void:
-	super("Book Spin", 1, p_spell_manager, p_player)
+	super("Book Spin", 0, p_spell_manager, p_player)
 	apply_level_stats()
 
 func apply_level_stats() -> void:
