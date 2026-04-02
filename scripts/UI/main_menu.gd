@@ -59,7 +59,6 @@ func _on_fade_timer_timeout() -> void:
 	if button_type == "new_game":
 		get_tree().change_scene_to_file("res://scenes/game.tscn")
 	elif button_type == "continue":
-		GameManager.load_game()
 		get_tree().change_scene_to_file("res://scenes/game.tscn")
 
 func _on_confirmation_dialog_confirmed() -> void:

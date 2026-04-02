@@ -40,9 +40,6 @@ func _ready() -> void:
 		if source_stone:
 			for i in range(source_stone.get_tiles_count()):
 				stone_path_tiles.append(source_stone.get_tile_id(i))
-	
-	generate_chunk(Vector2i(0, 0))
-	generate_chunk(Vector2i(-1, -1))
 
 func _physics_process(delta: float) -> void:
 	check_chunk_loading() # Check if we need a new chunk
@@ -89,13 +86,15 @@ func process_chunk_queue() -> void:
 func check_chunk_loading() -> void:
 	if not is_instance_valid(player):
 		player = GameManager.player
-		if not is_instance_valid(player):
-			return
-	
+		
 	var player_chunk: Vector2i = Vector2i(
 		floor(player.global_position.x / (CHUNK_SIZE * TILE_SIZE)),
 		floor(player.global_position.y / (CHUNK_SIZE * TILE_SIZE))
 	)
+	
+	# Always ensure the chunk the player is currently in is generated
+	generate_chunk(player_chunk)
+	generate_chunk(player_chunk + Vector2i(-1, -1))
 	
 	var local_x: int = posmod(player.global_position.x, CHUNK_SIZE * TILE_SIZE)
 	var local_y: int = posmod(player.global_position.y, CHUNK_SIZE * TILE_SIZE)
