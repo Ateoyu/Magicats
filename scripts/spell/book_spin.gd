@@ -15,7 +15,7 @@ func _init(p_spell_manager: Node2D, p_player: CharacterBody2D) -> void:
 func apply_level_stats() -> void:
 	match level:
 		1:
-			damage = 7
+			damage = 10
 			cooldown = 999999.0
 			velocity = 200
 			projectile_count = 1

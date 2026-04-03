@@ -52,7 +52,7 @@
 
 - **Combat:**
     - Fully automatic attacks and abilities
-    - Spells trigger based on cooldowns
+    - Spells trigger based on cooldowns, controlled by a timer in SpellManager, implemented through inheritance from Spell abstract class.
     - Combat emphasizes positioning and movement
     - Visual clarity is important despite high enemy counts
 

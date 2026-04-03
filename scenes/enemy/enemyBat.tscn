@@ -80,8 +80,8 @@ collision_layer = 4
 collision_mask = 4
 motion_mode = 1
 script = ExtResource("1_a1f4c")
-max_health = 10
-attack_power = 7
+max_health = 5
+attack_power = 4
 movement_speed = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=826673047]
