@@ -1,6 +1,6 @@
 # Magicats – A Spellcasting Survivor-like (Prototype)
 https://ateosu.itch.io/magicats
-
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-I7tHIp485M?si=d128C41Yjf2nSqKb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 **You are a magical cat. The hordes are many. The spells? Auto-cast. The chaos? ...Getting there!**
 
 *Magicats* is a fast-paced survivor-like / rouguelike prototype where you play as a lone feline mage, dodging waves of enemies while your spells trigger automatically. No aiming. No combos. Just WASD movement, positioning, and the joy of watching your little cat grow stronger with each level.
